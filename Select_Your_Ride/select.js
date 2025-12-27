@@ -1,160 +1,110 @@
-
-function goHome() {
-  window.location.href = "../index.html";
-}
-<script>const vehicles = [
-  { name:"Yamaha MT-15", type:"bike", seat:810, comfort:85, control:90, posture:80, cityBias:60 },
-  { name:"Royal Enfield Classic 350", type:"bike", seat:805, comfort:88, control:75, posture:90, cityBias:55 },
-  { name:"TVS Ntorq 125", type:"scooter", seat:770, comfort:80, control:78, posture:82, cityBias:85 },
-  { name:"Honda Activa 6G", type:"scooter", seat:765, comfort:78, control:76, posture:80, cityBias:90 },
-  { name:"Hyundai i20", type:"car", seat:740, comfort:88, control:85, posture:90, cityBias:55 },
-  { name:"Kia Seltos", type:"suv", seat:820, comfort:90, control:82, posture:92, cityBias:50 }
+const vehicles = [
+  { name: "Yamaha MT-15", type: "bike", comfort: 75, control: 85, posture: 70, usage: 65, seat: 810 },
+  { name: "Royal Enfield Classic 350", type: "bike", comfort: 85, control: 70, posture: 90, usage: 60, seat: 805 },
+  { name: "TVS Ntorq 125", type: "scooter", comfort: 80, control: 75, posture: 85, usage: 85, seat: 770 },
+  { name: "Honda Activa 6G", type: "scooter", comfort: 78, control: 72, posture: 82, usage: 90, seat: 765 },
+  { name: "Hyundai i20", type: "car", comfort: 88, control: 85, posture: 90, usage: 70 },
+  { name: "Kia Seltos", type: "suv", comfort: 90, control: 82, posture: 92, usage: 65 }
 ];
 
 let selected = null;
 let compare = [];
 
-/* ===============================
-   HELPERS
-================================ */
-function $(id) {
-  return document.getElementById(id);
+/* UI helpers */
+function goHome() {
+  window.location.href = "../index.html";
+}
+
+function toggleAdvanced() {
+  document.getElementById("advancedBox").classList.toggle("hidden");
 }
 
 function avg(v) {
-  const height = Number($("height").value);
-  const usage = Number($("usage").value);
-  const freq = Number($("frequency").value);
-  const leg = Number($("legHeight")?.value || height * 0.45);
-
-  const idealSeat = leg * 0.9;
-  let seatScore = 100 - Math.abs(v.seat - idealSeat) * 0.2;
-  seatScore = Math.max(60, Math.min(100, seatScore));
-
-  let base =
-    v.comfort * 0.25 +
-    v.control * 0.25 +
-    v.posture * 0.25 +
-    v.cityBias * 0.25;
-
-  if (freq > 70) base += (v.comfort - 75) * 0.3;
-  if (usage > 60) base -= (v.cityBias - 50) * 0.15;
-
-  return Math.round(base * 0.8 + seatScore * 0.2);
+  return Math.round((v.comfort + v.control + v.posture + v.usage) / 4);
 }
 
-/* ===============================
-   ADVANCED TOGGLE
-================================ */
-function toggleAdvanced() {
-  $("advancedBox").classList.toggle("hidden");
-}
-
-/* ===============================
-   MAIN RECOMMENDATION
-================================ */
+/* Recommendation */
 function recommend() {
-  const type = $("type").value;
-  const results = $("results");
+  const type = document.getElementById("type").value;
+  const height = +document.getElementById("height").value;
+  const leg = +document.getElementById("legHeight").value || height * 0.45;
 
+  const results = document.getElementById("results");
   results.innerHTML = "";
   compare = [];
 
-  const usageVal = Number($("usage").value);
-  const freqVal = Number($("frequency").value);
-
-  $("usageText").innerText =
-    usageVal < 40 ? "City focused" :
-    usageVal > 60 ? "Highway focused" :
-    "Balanced usage";
-
-  $("freqText").innerText =
-    freqVal < 40 ? "Occasional usage" :
-    freqVal > 70 ? "Daily usage" :
-    "Moderate usage";
-
   const list = vehicles
     .filter(v => v.type === type)
-    .sort((a, b) => avg(b) - avg(a));
+    .map(v => {
+      let penalty = v.seat ? Math.abs(v.seat - leg * 2) / 10 : 0;
+      return { ...v, score: avg(v) - penalty };
+    })
+    .sort((a, b) => b.score - a.score);
 
   list.forEach((v, i) => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      ${i === 0 ? '<div class="best">⭐ Best for you</div>' : ''}
-      <b>${v.name}</b><br>
-      Score: ${avg(v)}/100
-      <button onclick='showDetail(${JSON.stringify(v)})'>Details</button>
+    results.innerHTML += `
+      <div class="card">
+        ${i === 0 ? "<div class='best'>⭐ Best for you</div>" : ""}
+        <b>${v.name}</b><br>
+        Score: ${Math.round(v.score)}/100<br><br>
+        <button onclick='showDetail(${JSON.stringify(v)})'>Details</button>
+      </div>
     `;
-    results.appendChild(card);
   });
 }
 
-/* ===============================
-   DETAIL MODAL
-================================ */
+/* Detail modal */
 function showDetail(v) {
   selected = v;
-  $("detailModal").classList.remove("hidden");
+  document.getElementById("detailModal").classList.remove("hidden");
 
-  $("dName").innerText = v.name;
-  $("dScore").innerText = `Overall Score: ${avg(v)}/100`;
+  document.getElementById("dName").innerText = v.name;
+  document.getElementById("dScore").innerText = `Overall Score: ${Math.round(v.score)}/100`;
 
-  $("barComfort").style.width = v.comfort + "%";
-  $("barControl").style.width = v.control + "%";
-  $("barPosture").style.width = v.posture + "%";
-  $("barUsage").style.width = v.cityBias + "%";
+  document.getElementById("barComfort").style.width = v.comfort + "%";
+  document.getElementById("barControl").style.width = v.control + "%";
+  document.getElementById("barPosture").style.width = v.posture + "%";
+  document.getElementById("barUsage").style.width = v.usage + "%";
 
-  $("whyFit").innerHTML = "";
-  $("whyNot").innerHTML = "";
+  document.getElementById("whyFit").innerHTML =
+    "<li>Posture matches your body</li><li>Usage suits your riding style</li>";
 
-  const height = Number($("height").value);
-  const leg = Number($("legHeight")?.value || height * 0.45);
-
-  if (Math.abs(v.seat - leg) < 50)
-    $("whyFit").innerHTML += "<li>Seat height suits your body</li>";
-  else
-    $("whyNot").innerHTML += "<li>Seat height may feel uncomfortable</li>";
-
-  $("whyFit").innerHTML += "<li>Overall posture matches your usage</li>";
+  document.getElementById("whyNot").innerHTML =
+    v.seat ? "<li>Seat height may need adjustment</li>" : "<li>No major drawbacks</li>";
 }
 
 function closeDetail() {
-  $("detailModal").classList.add("hidden");
+  document.getElementById("detailModal").classList.add("hidden");
 }
 
-/* ===============================
-   COMPARISON
-================================ */
+/* Compare */
 function selectCompare() {
   if (!compare.includes(selected)) compare.push(selected);
   closeDetail();
-
   if (compare.length === 2) openCompare();
 }
 
 function openCompare() {
-  const box = $("compareContent");
+  const box = document.getElementById("compareContent");
   box.innerHTML = "";
 
   compare.forEach(v => {
     box.innerHTML += `
-      <div class="compare-card">
-        <h3>${v.name}</h3>
+      <div class="card">
+        <b>${v.name}</b><br>
         Comfort: ${v.comfort}<br>
         Control: ${v.control}<br>
         Posture: ${v.posture}<br>
-        Usage: ${v.cityBias}<br>
-        <b>Total: ${avg(v)}/100</b>
+        Usage: ${v.usage}<br>
+        <b>Total: ${Math.round(v.score)}</b>
       </div>
     `;
   });
 
-  $("compareModal").classList.remove("hidden");
+  document.getElementById("compareModal").classList.remove("hidden");
 }
 
 function closeCompare() {
-  $("compareModal").classList.add("hidden");
+  document.getElementById("compareModal").classList.add("hidden");
   compare = [];
 }
-</script>
