@@ -1,18 +1,15 @@
-
 async function loadSelect() {
   const app = document.getElementById("app");
 
-  // RESET app container
-  app.innerHTML = "";
-  app.style.position = "relative";
-  app.style.minHeight = "auto";
-  app.style.background = "transparent";
+  app.innerHTML = "Loading...";
 
   try {
     const res = await fetch("Select_Your_Ride/select.html");
+    if (!res.ok) throw new Error("404");
+
     app.innerHTML = await res.text();
 
-    // Load select.css
+    // load CSS
     if (!document.getElementById("select-css")) {
       const link = document.createElement("link");
       link.id = "select-css";
@@ -21,14 +18,14 @@ async function loadSelect() {
       document.head.appendChild(link);
     }
 
-    // Load select.js
+    // load JS
     const script = document.createElement("script");
     script.src = "Select_Your_Ride/select.js";
     script.defer = true;
     document.body.appendChild(script);
 
   } catch (e) {
-    app.innerHTML = "<p style='color:red'>Failed to load Select Your Ride</p>";
+    app.innerHTML = "<h3>❌ Select Your Ride not found</h3>";
   }
 }
 
