@@ -88,5 +88,29 @@
 </div>
 
 <script src="select.js"></script>
+<div id="detailsModal" class="modal hidden">
+  <div class="modal-box">
+    <h2 id="detailName"></h2>
+    <p id="detailScore"></p>
+
+    <div class="bars">
+      <div>Comfort <div class="bar"><div id="barComfort" class="fill"></div></div></div>
+      <div>Control <div class="bar"><div id="barControl" class="fill"></div></div></div>
+      <div>Posture <div class="bar"><div id="barPosture" class="fill"></div></div></div>
+      <div>Usage <div class="bar"><div id="barUsage" class="fill"></div></div></div>
+    </div>
+
+    <h4>Why this fits you</h4>
+    <ul id="whyFit"></ul>
+
+    <h4>Why this may not fit</h4>
+    <ul id="whyNot"></ul>
+
+    <button onclick="closeDetails()">Close</button>
+  </div>
+</div>
+
+<button onclick='showDetails(vehicleData)'>Details</button>
+
 </body>
 </html>
