@@ -2,41 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Select Your Ride – V4</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- MODULE STYLES -->
+  <!-- CSS -->
   <link rel="stylesheet" href="select.css">
 </head>
-
 <body>
 
-  <header>
-    <h1>Select Your Ride</h1>
-    <button onclick="goHome()">⬅ Back to Home</button>
-  </header>
+<header class="header">
+  <button class="back-btn" onclick="goHome()">← Back to Home</button>
+  <h1>Select Your Ride</h1>
+  <p class="subtitle">Choose smart. Ride better.</p>
+</header>
 
-  <!-- 🔽 PASTE V3 BODY CONTENT BELOW 🔽 -->
-  <main id="selectApp">
+<main class="container">
 
-    <!DOCTYPE html>
-<lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Know Your Ride – V3</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<div class="container">
-  <h1>Know Your Ride</h1>
-
+  <!-- INPUTS -->
   <label>Height (cm)</label>
-  <input id="height" type="number" value="170">
+  <input type="number" id="height" value="170">
 
   <label>Weight (kg)</label>
-  <input id="weight" type="number" value="70">
+  <input type="number" id="weight" value="70">
 
   <label>Vehicle Type</label>
   <select id="type">
@@ -47,25 +34,26 @@
   </select>
 
   <label>Usage (City ↔ Highway)</label>
-  <input id="usage" type="range" min="0" max="100" value="50">
-  <div class="slider-text" id="usageText">Balanced usage</div>
+  <input type="range" id="usage" min="0" max="100" value="50">
+  <div class="hint" id="usageText">Balanced usage</div>
 
   <label>Usage Frequency (Occasional ↔ Daily)</label>
-  <input id="frequency" type="range" min="0" max="100" value="50">
-  <div class="slider-text" id="freqText">Moderate usage</div>
+  <input type="range" id="frequency" min="0" max="100" value="30">
+  <div class="hint" id="freqText">Occasional usage</div>
 
-  <button onclick="toggleAdvanced()">Advanced Options</button>
+  <button class="secondary" onclick="toggleAdvanced()">Advanced Options</button>
 
-  <div id="advancedBox" class="advanced hidden">
+  <div id="advancedBox" class="hidden">
     <label>Leg Height (cm) – Optional</label>
-    <input id="legHeight" type="number" placeholder="Optional">
-    <p class="hint">Used to fine-tune seat height match</p>
+    <input type="number" id="legHeight" placeholder="Optional">
+    <div class="hint">Used to fine-tune seat height match</div>
   </div>
 
-  <button onclick="recommend()">Get Recommendation</button>
+  <button class="primary" onclick="recommend()">Get Recommendation</button>
 
+  <!-- RESULTS -->
   <div id="results"></div>
-</div>
+</main>
 
 <!-- DETAILS MODAL -->
 <div id="detailModal" class="modal hidden">
@@ -74,12 +62,10 @@
     <p id="dScore"></p>
 
     <h3>Fit Analysis</h3>
-    <div class="chart">
-      <div><span>Comfort</span><div class="bar"><div id="barComfort"></div></div></div>
-      <div><span>Control</span><div class="bar"><div id="barControl"></div></div></div>
-      <div><span>Posture</span><div class="bar"><div id="barPosture"></div></div></div>
-      <div><span>Usage</span><div class="bar"><div id="barUsage"></div></div></div>
-    </div>
+    <div class="bar"><span id="barComfort"></span>Comfort</div>
+    <div class="bar"><span id="barControl"></span>Control</div>
+    <div class="bar"><span id="barPosture"></span>Posture</div>
+    <div class="bar"><span id="barUsage"></span>Usage</div>
 
     <h3>Why this fits you</h3>
     <ul id="whyFit"></ul>
@@ -87,7 +73,7 @@
     <h3>Why this may not fit</h3>
     <ul id="whyNot"></ul>
 
-    <button onclick="selectCompare()">Select for Compare</button>
+    <button class="primary" onclick="selectCompare()">Select for Compare</button>
     <button onclick="closeDetail()">Close</button>
   </div>
 </div>
@@ -101,12 +87,6 @@
   </div>
 </div>
 
-<script src="script.js"></script>
-</body>
-
-  </main>
-
-  <!-- MODULE SCRIPT -->
-  <script src="select.js"></script>
+<script src="select.js"></script>
 </body>
 </html>
