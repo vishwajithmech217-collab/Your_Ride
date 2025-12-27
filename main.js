@@ -1,15 +1,25 @@
-function loadSelect() {
+async function loadSelect() {
   document.getElementById("appTitle").innerText = "Select Your Ride";
   document.querySelector(".subtitle").innerText =
     "Smart recommendations based on you";
 
-  document.getElementById("app").innerHTML = `
-    <h2>Select Your Ride</h2>
-    <p>
-      This module will load the full V3 recommendation engine.<br><br>
-      (We will connect the real Select Your Ride module next.)
-    </p>
-  `;
+  const html = await fetch("Select_Your_Ride/select.html")
+    .then(r => r.text());
+
+  document.getElementById("app").innerHTML = html;
+
+  if (!document.getElementById("select-css")) {
+    const link = document.createElement("link");
+    link.id = "select-css";
+    link.rel = "stylesheet";
+    link.href = "Select_Your_Ride/select.css";
+    document.head.appendChild(link);
+  }
+
+  const script = document.createElement("script");
+  script.src = "Select_Your_Ride/select.js";
+  script.defer = true;
+  document.body.appendChild(script);
 }
 
 function loadKnow() {
