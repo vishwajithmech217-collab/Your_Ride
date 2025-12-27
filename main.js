@@ -1,28 +1,35 @@
 
 async function loadSelect() {
-  console.log("Select Your Ride clicked"); // DEBUG LINE
-
   const app = document.getElementById("app");
 
-  const html = await fetch("Select_Your_Ride/select.html")
-    .then(r => r.text());
+  // RESET app container
+  app.innerHTML = "";
+  app.style.position = "relative";
+  app.style.minHeight = "auto";
+  app.style.background = "transparent";
 
-  app.innerHTML = html;
+  try {
+    const res = await fetch("Select_Your_Ride/select.html");
+    app.innerHTML = await res.text();
 
-  // Load CSS
-  if (!document.getElementById("select-css")) {
-    const link = document.createElement("link");
-    link.id = "select-css";
-    link.rel = "stylesheet";
-    link.href = "Select_Your_Ride/select.css";
-    document.head.appendChild(link);
+    // Load select.css
+    if (!document.getElementById("select-css")) {
+      const link = document.createElement("link");
+      link.id = "select-css";
+      link.rel = "stylesheet";
+      link.href = "Select_Your_Ride/select.css";
+      document.head.appendChild(link);
+    }
+
+    // Load select.js
+    const script = document.createElement("script");
+    script.src = "Select_Your_Ride/select.js";
+    script.defer = true;
+    document.body.appendChild(script);
+
+  } catch (e) {
+    app.innerHTML = "<p style='color:red'>Failed to load Select Your Ride</p>";
   }
-
-  // Load JS
-  const script = document.createElement("script");
-  script.src = "Select_Your_Ride/select.js";
-  script.defer = true;
-  document.body.appendChild(script);
 }
 
 function loadKnow() {
