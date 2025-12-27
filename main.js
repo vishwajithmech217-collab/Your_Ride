@@ -1,13 +1,15 @@
+
 async function loadSelect() {
-  document.getElementById("appTitle").innerText = "Select Your Ride";
-  document.querySelector(".subtitle").innerText =
-    "Smart recommendations based on you";
+  console.log("Select Your Ride clicked"); // DEBUG LINE
+
+  const app = document.getElementById("app");
 
   const html = await fetch("Select_Your_Ride/select.html")
     .then(r => r.text());
 
-  document.getElementById("app").innerHTML = html;
+  app.innerHTML = html;
 
+  // Load CSS
   if (!document.getElementById("select-css")) {
     const link = document.createElement("link");
     link.id = "select-css";
@@ -16,6 +18,7 @@ async function loadSelect() {
     document.head.appendChild(link);
   }
 
+  // Load JS
   const script = document.createElement("script");
   script.src = "Select_Your_Ride/select.js";
   script.defer = true;
