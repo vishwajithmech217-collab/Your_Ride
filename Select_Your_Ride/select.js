@@ -12,8 +12,13 @@ let compare = [];
 
 /* UI helpers */
 function goHome() {
-  window.location.href = "index.html";
+  if (location.hostname.includes("github.io")) {
+    window.location.href = "/Select_Your_Ride/index.html";
+  } else {
+    window.location.href = "index.html";
+  }
 }
+
 // live slider text update
 document.getElementById("usage").oninput = e => {
   const v = e.target.value;
