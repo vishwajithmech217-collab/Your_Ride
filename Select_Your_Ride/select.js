@@ -12,7 +12,7 @@ let compare = [];
 
 /* UI helpers */
 function goHome() {
-  window.location.href = "../index.html";
+  window.location.href = "index.html";
 }
 // live slider text update
 document.getElementById("usage").oninput = e => {
