@@ -19,6 +19,10 @@ function goHome() {
   }
 }
 
+function testClick() {
+  alert("BUTTON CLICKED");
+}
+
 // live slider text update
 document.getElementById("usage").oninput = e => {
   const v = e.target.value;
