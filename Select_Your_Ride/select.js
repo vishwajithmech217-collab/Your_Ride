@@ -14,6 +14,22 @@ let compare = [];
 function goHome() {
   window.location.href = "../index.html";
 }
+// live slider text update
+document.getElementById("usage").oninput = e => {
+  const v = e.target.value;
+  document.getElementById("usageText").innerText =
+    v < 40 ? "Mostly city usage" :
+    v > 60 ? "Mostly highway usage" :
+    "Balanced usage";
+};
+
+document.getElementById("frequency").oninput = e => {
+  const v = e.target.value;
+  document.getElementById("freqText").innerText =
+    v < 40 ? "Occasional usage" :
+    v > 60 ? "Daily usage" :
+    "Moderate usage";
+};
 
 function toggleAdvanced() {
   document.getElementById("advancedBox").classList.toggle("hidden");
