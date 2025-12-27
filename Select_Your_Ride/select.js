@@ -74,17 +74,29 @@ console.log("Recommend clicked");
 /* Detail modal */
 function showDetail(v) {
   selected = v;
-  document.getElementById("detailModal").classList.remove("hidden");
 
-  document.getElementById("dName").innerText = v.name;
-  document.getElementById("dScore").innerText = `Overall Score: ${Math.round(v.score)}/100`;
+function adjustedScore(base, penalty = 0) {
+  return Math.max(0, Math.min(100, base - penalty));
+}
 
-  document.getElementById("barComfort").style.width = v.comfort + "%";
-  document.getElementById("barControl").style.width = v.control + "%";
-  document.getElementById("barPosture").style.width = v.posture + "%";
-  document.getElementById("barUsage").style.width = v.usage + "%";
+const height = Number(document.getElementById("height").value);
+const usage = Number(document.getElementById("usage").value);
 
-  document.getElementById("whyFit").innerHTML =
+let seatPenalty = Math.abs(vehicle.seatHeight - height) * 0.5;
+let usagePenalty = Math.abs(vehicle.cityBias - usage) * 0.3;
+
+document.getElementById("barComfort").style.width =
+  adjustedScore(vehicle.comfort, seatPenalty) + "%";
+
+document.getElementById("barControl").style.width =
+  adjustedScore(vehicle.control, usagePenalty) + "%";
+
+document.getElementById("barPosture").style.width =
+  adjustedScore(vehicle.posture, seatPenalty) + "%";
+
+document.getElementById("barUsage").style.width =
+  adjustedScore(vehicle.cityBias, usagePenalty) + "%";
+ document.getElementById("whyFit").innerHTML =
     "<li>Posture matches your body</li><li>Usage suits your riding style</li>";
 
   document.getElementById("whyNot").innerHTML =
