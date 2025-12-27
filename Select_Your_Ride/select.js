@@ -32,7 +32,8 @@ document.getElementById("frequency").oninput = e => {
 };
 
 function toggleAdvanced() {
-  document.getElementById("advancedBox").classList.toggle("hidden");
+  const box = document.getElementById("advancedBox");
+  box.classList.toggle("hidden");
 }
 
 function avg(v) {
@@ -41,6 +42,7 @@ function avg(v) {
 
 /* Recommendation */
 function recommend() {
+console.log("Recommend clicked");
   const type = document.getElementById("type").value;
   const height = +document.getElementById("height").value;
   const leg = +document.getElementById("legHeight").value || height * 0.45;
