@@ -77,39 +77,28 @@ console.log("Recommend clicked");
 }
 
 /* Detail modal */
-function showDetail(v) {
-  selected = v;
+function showDetails(v) {
+  const modal = document.getElementById("detailsModal");
+  modal.classList.remove("hidden");
 
-function adjustedScore(base, penalty = 0) {
-  return Math.max(0, Math.min(100, base - penalty));
+  document.getElementById("detailName").innerText = v.name;
+  document.getElementById("detailScore").innerText =
+    "Overall Score: " + v.score + "/100";
+
+  document.getElementById("barComfort").style.width = v.comfort + "%";
+  document.getElementById("barControl").style.width = v.control + "%";
+  document.getElementById("barPosture").style.width = v.posture + "%";
+  document.getElementById("barUsage").style.width = v.cityBias + "%";
+
+  const fit = document.getElementById("whyFit");
+  const notFit = document.getElementById("whyNot");
+
+  fit.innerHTML = "<li>Posture matches your body</li>";
+  notFit.innerHTML = "<li>Seat height may need adjustment</li>";
 }
 
-const height = Number(document.getElementById("height").value);
-const usage = Number(document.getElementById("usage").value);
-
-let seatPenalty = Math.abs(vehicle.seatHeight - height) * 0.5;
-let usagePenalty = Math.abs(vehicle.cityBias - usage) * 0.3;
-
-document.getElementById("barComfort").style.width =
-  adjustedScore(vehicle.comfort, seatPenalty) + "%";
-
-document.getElementById("barControl").style.width =
-  adjustedScore(vehicle.control, usagePenalty) + "%";
-
-document.getElementById("barPosture").style.width =
-  adjustedScore(vehicle.posture, seatPenalty) + "%";
-
-document.getElementById("barUsage").style.width =
-  adjustedScore(vehicle.cityBias, usagePenalty) + "%";
- document.getElementById("whyFit").innerHTML =
-    "<li>Posture matches your body</li><li>Usage suits your riding style</li>";
-
-  document.getElementById("whyNot").innerHTML =
-    v.seat ? "<li>Seat height may need adjustment</li>" : "<li>No major drawbacks</li>";
-}
-
-function closeDetail() {
-  document.getElementById("detailModal").classList.add("hidden");
+function closeDetails() {
+  document.getElementById("detailsModal").classList.add("hidden");
 }
 
 /* Compare */
