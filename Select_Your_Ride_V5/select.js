@@ -118,21 +118,44 @@ function renderCompare() {
   const grid = document.getElementById("compareGrid");
   grid.innerHTML = "";
 
-  compareList.forEach(v => {
+  const [a, b] = compareList;
+
+  const winner =
+    a.score > b.score ? a :
+    b.score > a.score ? b : null;
+
+  compareList.forEach((v, i) => {
+    const other = i === 0 ? b : a;
+
+    const deltaScore = v.score - other.score;
+    const deltaUsage = v.cityBias - other.cityBias;
+
     const div = document.createElement("div");
     div.className = "compare-card";
-    div.innerHTML = `
-      <h3>${v.name}</h3>
-      <p><b>Score:</b> ${v.score}</p>
 
-      <div>Comfort
-        <div class="bar"><span style="width:${v.score}%"></span></div>
+    if (winner && v.name === winner.name) {
+      div.classList.add("winner");
+    }
+
+    div.innerHTML = `
+      ${winner && v.name === winner.name ? `<div class="winner-badge">BEST MATCH</div>` : ""}
+
+      <h3>${v.name}</h3>
+      <p><b>Score:</b> ${v.score}/100</p>
+
+      <div class="bar">
+        <span style="width:${v.score}%"></span>
       </div>
 
-      <div>Usage
-        <div class="bar"><span style="width:${v.cityBias}%"></span></div>
+      <div class="delta ${deltaScore >= 0 ? "plus" : "minus"}">
+        Overall ${deltaScore >= 0 ? "+" : ""}${deltaScore}
+      </div>
+
+      <div class="delta ${deltaUsage >= 0 ? "plus" : "minus"}">
+        City Usage ${deltaUsage >= 0 ? "+" : ""}${deltaUsage}
       </div>
     `;
+
     grid.appendChild(div);
   });
 
