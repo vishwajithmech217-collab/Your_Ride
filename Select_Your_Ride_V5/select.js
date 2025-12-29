@@ -3,40 +3,7 @@ console.log("select.js loaded");
 let compareList = [];
 
 /* VEHICLE DATA */
-const vehicles = [
-  {
-    name: "Yamaha MT-15",
-    type: "bike",
-    seatHeight: 810,
-    posture: "sport",
-    cityBias: 70,
-    highwayBias: 80
-  },
-  {
-    name: "Royal Enfield Classic 350",
-    type: "bike",
-    seatHeight: 805,
-    posture: "upright",
-    cityBias: 60,
-    highwayBias: 85
-  },
-  {
-    name: "Honda Activa",
-    type: "scooter",
-    seatHeight: 765,
-    posture: "relaxed",
-    cityBias: 90,
-    highwayBias: 40
-  },
-  {
-    name: "Hyundai i20",
-    type: "car",
-    seatHeight: 1650,
-    posture: "seated",
-    cityBias: 75,
-    highwayBias: 80
-  }
-];
+const vehicles = VEHICLES;
 
 function calculateScore(vehicle, user) {
   let score = 0;
