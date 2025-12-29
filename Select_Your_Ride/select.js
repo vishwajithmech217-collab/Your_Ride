@@ -8,6 +8,10 @@ const vehicles = [
   { name: "Hyundai i20", type: "car", comfort: 90, control: 85, posture: 95, usage: 65 }
 ];
 
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("detailModal").classList.add("hidden");
+});
+
 const advancedBtn = document.getElementById("advancedBtn");
 const recommendBtn = document.getElementById("recommendBtn");
 
