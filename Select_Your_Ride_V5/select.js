@@ -1,5 +1,7 @@
 console.log("select.js loaded");
 
+let compareList = [];
+
 /* VEHICLE DATA */
 const vehicles = [
   {
@@ -79,14 +81,57 @@ function recommend() {
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
-      <b>${v.name}</b><br>
-      Score: ${score}/100<br><br>
-      <button onclick='showDetails(${JSON.stringify(v)}, ${score})'>
-        Details
-      </button>
-    `;
+  <b>${v.name}</b><br>
+  Score: ${score}/100<br><br>
+
+  <button onclick='addToCompare(${JSON.stringify(v)}, ${score})'>
+    Compare
+  </button>
+
+  <button onclick='showDetails(${JSON.stringify(v)}, ${score})'>
+    Details
+  </button>
+`;
     results.appendChild(card);
   });
+}
+
+function addToCompare(vehicle, score) {
+  if (compareList.length >= 2) {
+    alert("Only 2 vehicles can be compared");
+    return;
+  }
+
+  compareList.push({ ...vehicle, score });
+
+  if (compareList.length === 2) {
+    renderCompare();
+  }
+}
+
+function renderCompare() {
+  const grid = document.getElementById("compareGrid");
+  grid.innerHTML = "";
+
+  compareList.forEach(v => {
+    const div = document.createElement("div");
+    div.className = "compare-card";
+    div.innerHTML = `
+      <h3>${v.name}</h3>
+      <p><b>Score:</b> ${v.score}</p>
+
+      <div>Comfort
+        <div class="bar"><span style="width:${v.score}%"></span></div>
+      </div>
+
+      <div>Usage
+        <div class="bar"><span style="width:${v.cityBias}%"></span></div>
+      </div>
+    `;
+    grid.appendChild(div);
+  });
+
+  document.getElementById("compareModal").classList.remove("hidden");
 }
 
 function showDetails(v, score) {
@@ -111,6 +156,7 @@ function showDetails(v, score) {
   document.getElementById("detailModal").classList.remove("hidden");
 }
 
-function closeDetail() {
-  document.getElementById("detailModal").classList.add("hidden");
+function closeCompare() {
+  compareList = [];
+  document.getElementById("compareModal").classList.add("hidden");
 }
