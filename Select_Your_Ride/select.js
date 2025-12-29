@@ -46,22 +46,32 @@ function recommend() {
   });
 }
 
-function showDetail(v, score) {
+function showDetails(data) {
+  document.getElementById("dName").innerText = data.name;
+  document.getElementById("dScore").innerText =
+    "Overall Score: " + data.score + "/100";
+
+  // Bars
+  document.getElementById("barComfort").style.width = data.comfort + "%";
+  document.getElementById("barControl").style.width = data.control + "%";
+  document.getElementById("barPosture").style.width = data.posture + "%";
+  document.getElementById("barUsage").style.width = data.usage + "%";
+
+  // Lists
+  fillList("whyFit", data.whyFit);
+  fillList("whyNot", data.whyNot);
+
   document.getElementById("detailModal").classList.remove("hidden");
+}
 
-  document.getElementById("dName").innerText = v.name;
-  document.getElementById("dScore").innerText = `Overall Score: ${score}/100`;
-
-  document.getElementById("barComfort").style.width = v.comfort + "%";
-  document.getElementById("barControl").style.width = v.control + "%";
-  document.getElementById("barPosture").style.width = v.posture + "%";
-  document.getElementById("barUsage").style.width = v.usage + "%";
-
-  document.getElementById("whyFit").innerHTML =
-    "<li>Posture matches your body</li><li>Usage suits your riding style</li>";
-
-  document.getElementById("whyNot").innerHTML =
-    "<li>Seat height may need adjustment</li>";
+function fillList(id, items) {
+  const ul = document.getElementById(id);
+  ul.innerHTML = "";
+  items.forEach(text => {
+    const li = document.createElement("li");
+    li.innerText = text;
+    ul.appendChild(li);
+  });
 }
 
 function closeDetail() {
