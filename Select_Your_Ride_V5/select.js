@@ -138,7 +138,9 @@ function renderCompare() {
     }
 
     div.innerHTML = `
-      ${winner && v.name === winner.name ? `<div class="winner-badge">BEST MATCH</div>` : ""}
+      ${winner && v.name === winner.name
+        ? `<div class="winner-badge">BEST MATCH</div>`
+        : ""}
 
       <h3>${v.name}</h3>
       <p><b>Score:</b> ${v.score}/100</p>
