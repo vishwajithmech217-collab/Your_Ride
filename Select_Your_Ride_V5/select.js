@@ -129,7 +129,17 @@ function renderCompare() {
 
     const deltaScore = v.score - other.score;
     const deltaUsage = v.cityBias - other.cityBias;
+${deltaBar(
+  "City Usage",
+  v.cityBias,
+  compareList.find(x => x !== v).cityBias
+)}
 
+${deltaBar(
+  "Highway Usage",
+  v.highwayBias,
+  compareList.find(x => x !== v).highwayBias
+)}
     const div = document.createElement("div");
     div.className = "compare-card";
 
@@ -145,9 +155,20 @@ function renderCompare() {
       <h3>${v.name}</h3>
       <p><b>Score:</b> ${v.score}/100</p>
 
+      function deltaBar(label, a, b) {
+  const diff = a - b;
+  const sign = diff >= 0 ? "+" : "";
+  const color = diff >= 0 ? "#22c55e" : "#ef4444";
+
+  return `
+    <div>
+      ${label}: <b style="color:${color}">${sign}${diff}</b>
       <div class="bar">
-        <span style="width:${v.score}%"></span>
+        <span style="width:${Math.abs(diff)}%; background:${color}"></span>
       </div>
+    </div>
+  `;
+}
 
       <div class="delta ${deltaScore >= 0 ? "plus" : "minus"}">
         Overall ${deltaScore >= 0 ? "+" : ""}${deltaScore}
