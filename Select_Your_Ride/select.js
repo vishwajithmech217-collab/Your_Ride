@@ -8,10 +8,6 @@ const vehicles = [
   { name: "Hyundai i20", type: "car", comfort: 90, control: 85, posture: 95, usage: 65 }
 ];
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("detailModal").classList.add("hidden");
-});
-
 const advancedBtn = document.getElementById("advancedBtn");
 const recommendBtn = document.getElementById("recommendBtn");
 
@@ -29,42 +25,44 @@ function recommend() {
   const list = vehicles.filter(v => v.type === type);
 
   list.forEach(v => {
-    const score = Math.round(
-      (v.comfort + v.control + v.posture + v.usage) / 4
-    );
+    const score = calcScore(v);
 
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
       <b>${v.name}</b><br>
       Score: ${score}/100<br><br>
-      <button onclick='showDetail(${JSON.stringify(v)}, ${score})'>
-        Details
-      </button>
+      <button onclick='showDetails(${JSON.stringify(v)})'>Details</button>
     `;
     results.appendChild(card);
   });
 }
 
-function openDetails(id) {
-  currentDetail = vehicles[id];
-  showDetails(currentDetail);
+function calcScore(v) {
+  return Math.round((v.comfort + v.control + v.posture + v.usage) / 4);
 }
 
-function showDetail(v,score) {
-  document.getElementById("dName").innerText = data.name;
-  document.getElementById("dScore").innerText =
-    "Overall Score: " + data.score + "/100";
+function showDetails(v) {
+  const score = calcScore(v);
 
-  // Bars
-  document.getElementById("barComfort").style.width = data.comfort + "%";
-  document.getElementById("barControl").style.width = data.control + "%";
-  document.getElementById("barPosture").style.width = data.posture + "%";
-  document.getElementById("barUsage").style.width = data.usage + "%";
+  document.getElementById("dName").innerText = v.name;
+  document.getElementById("dScore").innerText = `Overall Score: ${score}/100`;
 
-  // Lists
-  fillList("whyFit", data.whyFit);
-  fillList("whyNot", data.whyNot);
+  document.getElementById("barComfort").style.width = v.comfort + "%";
+  document.getElementById("barControl").style.width = v.control + "%";
+  document.getElementById("barPosture").style.width = v.posture + "%";
+  document.getElementById("barUsage").style.width = v.usage + "%";
+
+  fillList("whyFit", [
+    v.comfort > 75 ? "Good comfort for daily rides" : "Comfort may feel stiff",
+    v.posture > 80 ? "Healthy riding posture" : "Posture may feel aggressive",
+    v.usage > 70 ? "Great for your usage pattern" : "Better suited for limited use"
+  ]);
+
+  fillList("whyNot", [
+    v.control < 75 ? "Handling may need experience" : "—",
+    v.usage < 60 ? "Not ideal for heavy daily usage" : "—"
+  ]);
 
   document.getElementById("detailModal").classList.remove("hidden");
 }
@@ -73,52 +71,12 @@ function fillList(id, items) {
   const ul = document.getElementById(id);
   ul.innerHTML = "";
   items.forEach(text => {
-    const li = document.createElement("li");
-    li.innerText = text;
-    ul.appendChild(li);
+    if (text !== "—") {
+      const li = document.createElement("li");
+      li.innerText = text;
+      ul.appendChild(li);
+    }
   });
-}
-
-let compareList = [];
-
-function selectCompare() {
-  if (compareList.length >= 2) {
-    alert("Only 2 vehicles can be compared");
-    return;
-  }
-
-  compareList.push(currentDetail);
-  closeDetail();
-
-  if (compareList.length === 2) {
-    showCompare();
-  }
-}
-
-function showCompare() {
-  const grid = document.getElementById("compareGrid");
-  grid.innerHTML = "";
-
-  compareList.forEach(v => {
-    const div = document.createElement("div");
-    div.className = "compare-card";
-    div.innerHTML = `
-      <h3>${v.name}</h3>
-      <p>Score: ${v.score}/100</p>
-      <p>Comfort: ${v.comfort}</p>
-      <p>Control: ${v.control}</p>
-      <p>Posture: ${v.posture}</p>
-      <p>Usage: ${v.usage}</p>
-    `;
-    grid.appendChild(div);
-  });
-
-  document.getElementById("compareModal").classList.remove("hidden");
-}
-
-function closeCompare() {
-  compareList = [];
-  document.getElementById("compareModal").classList.add("hidden");
 }
 
 function closeDetail() {
