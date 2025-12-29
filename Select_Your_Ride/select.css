@@ -1,59 +1,51 @@
 body {
   font-family: system-ui, sans-serif;
-  background: linear-gradient(180deg, #020617, #0f172a);
+  background: #0f172a;
   color: #e5e7eb;
   margin: 0;
-}
-
-.header {
-  text-align: center;
   padding: 20px;
 }
 
-.back-btn {
-  position: absolute;
-  left: 15px;
-  top: 15px;
+h1 {
+  text-align: center;
 }
 
 .subtitle {
+  text-align: center;
   opacity: 0.7;
 }
 
 .container {
   max-width: 420px;
   margin: auto;
-  background: #020617;
-  padding: 20px;
-  border-radius: 14px;
 }
 
 label {
-  margin-top: 12px;
   display: block;
+  margin-top: 14px;
 }
 
 input, select {
   width: 100%;
-  padding: 10px;
-  margin-top: 4px;
+  padding: 12px;
   border-radius: 8px;
   border: none;
+  margin-top: 4px;
 }
 
 button {
   width: 100%;
-  margin-top: 14px;
-  padding: 12px;
+  margin-top: 16px;
+  padding: 14px;
   border-radius: 10px;
   border: none;
+  font-weight: bold;
   cursor: pointer;
 }
 
 .primary {
   background: #22c55e;
   color: #022c22;
-  font-weight: bold;
 }
 
 .secondary {
@@ -64,28 +56,44 @@ button {
 .hint {
   font-size: 13px;
   opacity: 0.7;
-  margin-bottom: 8px;
+  margin-top: 4px;
+}
+
+.hidden {
+  display: none;
 }
 
 .card {
   background: #020617;
-  border: 1px solid #1e293b;
-  padding: 12px;
-  border-radius: 10px;
+  padding: 14px;
+  border-radius: 12px;
   margin-top: 12px;
 }
 
-.best {
-  color: gold;
-  font-weight: bold;
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Bars */
+.modal-box {
+  background: #020617;
+  padding: 20px;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 360px;
+}
+
+/* BARS */
 .bar {
   background: #1e293b;
-  height: 10px;
   border-radius: 6px;
-  margin-bottom: 8px;
+  margin: 8px 0;
+  height: 14px;
   position: relative;
 }
 
@@ -94,81 +102,4 @@ button {
   height: 100%;
   background: #22c55e;
   border-radius: 6px;
-}
-
-/* Modals */
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-.hidden {
-  display: none !important;
-}
-
-.modal-box {
-  background: #020617;
-  padding: 20px;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 360px;
-}
-
-.modal-box.wide {
-  max-width: 90%;
-}
-
-#advancedBox {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px dashed #334155;
-}
-
-.compare-grid {
-  display: flex;
-  gap: 12px;
-}
-
-.compare-grid .card {
-  flex: 1;
-}
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.hidden {
-  display: none;
-}
-
-.modal-box {
-  background: #020617;
-  padding: 20px;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 420px;
-}
-
-.bar {
-  background: #1e293b;
-  height: 8px;
-  border-radius: 6px;
-  margin: 6px 0;
-}
-
-.fill {
-  height: 100%;
-  background: #22c55e;
-  border-radius: 6px;
-  width: 0%;
 }
