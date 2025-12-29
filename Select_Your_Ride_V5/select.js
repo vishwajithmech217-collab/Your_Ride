@@ -189,6 +189,11 @@ function showDetails(v, score) {
   document.getElementById("detailModal").classList.remove("hidden");
 }
 
+function closeDetail(e) {
+  if (e) e.stopPropagation();
+  document.getElementById("detailModal").classList.add("hidden");
+}
+
 function closeCompare() {
   compareList = [];
   document.getElementById("compareModal").classList.add("hidden");
