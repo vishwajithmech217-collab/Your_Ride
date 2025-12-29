@@ -28,7 +28,22 @@ function calculateScore(vehicle, user) {
 
   // Frequency
   score += user.frequency * 0.2;
+// Leg height estimation
+const legHeight =
+  user.legHeight ||
+  Math.round(user.height * 0.46);
 
+// Seat height comfort score (0–40)
+const diff = vehicle.seatHeight - legHeight;
+
+let seatScore = 0;
+if (diff <= -20) seatScore = 40;        // very comfortable
+else if (diff <= 0) seatScore = 35;
+else if (diff <= 30) seatScore = 25;    // manageable
+else if (diff <= 60) seatScore = 15;    // tiptoe zone
+else seatScore = 5;                     // unsafe feel
+
+score += seatScore;
   return Math.round(Math.min(score, 100));
 }
 
