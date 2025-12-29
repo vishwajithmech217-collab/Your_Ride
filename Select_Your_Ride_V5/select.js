@@ -34,7 +34,9 @@ document.getElementById("advancedBtn").addEventListener("click", () => {
 document.getElementById("recommendBtn").addEventListener("click", recommend);
 
 function recommend() {
-  const type = document.getElementById("type").value;
+  console.log("Recommend clicked", vehicles);
+
+const type = document.getElementById("type").value;
   const results = document.getElementById("results");
   results.innerHTML = "";
 
