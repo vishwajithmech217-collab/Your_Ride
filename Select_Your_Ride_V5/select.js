@@ -5,36 +5,54 @@ const vehicles = [
   {
     name: "Yamaha MT-15",
     type: "bike",
-    comfort: 80,
-    control: 90,
-    posture: 75,
-    usage: 70
+    seatHeight: 810,
+    posture: "sport",
+    cityBias: 70,
+    highwayBias: 80
   },
   {
     name: "Royal Enfield Classic 350",
     type: "bike",
-    comfort: 85,
-    control: 70,
-    posture: 90,
-    usage: 60
+    seatHeight: 805,
+    posture: "upright",
+    cityBias: 60,
+    highwayBias: 85
   },
   {
     name: "Honda Activa",
     type: "scooter",
-    comfort: 80,
-    control: 75,
-    posture: 85,
-    usage: 90
+    seatHeight: 765,
+    posture: "relaxed",
+    cityBias: 90,
+    highwayBias: 40
   },
   {
     name: "Hyundai i20",
     type: "car",
-    comfort: 90,
-    control: 85,
-    posture: 95,
-    usage: 65
+    seatHeight: 1650,
+    posture: "seated",
+    cityBias: 75,
+    highwayBias: 80
   }
 ];
+
+function calculateScore(vehicle, user) {
+  let score = 0;
+
+  // Height vs Seat Height logic
+  const heightDiff = Math.abs(user.height - vehicle.seatHeight);
+  score += Math.max(0, 40 - heightDiff / 5);
+
+  // Usage logic
+  const usageScore =
+    user.usage < 50 ? vehicle.cityBias : vehicle.highwayBias;
+  score += usageScore * 0.4;
+
+  // Frequency logic
+  score += user.frequency * 0.2;
+
+  return Math.round(Math.min(score, 100));
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("detailModal").classList.add("hidden");
