@@ -65,6 +65,19 @@ document.addEventListener("DOMContentLoaded", () => {
     .addEventListener("click", recommend);
 });
 
+function comfortZone(vehicle, user) {
+  const legHeight =
+    user.legHeight ||
+    Math.round(user.height * 0.46);
+
+  const diff = vehicle.seatHeight - legHeight;
+
+  if (diff <= 0) return "Excellent";
+  if (diff <= 40) return "OK";
+  return "Risky";
+}
+
+
 /* ===============================
    RECOMMENDATION
 ================================ */
@@ -139,6 +152,22 @@ function showDetails(v, score) {
 function closeDetail(e) {
   if (e) e.stopPropagation();
   document.getElementById("detailModal").classList.add("hidden");
+
+const zone = comfortZone(v, user);
+
+const zoneColor =
+  zone === "Excellent" ? "#22c55e" :
+  zone === "OK" ? "#facc15" :
+  "#ef4444";
+
+document.getElementById("whyFit").innerHTML += `
+  <li>
+    <b style="color:${zoneColor}">
+      Comfort Zone: ${zone}
+    </b>
+  </li>
+`;
+
 }
 
 /* ===============================
