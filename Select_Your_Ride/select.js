@@ -74,6 +74,48 @@ function fillList(id, items) {
   });
 }
 
+let compareList = [];
+
+function selectCompare() {
+  if (compareList.length >= 2) {
+    alert("Only 2 vehicles can be compared");
+    return;
+  }
+
+  compareList.push(currentDetail);
+  closeDetail();
+
+  if (compareList.length === 2) {
+    showCompare();
+  }
+}
+
+function showCompare() {
+  const grid = document.getElementById("compareGrid");
+  grid.innerHTML = "";
+
+  compareList.forEach(v => {
+    const div = document.createElement("div");
+    div.className = "compare-card";
+    div.innerHTML = `
+      <h3>${v.name}</h3>
+      <p>Score: ${v.score}/100</p>
+      <p>Comfort: ${v.comfort}</p>
+      <p>Control: ${v.control}</p>
+      <p>Posture: ${v.posture}</p>
+      <p>Usage: ${v.usage}</p>
+    `;
+    grid.appendChild(div);
+  });
+
+  document.getElementById("compareModal").classList.remove("hidden");
+}
+
+function closeCompare() {
+  compareList = [];
+  document.getElementById("compareModal").classList.add("hidden");
+}
+
 function closeDetail() {
   document.getElementById("detailModal").classList.add("hidden");
 }
