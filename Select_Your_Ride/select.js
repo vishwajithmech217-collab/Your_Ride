@@ -46,7 +46,7 @@ function recommend() {
   });
 }
 
-function showDetails(data) {
+function showDetails(v,score) {
   document.getElementById("dName").innerText = data.name;
   document.getElementById("dScore").innerText =
     "Overall Score: " + data.score + "/100";
