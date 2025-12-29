@@ -1,45 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Select Your Ride – V4</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="select.css">
+<meta charset="UTF-8">
+<title>Select Your Ride – V3</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b1220;
+  color: #fff;
+}
+
+.container {
+  max-width: 420px;
+  margin: auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: none;
+}
+
+input[type=range] {
+  padding: 0;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 20px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+}
+
+.primary {
+  background: #22c55e;
+  color: #000;
+  font-weight: bold;
+}
+
+.secondary {
+  background: #1f2937;
+  color: #fff;
+}
+
+.card {
+  background: #020617;
+  border-radius: 14px;
+  padding: 15px;
+  margin-top: 15px;
+}
+
+.bar {
+  background: #1f2937;
+  border-radius: 10px;
+  height: 12px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.fill {
+  background: #22c55e;
+  height: 100%;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background: #020617;
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 16px;
+}
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+</style>
 </head>
 
 <body>
 
+<div class="container">
   <h1>Select Your Ride</h1>
-  <p class="subtitle">Choose smart. Ride better.</p>
 
-  <main class="container">
+  <label>Height (cm)</label>
+  <input id="height" type="number" value="170">
 
-    <label>Height (cm)</label>
-    <input type="number" id="height" value="170">
+  <label>Weight (kg)</label>
+  <input id="weight" type="number" value="70">
 
-    <label>Weight (kg)</label>
-    <input type="number" id="weight" value="70">
+  <label>Vehicle Type</label>
+  <select id="type">
+    <option>Bike</option>
+    <option>Scooter</option>
+    <option>Car</option>
+  </select>
 
-    <label>Vehicle Type</label>
-    <select id="type">
-      <option value="bike">Bike</option>
-      <option value="scooter">Scooter</option>
-      <option value="car">Car</option>
-    </select>
+  <label>Usage (City ↔ Highway)</label>
+  <input id="usage" type="range" min="0" max="100" value="50">
 
-    <label>Usage (City ↔ Highway)</label>
-    <input type="range" id="usage" min="0" max="100" value="50">
+  <button class="primary" onclick="recommend()">Get Recommendation</button>
 
-    <label>Usage Frequency (Occasional ↔ Daily)</label>
-    <input type="range" id="frequency" min="0" max="100" value="30">
+  <div id="results"></div>
+</div>
 
-    <!-- STEP-2 BUTTONS -->
-    <button id="advancedBtn">Advanced Options</button>
-    <button id="recommendBtn">Get Recommendation</button>
-    <button id="detailsBtn">Details</button>
+<!-- DETAILS -->
+<div id="detailModal" class="modal">
+  <div class="modal-box">
+    <h2 id="dName"></h2>
+    <p id="dScore"></p>
 
-  </main>
+    <div>Comfort<div class="bar"><div id="c1" class="fill"></div></div></div>
+    <div>Control<div class="bar"><div id="c2" class="fill"></div></div></div>
+    <div>Posture<div class="bar"><div id="c3" class="fill"></div></div></div>
+    <div>Usage<div class="bar"><div id="c4" class="fill"></div></div></div>
 
-  <script src="./select.js"></script>
+    <button class="primary" onclick="selectCompare()">Select for Compare</button>
+    <button class="secondary" onclick="closeDetail()">Close</button>
+  </div>
+</div>
+
+<!-- COMPARE -->
+<div id="compareModal" class="modal">
+  <div class="modal-box">
+    <h2>Comparison</h2>
+    <div id="compareBox" class="compare-grid"></div>
+    <button class="secondary" onclick="closeCompare()">Close</button>
+  </div>
+</div>
+
+<script>
+const vehicles = [
+  {name:"Yamaha MT-15", seat:810},
+  {name:"Royal Enfield Classic 350", seat:805},
+  {name:"Honda Activa", seat:765}
+];
+
+let selected = [];
+let current = null;
+
+function recommend() {
+  const h = +height.value;
+  const usage = +usage.value;
+  results.innerHTML = "";
+
+  vehicles.forEach(v => {
+    let score = 100 - Math.abs(v.seat - (h * 0.47));
+    score += (usage > 50 ? 5 : 0);
+    score = Math.max(10, Math.round(score));
+
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <h3>${v.name}</h3>
+      <p>Score: ${score}/100</p>
+      <button class="primary">Details</button>
+    `;
+    card.querySelector("button").onclick = () => showDetails(v, score);
+    results.appendChild(card);
+  });
+}
+
+function showDetails(v, score) {
+  current = {v, score};
+  dName.innerText = v.name;
+  dScore.innerText = "Overall Score: " + score + "/100";
+
+  c1.style.width = score + "%";
+  c2.style.width = (score - 10) + "%";
+  c3.style.width = (score - 20) + "%";
+  c4.style.width = (score - 30) + "%";
+
+  detailModal.style.display = "flex";
+}
+
+function closeDetail() {
+  detailModal.style.display = "none";
+}
+
+function selectCompare() {
+  if (selected.length < 2) selected.push(current);
+  closeDetail();
+  if (selected.length === 2) showCompare();
+}
+
+function showCompare() {
+  compareBox.innerHTML = "";
+  selected.forEach(s => {
+    const d = document.createElement("div");
+    d.className = "card";
+    d.innerHTML = `
+      <h4>${s.v.name}</h4>
+      <p>Score: ${s.score}</p>
+      <div class="bar"><div class="fill" style="width:${s.score}%"></div></div>
+    `;
+    compareBox.appendChild(d);
+  });
+  compareModal.style.display = "flex";
+}
+
+function closeCompare() {
+  selected = [];
+  compareModal.style.display = "none";
+}
+</script>
+
 </body>
 </html>
