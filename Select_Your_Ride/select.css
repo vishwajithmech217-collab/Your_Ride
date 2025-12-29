@@ -88,18 +88,21 @@ button {
   max-width: 360px;
 }
 
-/* BARS */
+/* BAR CONTAINER */
 .bar {
-  background: #1e293b;
-  border-radius: 6px;
-  margin: 8px 0;
+  background: #1f2937;
+  border-radius: 10px;
+  overflow: hidden;
   height: 14px;
-  position: relative;
+  margin: 8px 0 16px 0;
 }
 
+/* GREEN FILL */
 .bar span {
   display: block;
   height: 100%;
-  background: #22c55e;
-  border-radius: 6px;
+  width: 0%;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  border-radius: 10px;
+  transition: width 0.6s ease;
 }
