@@ -161,7 +161,11 @@ function renderCompare() {
     grid.appendChild(div);
   });
 
-  document.getElementById("compareModal").classList.remove("hidden");
+ const resultBox = document.createElement("div");
+resultBox.className = "card";
+resultBox.innerHTML = explainWinner(compareList[0], compareList[1]);
+grid.appendChild(resultBox);
+ document.getElementById("compareModal").classList.remove("hidden");
 }
 
 function showDetails(v, score) {
@@ -192,6 +196,38 @@ function showDetails(v, score) {
 function closeDetail(e) {
   if (e) e.stopPropagation();
   document.getElementById("detailModal").classList.add("hidden");
+}
+
+function explainWinner(a, b) {
+  let winner, loser;
+
+  if (a.score >= b.score) {
+    winner = a;
+    loser = b;
+  } else {
+    winner = b;
+    loser = a;
+  }
+
+  const reasons = [];
+
+  if (winner.cityBias > loser.cityBias) {
+    reasons.push("better city usage suitability");
+  }
+
+  if (winner.highwayBias > loser.highwayBias) {
+    reasons.push("better highway comfort");
+  }
+
+  if (Math.abs(winner.seatHeight - userData.height) <
+      Math.abs(loser.seatHeight - userData.height)) {
+    reasons.push("closer seat height match for your height");
+  }
+
+  return `
+    🏆 <b>${winner.name} wins</b><br>
+    <small>Because it has ${reasons.slice(0,2).join(" and ")}</small>
+  `;
 }
 
 function closeCompare() {
