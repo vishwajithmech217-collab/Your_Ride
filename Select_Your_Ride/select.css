@@ -119,3 +119,14 @@ button {
   border-radius: 12px;
   color: #fff;
 }
+
+.metric {
+  margin-bottom: 14px;
+}
+
+.metric span {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+  opacity: 0.9;
+}
