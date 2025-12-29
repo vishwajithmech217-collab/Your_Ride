@@ -1,3 +1,5 @@
+alert("select.js LOADED");
+
 console.log("select.js loaded");
 
 document.addEventListener("DOMContentLoaded", () => {
