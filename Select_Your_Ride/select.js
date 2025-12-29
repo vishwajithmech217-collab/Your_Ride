@@ -51,7 +51,7 @@ function openDetails(id) {
   showDetails(currentDetail);
 }
 
-function showDetails(v,score) {
+function showDetail(v,score) {
   document.getElementById("dName").innerText = data.name;
   document.getElementById("dScore").innerText =
     "Overall Score: " + data.score + "/100";
