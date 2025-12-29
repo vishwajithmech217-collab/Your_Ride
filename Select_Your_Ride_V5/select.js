@@ -71,27 +71,32 @@ function recommend() {
   const results = document.getElementById("results");
   results.innerHTML = "";
 
+  const user = {
+    height: Number(document.getElementById("height").value),
+    usage: Number(document.getElementById("usage").value),
+    frequency: Number(document.getElementById("frequency").value)
+  };
+
   const list = vehicles.filter(v => v.type === type);
 
   list.forEach(v => {
-    const score = Math.round(
-      (v.comfort + v.control + v.posture + v.usage) / 4
-    );
+    const score = calculateScore(v, user);
 
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
-  <b>${v.name}</b><br>
-  Score: ${score}/100<br><br>
+      <b>${v.name}</b><br>
+      Score: ${score}/100<br><br>
 
-  <button onclick='addToCompare(${JSON.stringify(v)}, ${score})'>
-    Compare
-  </button>
+      <button onclick='addToCompare(${JSON.stringify(v)}, ${score})'>
+        Compare
+      </button>
 
-  <button onclick='showDetails(${JSON.stringify(v)}, ${score})'>
-    Details
-  </button>
-`;
+      <button onclick='showDetails(${JSON.stringify(v)}, ${score})'>
+        Details
+      </button>
+    `;
+
     results.appendChild(card);
   });
 }
@@ -139,18 +144,21 @@ function showDetails(v, score) {
   document.getElementById("dScore").innerText =
     "Overall Score: " + score + "/100";
 
-  document.getElementById("barComfort").style.width = v.comfort + "%";
-  document.getElementById("barControl").style.width = v.control + "%";
-  document.getElementById("barPosture").style.width = v.posture + "%";
-  document.getElementById("barUsage").style.width = v.usage + "%";
+  // Bars are derived logically
+  document.getElementById("barComfort").style.width = score + "%";
+  document.getElementById("barControl").style.width = v.cityBias + "%";
+  document.getElementById("barPosture").style.width =
+    v.posture === "sport" ? "70%" :
+    v.posture === "upright" ? "85%" : "75%";
+  document.getElementById("barUsage").style.width = v.highwayBias + "%";
 
   document.getElementById("whyFit").innerHTML = `
-    <li>Posture suits your height</li>
-    <li>Usage matches your riding style</li>
+    <li>Seat height matches your height range</li>
+    <li>Usage aligns with your riding pattern</li>
   `;
 
   document.getElementById("whyNot").innerHTML = `
-    <li>Seat height may need adjustment</li>
+    <li>Posture preference may vary</li>
   `;
 
   document.getElementById("detailModal").classList.remove("hidden");
