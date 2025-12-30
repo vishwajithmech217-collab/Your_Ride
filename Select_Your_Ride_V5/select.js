@@ -124,3 +124,13 @@ function showDetails(name, score) {
 function closeDetail() {
   document.getElementById("detailModal").classList.add("hidden");
 }
+
+function knowRide(brand, model) {
+  const params = new URLSearchParams({
+    brand: brand,
+    model: model
+  });
+
+  window.location.href =
+    "../Know_Your_Ride/know.html?" + params.toString();
+}
