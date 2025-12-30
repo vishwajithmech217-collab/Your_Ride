@@ -1,5 +1,7 @@
 console.log("select.js loaded");
 
+const preBrand = localStorage.getItem("selectedBrand");
+
 /* ===============================
    GLOBAL STATE
 ================================ */
@@ -92,6 +94,14 @@ function recommend() {
     usage: Number(document.getElementById("usage").value),
     frequency: Number(document.getElementById("frequency").value)
   };
+
+let list = vehicles.filter(v => v.type === type);
+
+if (preBrand) {
+  list = list.filter(v =>
+    v.brand?.toLowerCase().includes(preBrand.replace("_", ""))
+  );
+}
 
   const list = vehicles.filter(v => v.type === type);
 
