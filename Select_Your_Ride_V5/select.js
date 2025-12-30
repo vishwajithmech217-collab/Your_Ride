@@ -8,12 +8,75 @@ const selectedBrand = localStorage.getItem("selectedBrand");
 
 document.getElementById("recommendBtn").onclick = recommend;
 
-function calculateScore(v, u) {
+function calculateScore(vehicle, user) {
   let score = 0;
-  score += Math.max(0, 40 - Math.abs(u.height - v.seatHeight) / 5);
-  score += (u.usage < 50 ? v.cityBias : v.highwayBias) * 0.4;
-  score += u.frequency * 0.2;
+
+  /* 1️⃣ Seat height vs leg height (30) */
+  const legHeight = user.legHeight || Math.round(user.height * 0.46);
+  const seatDiff = Math.abs(vehicle.ergonomics.seatHeight - legHeight);
+
+  let seatScore = 0;
+  if (seatDiff <= 20) seatScore = 30;
+  else if (seatDiff <= 40) seatScore = 22;
+  else if (seatDiff <= 60) seatScore = 15;
+  else seatScore = 5;
+
+  score += seatScore;
+
+  /* 2️⃣ Usage match (25) */
+  const usageScore =
+    user.usage < 50
+      ? vehicle.usage.city
+      : vehicle.usage.highway;
+
+  score += (usageScore / 100) * 25;
+
+  /* 3️⃣ Skill level match (15) */
+  const skillMap = {
+    beginner: 15,
+    intermediate: 10,
+    expert: 7
+  };
+
+  score += skillMap[vehicle.skillLevel] || 8;
+
+  /* 4️⃣ Posture comfort (15) */
+  const postureScore =
+    vehicle.ergonomics.posture === "upright" ? 15 :
+    vehicle.ergonomics.posture === "relaxed" ? 14 :
+    vehicle.ergonomics.posture === "sport" ? 10 :
+    12;
+
+  score += postureScore;
+
+  /* 5️⃣ Usage frequency (15) */
+  score += (user.frequency / 100) * 15;
+
   return Math.round(Math.min(score, 100));
+}
+
+function explainWinner(a, b) {
+  const winner = a.score >= b.score ? a : b;
+  const loser = winner === a ? b : a;
+
+  const reasons = [];
+
+  if (winner.usage.city > loser.usage.city)
+    reasons.push("better city usability");
+
+  if (winner.usage.highway > loser.usage.highway)
+    reasons.push("more comfortable on highways");
+
+  if (
+    Math.abs(winner.ergonomics.seatHeight - userData.height) <
+    Math.abs(loser.ergonomics.seatHeight - userData.height)
+  )
+    reasons.push("closer seat height match");
+
+  return `
+    🏆 <b>${winner.brand} ${winner.model} wins</b><br>
+    <small>Because it has ${reasons.slice(0,2).join(" and ")}</small>
+  `;
 }
 
 function recommend() {
