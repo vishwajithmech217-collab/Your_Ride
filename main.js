@@ -1,5 +1,5 @@
 function goSelect() {
-  window.location.href = "Select_Your_Ride/select.html";
+  window.location.href = "Select_Your_Ride_V5/select.html";
 }
 
 function goKnow() {
