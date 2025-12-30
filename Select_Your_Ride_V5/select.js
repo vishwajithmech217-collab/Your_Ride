@@ -1,3 +1,5 @@
+function recommend() {
+  console.log("🔥 Recommend clicked");
 console.log("select.js loaded");
 
 const vehicles = VEHICLES;
