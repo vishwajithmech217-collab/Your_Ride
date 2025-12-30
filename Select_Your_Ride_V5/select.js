@@ -92,16 +92,16 @@ function recommend() {
 
   let list = vehicles.filter(v => v.type === type);
 
-  if (selectedBrand) {
-    list = list.filter(v =>
-      v.brand.toLowerCase().includes(selectedBrand.replace("_", ""))
-    );
-  }
+if (preBrand) {
+  list = list.filter(
+    v => v.brand.toLowerCase() === preBrand.toLowerCase()
+  );
+}
 
-  if (!list.length) {
-    results.innerHTML = "<p>No vehicles found.</p>";
-    return;
-  }
+if (list.length === 0) {
+  results.innerHTML = "<p>No vehicles found.</p>";
+  return;
+}
 
   list.forEach(v => {
     const score = calculateScore(v, userData);
