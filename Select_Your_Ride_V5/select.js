@@ -12,50 +12,38 @@ const selectedBrand = localStorage.getItem("selectedBrand");
 document.getElementById("recommendBtn").onclick = recommend;
 
 function calculateScore(vehicle, user) {
-  let score = 0;
-
-  /* 1️⃣ Seat height vs leg height (30) */
+  // Seat height vs leg height (40%)
   const legHeight = user.legHeight || Math.round(user.height * 0.46);
-  const seatDiff = Math.abs(vehicle.ergonomics.seatHeight - legHeight);
+  const seatDiff = Math.abs(vehicle.seatHeight - legHeight);
 
   let seatScore = 0;
-  if (seatDiff <= 20) seatScore = 30;
-  else if (seatDiff <= 40) seatScore = 22;
-  else if (seatDiff <= 60) seatScore = 15;
-  else seatScore = 5;
+  if (seatDiff <= 20) seatScore = 40;
+  else if (seatDiff <= 40) seatScore = 30;
+  else if (seatDiff <= 60) seatScore = 20;
+  else seatScore = 10;
 
-  score += seatScore;
-
-  /* 2️⃣ Usage match (25) */
+  // Usage (30%)
   const usageScore =
-    user.usage < 50
-      ? vehicle.usage.city
-      : vehicle.usage.highway;
+    user.usage < 50 ? vehicle.cityBias : vehicle.highwayBias;
+  const usageFinal = Math.round(usageScore * 0.3);
 
-  score += (usageScore / 100) * 25;
+  // Frequency (10%)
+  const frequencyScore = Math.round(user.frequency * 0.1);
 
-  /* 3️⃣ Skill level match (15) */
-  const skillMap = {
-    beginner: 15,
-    intermediate: 10,
-    expert: 7
+  // Posture (20%)
+  const postureScore = Math.round(
+    (vehicle.ergonomics?.postureScore || 70) * 0.2
+  );
+
+  const total =
+    seatScore + usageFinal + frequencyScore + postureScore;
+
+  return {
+    total: Math.min(total, 100),
+    seat: seatScore,
+    usage: usageFinal,
+    posture: postureScore
   };
-
-  score += skillMap[vehicle.skillLevel] || 8;
-
-  /* 4️⃣ Posture comfort (15) */
-  const postureScore =
-    vehicle.ergonomics.posture === "upright" ? 15 :
-    vehicle.ergonomics.posture === "relaxed" ? 14 :
-    vehicle.ergonomics.posture === "sport" ? 10 :
-    12;
-
-  score += postureScore;
-
-  /* 5️⃣ Usage frequency (15) */
-  score += (user.frequency / 100) * 15;
-
-  return Math.round(Math.min(score, 100));
 }
 
 function explainWinner(a, b) {
