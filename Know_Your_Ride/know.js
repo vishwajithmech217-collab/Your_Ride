@@ -37,7 +37,7 @@ select.addEventListener("change", () => {
     </div>
   `).join("");
 
-  localStorage.setItem("selectedBrand", brand.id);
+  localStorage.setItem("selectedBrand", brand.name);
   goBtn.classList.remove("hidden");
 });
 
