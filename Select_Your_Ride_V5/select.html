@@ -42,6 +42,18 @@
   </div>
 </div>
 
+<button onclick="addToCompare(${JSON.stringify(v)}, ${score})">
+  Compare
+</button>
+
+<button onclick="showDetails(${JSON.stringify(v)}, ${score})">
+  Details
+</button>
+
+<button onclick="knowRide('${v.brand}', '${v.model}')">
+  Know this Ride →
+</button>
+
 <script src="data/vehicles.data.js"></script>
 <script src="select.js"></script>
 </body>
