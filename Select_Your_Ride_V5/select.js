@@ -95,15 +95,34 @@ if (list.length === 0) {
 }
 
   list.forEach(v => {
-    const score = calculateScore(v, userData);
-    results.innerHTML += `
-      <div class="card">
-        <b>${v.brand} ${v.model}</b><br>
-        Score: ${score}/100<br><br>
-        <button onclick='showDetails("${v.brand} ${v.model}", ${score})'>Details</button>
-      </div>
-    `;
-  });
+const score = calculateScore(v, userData);
+
+const card = document.createElement("div");
+card.className = "card";
+card.innerHTML = `
+  <h3>${v.brand} ${v.model}</h3>
+  <b>Overall: ${score.total}/100</b>
+
+  <div class="metric">
+    Seat Height Fit
+    <div class="bar"><span style="width:${score.seat * 2.5}%"></span></div>
+  </div>
+
+  <div class="metric">
+    Usage Match
+    <div class="bar"><span style="width:${score.usage * 3.3}%"></span></div>
+  </div>
+
+  <div class="metric">
+    Posture Comfort
+    <div class="bar"><span style="width:${score.posture * 5}%"></span></div>
+  </div>
+
+  <button onclick='showDetails(${JSON.stringify(v)}, ${JSON.stringify(score)})'>
+    Details
+  </button>
+`;
+results.appendChild(card););
 }
 
 function showDetails(name, score) {
