@@ -125,9 +125,30 @@ card.innerHTML = `
 results.appendChild(card););
 }
 
-function showDetails(name, score) {
-  document.getElementById("dName").innerText = name;
-  document.getElementById("dScore").innerText = `Score: ${score}/100`;
+function showDetails(v, score) {
+  document.getElementById("dName").innerText =
+    `${v.brand} ${v.model}`;
+  document.getElementById("dScore").innerText =
+    `Overall Score: ${score.total}/100`;
+
+  document.getElementById("barComfort").style.width =
+    score.seat * 2.5 + "%";
+  document.getElementById("barControl").style.width =
+    score.usage * 3.3 + "%";
+  document.getElementById("barPosture").style.width =
+    score.posture * 5 + "%";
+  document.getElementById("barUsage").style.width =
+    score.usage * 3.3 + "%";
+
+  document.getElementById("whyFit").innerHTML = `
+    <li>Seat height matches your leg reach</li>
+    <li>Usage pattern fits your riding style</li>
+  `;
+
+  document.getElementById("whyNot").innerHTML = `
+    <li>Posture preference may vary</li>
+  `;
+
   document.getElementById("detailModal").classList.remove("hidden");
 }
 
