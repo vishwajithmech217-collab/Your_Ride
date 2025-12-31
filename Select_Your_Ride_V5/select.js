@@ -3,50 +3,52 @@ console.log("select.js loaded");
 const vehicles = VEHICLES;
 let userData = {};
 
+document.addEventListener("DOMContentLoaded", () => {
+  const advBtn = document.getElementById("advancedBtn");
+  const advBox = document.getElementById("advancedBox");
+
+  if (advBtn && advBox) {
+    advBtn.addEventListener("click", () => {
+      advBox.classList.toggle("hidden");
+    });
+  }
+});
+
 /* ======================
    SCORE LOGIC
 ====================== */
 function calculateScore(vehicle, user) {
-  const legHeight = Math.round(user.height * 0.46);
-  const seatDiff = Math.abs(vehicle.ergonomics.seatHeight - legHeight);
+  let score = 0;
 
+  // Use leg height if provided, else estimate
+  const legHeight =
+    user.legHeight && user.legHeight > 0
+      ? user.legHeight
+      : Math.round(user.height * 0.46);
+
+  const seatHeight = vehicle.ergonomics.seatHeight;
+  const diff = Math.abs(seatHeight - legHeight);
+
+  // Seat comfort score (0–40)
   let seatScore = 0;
-  let seatFit = "";
+  if (diff <= 10) seatScore = 40;       // flat foot
+  else if (diff <= 30) seatScore = 30;  // comfortable
+  else if (diff <= 60) seatScore = 20;  // tiptoe
+  else seatScore = 10;                  // risky
 
-  if (seatDiff <= 20) {
-    seatScore = 40;
-    seatFit = "Excellent seat height match";
-  } else if (seatDiff <= 40) {
-    seatScore = 30;
-    seatFit = "Comfortable seat height";
-  } else if (seatDiff <= 60) {
-    seatScore = 20;
-    seatFit = "Manageable but tall";
-  } else {
-    seatScore = 10;
-    seatFit = "Seat height may feel too tall";
-  }
+  score += seatScore;
 
+  // Usage
   const usageScore =
     user.usage < 50
       ? vehicle.usage.city
       : vehicle.usage.highway;
+  score += usageScore * 0.3;
 
-  const frequencyScore = Math.round(user.frequency * 0.1);
+  // Frequency
+  score += user.frequency * 0.2;
 
-  const total = Math.min(
-    seatScore + Math.round(usageScore * 0.3) + frequencyScore,
-    100
-  );
-
-  return {
-    total,
-    seatFit,
-    usageMatch:
-      user.usage < 50
-        ? "Good for city usage"
-        : "Comfortable on highways"
-  };
+  return Math.round(Math.min(score, 100));
 }
 
 /* ======================
@@ -57,9 +59,8 @@ function recommend() {
   const results = document.getElementById("results");
   results.innerHTML = "";
 
-  userData = {
+ userData = {
   height: +document.getElementById("height").value,
-  weight: +document.getElementById("weight").value || null,
   usage: +document.getElementById("usage").value,
   frequency: +document.getElementById("frequency").value,
   legHeight: +document.getElementById("legHeight").value || null
