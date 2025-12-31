@@ -15,6 +15,39 @@
   <label>Height (cm)</label>
   <input type="number" id="height" value="170">
 
+  <label>Weight (kg)</label>
+  <input type="number" id="weight" placeholder="Optional">
+
+  <label>Vehicle Type</label>
+  <select id="type">
+    <option value="bike">Bike</option>
+    <option value="scooter">Scooter</option>
+    <option value="car">Car</option>
+    <option value="suv">SUV</option>
+  </select>
+
+  <label>Usage (City ↔ Highway)</label>
+  <input type="range" id="usage" min="0" max="100" value="50">
+
+  <label>Frequency</label>
+  <input type="range" id="frequency" min="0" max="100" value="40">
+
+  <button id="advancedBtn" class="secondary">
+    Advanced Options
+  </button>
+
+  <div id="advancedBox" class="hidden">
+    <label>Leg Height (cm)</label>
+    <input type="number" id="legHeight" placeholder="Optional">
+  </div>
+
+  <button class="primary" onclick="recommend()">
+    Get Recommendation
+  </button>
+
+  <div id="results"></div>
+</div>
+
   <label>Vehicle Type</label>
   <select id="type">
     <option value="bike">Bike</option>
