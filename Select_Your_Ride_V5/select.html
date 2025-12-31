@@ -50,5 +50,35 @@
 
 <script src="data/vehicles.data.js"></script>
 <script src="select.js"></script>
+
+<!-- DETAILS MODAL -->
+<div id="detailModal" class="modal hidden">
+  <div class="modal-box">
+    <h2 id="dName"></h2>
+    <p id="dScore"></p>
+
+    <div class="metric">
+      Seat Height Fit
+      <div class="bar"><span id="barSeat"></span></div>
+    </div>
+
+    <div class="metric">
+      Usage Match
+      <div class="bar"><span id="barUsage"></span></div>
+    </div>
+
+    <div class="metric">
+      Frequency Match
+      <div class="bar"><span id="barFreq"></span></div>
+    </div>
+
+    <h4>Why this fits you</h4>
+    <ul id="detailReasons"></ul>
+
+    <button onclick="addToCompare()">Add to Compare</button>
+    <button onclick="closeDetail()">Close</button>
+  </div>
+</div>
+
 </body>
 </html>
