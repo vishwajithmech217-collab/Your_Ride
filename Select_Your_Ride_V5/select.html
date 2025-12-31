@@ -29,8 +29,8 @@
   <label>Usage (City ↔ Highway)</label>
   <input type="range" id="usage" min="0" max="100" value="50">
 
-  <label>Frequency</label>
-  <input type="range" id="frequency" min="0" max="100" value="40">
+  <label>Frequency(Daily ↔ Occasional)</label>
+  <input type="range" id="frequency" min="0" max="100" value="50">
 
   <button id="advancedBtn" class="secondary">
     Advanced Options
@@ -55,16 +55,6 @@
     <option value="car">Car</option>
     <option value="suv">SUV</option>
   </select>
-
-  <label>Usage (City ↔ Highway)</label>
-  <input type="range" id="usage" min="0" max="100" value="50">
-
-  <label>Frequency</label>
-  <input type="range" id="frequency" min="0" max="100" value="40">
-
-  <button class="primary" onclick="recommend()">
-    Get Recommendation
-  </button>
 
   <div id="results"></div>
 </div>
