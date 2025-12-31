@@ -485,3 +485,208 @@ const VEHICLES = [
   segment: "youth_scooter",
   skillLevel: "beginner"
 }
+
+{
+  id: "maruti_swift",
+  brand: "Maruti Suzuki",
+  model: "Swift",
+  type: "car",
+
+  ergonomics: {
+    seatHeight: 1635,
+    posture: "seated",
+    wheelSize: 15
+  },
+
+  usage: {
+    city: 88,
+    highway: 70
+  },
+
+  physical: {
+    kerbWeight: 875,
+    groundClearance: 163
+  },
+
+  segment: "hatchback",
+  skillLevel: "beginner"
+},
+{
+  id: "maruti_baleno",
+  brand: "Maruti Suzuki",
+  model: "Baleno",
+  type: "car",
+
+  ergonomics: {
+    seatHeight: 1650,
+    posture: "seated",
+    wheelSize: 16
+  },
+
+  usage: {
+    city: 90,
+    highway: 72
+  },
+
+  physical: {
+    kerbWeight: 925,
+    groundClearance: 170
+  },
+
+  segment: "premium_hatchback",
+  skillLevel: "beginner"
+}
+
+{
+  id: "hyundai_i20",
+  brand: "Hyundai",
+  model: "i20",
+  type: "car",
+
+  ergonomics: {
+    seatHeight: 1650,
+    posture: "seated",
+    wheelSize: 16
+  },
+
+  usage: {
+    city: 75,
+    highway: 80
+  },
+
+  physical: {
+    kerbWeight: 1035,
+    groundClearance: 170
+  },
+
+  segment: "premium_hatchback",
+  skillLevel: "beginner"
+},
+{
+  id: "hyundai_verna",
+  brand: "Hyundai",
+  model: "Verna",
+  type: "car",
+
+  ergonomics: {
+    seatHeight: 1660,
+    posture: "seated",
+    wheelSize: 16
+  },
+
+  usage: {
+    city: 70,
+    highway: 85
+  },
+
+  physical: {
+    kerbWeight: 1150,
+    groundClearance: 165
+  },
+
+  segment: "sedan",
+  skillLevel: "beginner"
+}
+
+{
+  id: "kia_seltos",
+  brand: "Kia",
+  model: "Seltos",
+  type: "suv",
+
+  ergonomics: {
+    seatHeight: 1700,
+    posture: "seated",
+    wheelSize: 17
+  },
+
+  usage: {
+    city: 70,
+    highway: 85
+  },
+
+  physical: {
+    kerbWeight: 1250,
+    groundClearance: 190
+  },
+
+  segment: "compact_suv",
+  skillLevel: "beginner"
+}
+
+{
+  id: "tata_nexon",
+  brand: "Tata",
+  model: "Nexon",
+  type: "suv",
+
+  ergonomics: {
+    seatHeight: 1690,
+    posture: "seated",
+    wheelSize: 16
+  },
+
+  usage: {
+    city: 72,
+    highway: 83
+  },
+
+  physical: {
+    kerbWeight: 1200,
+    groundClearance: 209
+  },
+
+  segment: "compact_suv",
+  skillLevel: "beginner"
+},
+{
+  id: "tata_harrier",
+  brand: "Tata",
+  model: "Harrier",
+  type: "suv",
+
+  ergonomics: {
+    seatHeight: 1710,
+    posture: "seated",
+    wheelSize: 18
+  },
+
+  usage: {
+    city: 65,
+    highway: 88
+  },
+
+  physical: {
+    kerbWeight: 1650,
+    groundClearance: 205
+  },
+
+  segment: "mid_suv",
+  skillLevel: "intermediate"
+}
+
+{
+  id: "mahindra_xuv300",
+  brand: "Mahindra",
+  model: "XUV 3OO",
+  type: "suv",
+
+  ergonomics: {
+    seatHeight: 1680,
+    posture: "seated",
+    wheelSize: 17
+  },
+
+  usage: {
+    city: 74,
+    highway: 82
+  },
+
+  physical: {
+    kerbWeight: 1230,
+    groundClearance: 180
+  },
+
+  segment: "compact_suv",
+  skillLevel: "beginner"
+}
