@@ -131,18 +131,34 @@ function recommend() {
 /* ======================
    DETAILS
 ====================== */
+
+let selectedForCompare = null;
+
 function showDetails(vehicle, score) {
+  selectedForCompare = { vehicle, score };
+
   document.getElementById("dName").innerText =
     `${vehicle.brand} ${vehicle.model}`;
 
-  document.getElementById("dScore").innerHTML = `
-    Overall Score: <b>${score.total}/100</b>
-    <br><br>
-    <b>Why this fits you:</b>
-    <ul>
-      ${score.reasons.map(r => `<li>${r}</li>`).join("")}
-    </ul>
-  `;
+  document.getElementById("dScore").innerText =
+    `Overall Score: ${score.total}/100`;
+
+  document.getElementById("barSeat").style.width =
+    score.seatScore * 2.5 + "%";
+
+  document.getElementById("barUsage").style.width =
+    Math.round(score.total * 0.3) + "%";
+
+  document.getElementById("barFreq").style.width =
+    Math.round(score.total * 0.2) + "%";
+
+  const ul = document.getElementById("detailReasons");
+  ul.innerHTML = "";
+  score.reasons.forEach(r => {
+    const li = document.createElement("li");
+    li.textContent = r;
+    ul.appendChild(li);
+  });
 
   document.getElementById("detailModal")
     .classList.remove("hidden");
