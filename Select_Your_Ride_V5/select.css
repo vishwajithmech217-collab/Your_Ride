@@ -187,3 +187,23 @@ button {
 .delta.minus {
   color: #ef4444;
 }
+
+.metric {
+  margin-top: 14px;
+}
+
+.metric .bar {
+  background: #1f2937;
+  border-radius: 10px;
+  height: 14px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.metric .bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  width: 0%;
+  transition: width 0.6s ease;
+}
