@@ -90,10 +90,17 @@ if (vehicle.skillLevel === "expert") {
 }
 
   return {
-    total: Math.min(total, 100),
-    seatScore,
-    reasons
-  };
+  total: Math.min(total, 100),
+  seatScore,
+  usageScore: Math.round(
+    (user.usage < 50
+      ? vehicle.usage.city
+      : vehicle.usage.highway) * 0.3
+  ),
+  freqScore: Math.round(user.frequency * 0.2),
+  weightPenalty,
+  reasons
+};
 }
 
 /* ======================
