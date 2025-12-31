@@ -78,18 +78,19 @@ function recommend() {
   const results = document.getElementById("results");
   results.innerHTML = "";
 
- userData = {
-  height: +document.getElementById("height").value,
-  usage: +document.getElementById("usage").value,
-  frequency: +document.getElementById("frequency").value,
-  legHeight: +document.getElementById("legHeight").value || null
-};
+  userData = {
+    height: +document.getElementById("height").value,
+    weight: +document.getElementById("weight").value || null,
+    usage: +document.getElementById("usage").value,
+    frequency: +document.getElementById("frequency").value,
+    legHeight: +document.getElementById("legHeight").value || null
+  };
 
   let list = vehicles
     .filter(v => v.type === type)
     .map(v => ({
       vehicle: v,
-      const score: calculateScore(v, userData)
+      score: calculateScore(v, userData)
     }));
 
   if (list.length === 0) {
@@ -98,7 +99,7 @@ function recommend() {
   }
 
   // 🏆 Find winner
-  const winnerScore = Math.max(...list.map(v => v.score.total));
+  const winnerScore = Math.max(...list.map(x => x.score.total));
 
   list.forEach(({ vehicle, score }) => {
     const isWinner = score.total === winnerScore;
@@ -108,20 +109,20 @@ function recommend() {
     if (isWinner) card.classList.add("winner");
 
     card.innerHTML = `
-  <h3>${v.brand} ${v.model}</h3>
-  <b>Score: ${score.total}/100</b>
+      <h3>${vehicle.brand} ${vehicle.model}</h3>
+      <b>Score: ${score.total}/100</b>
 
-  <p>✓ ${score.reasons[0]}</p>
-  <p>✓ ${score.reasons[1]}</p>
+      <p>✓ ${score.reasons[0]}</p>
+      <p>✓ ${score.reasons[1]}</p>
 
-  <button onclick='showDetails(${JSON.stringify(v)}, ${JSON.stringify(score)})'>
-    Details
-  </button>
+      <button onclick='showDetails(${JSON.stringify(vehicle)}, ${JSON.stringify(score)})'>
+        Details
+      </button>
 
-  <button onclick="knowRide('${v.brand}', '${v.model}')">
-    Know this Ride →
-  </button>
-`;
+      <button onclick="knowRide('${vehicle.brand}', '${vehicle.model}')">
+        Know this Ride →
+      </button>
+    `;
 
     results.appendChild(card);
   });
