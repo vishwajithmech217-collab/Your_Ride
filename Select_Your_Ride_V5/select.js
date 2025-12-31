@@ -185,6 +185,12 @@ function showDetails(vehicle, score) {
   document.getElementById("barFreq").style.width =
     Math.round(score.total * 0.2) + "%";
 
+document.getElementById("bSeat").innerText = score.seatScore;
+document.getElementById("bUsage").innerText = score.usageScore;
+document.getElementById("bFreq").innerText = score.freqScore;
+document.getElementById("bWeight").innerText =
+  score.weightPenalty < 0 ? score.weightPenalty : "0";
+
   const ul = document.getElementById("detailReasons");
   ul.innerHTML = "";
   score.reasons.forEach(r => {
