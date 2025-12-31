@@ -58,10 +58,12 @@ function recommend() {
   results.innerHTML = "";
 
   userData = {
-    height: +document.getElementById("height").value,
-    usage: +document.getElementById("usage").value,
-    frequency: +document.getElementById("frequency").value
-  };
+  height: +document.getElementById("height").value,
+  weight: +document.getElementById("weight").value || null,
+  usage: +document.getElementById("usage").value,
+  frequency: +document.getElementById("frequency").value,
+  legHeight: +document.getElementById("legHeight").value || null
+};
 
   let list = vehicles
     .filter(v => v.type === type)
