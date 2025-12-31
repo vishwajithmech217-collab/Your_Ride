@@ -177,3 +177,55 @@ function knowRide(brand, model) {
   window.location.href =
     "../Know_Your_Ride/know.html?" + params.toString();
 }
+
+let compareList = [];
+
+function addToCompare() {
+  if (!selectedForCompare) return;
+
+  if (compareList.length >= 2) {
+    alert("You can compare only 2 vehicles");
+    return;
+  }
+
+  compareList.push(selectedForCompare);
+
+  if (compareList.length === 2) {
+    showCompare();
+  }
+
+  closeDetail();
+}
+
+function showCompare() {
+  const grid = document.getElementById("compareGrid");
+  grid.innerHTML = "";
+
+  const [a, b] = compareList;
+  const winner =
+    a.score.total >= b.score.total ? a : b;
+
+  [a, b].forEach(item => {
+    const card = document.createElement("div");
+    card.className = "compare-card";
+    if (item === winner) card.classList.add("winner");
+
+    card.innerHTML = `
+      <h3>${item.vehicle.brand} ${item.vehicle.model}</h3>
+      <b>Score: ${item.score.total}/100</b>
+      <p>Seat Fit: ${item.score.seatScore}</p>
+      <p>${item.score.reasons.join("<br>")}</p>
+    `;
+
+    grid.appendChild(card);
+  });
+
+  document.getElementById("compareModal")
+    .classList.remove("hidden");
+}
+
+function closeCompare() {
+  compareList = [];
+  document.getElementById("compareModal")
+    .classList.add("hidden");
+}
