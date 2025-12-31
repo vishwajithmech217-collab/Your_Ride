@@ -130,16 +130,16 @@ function recommend() {
 /* ======================
    DETAILS
 ====================== */
-function showDetails(v, score) {
+function showDetails(vehicle, score) {
   document.getElementById("dName").innerText =
-    `${v.brand} ${v.model}`;
+    `${vehicle.brand} ${vehicle.model}`;
 
   document.getElementById("dScore").innerHTML = `
-    Overall Score: <b>${score.total}/100</b><br><br>
+    Overall Score: <b>${score.total}/100</b>
+    <br><br>
     <b>Why this fits you:</b>
     <ul>
-      <li>${score.seatFit}</li>
-      <li>${score.usageMatch}</li>
+      ${score.reasons.map(r => `<li>${r}</li>`).join("")}
     </ul>
   `;
 
