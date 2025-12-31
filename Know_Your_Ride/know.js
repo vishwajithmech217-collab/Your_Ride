@@ -1,73 +1,175 @@
-console.log("know.js loaded");
+/* =========================
+   LOAD VEHICLE DATA
+   ========================= */
+// reuse the same data file
+// <script src="../Select/data/vehicles.data.js"></script>
 
-const select = document.getElementById("brandSelect");
-const result = document.getElementById("brandResult");
-const goBtn = document.getElementById("goToSelect");
+const brandSelect = document.getElementById("brandSelect");
+const typeSelect = document.getElementById("typeSelect");
+const modelSelect = document.getElementById("modelSelect");
+const usageSelect = document.getElementById("usageSelect");
 
-/* Populate dropdown */
-BRANDS.forEach(b => {
+const previewName = document.querySelector(".model-name");
+const previewList = document.querySelector(".preview-card ul");
+const knowMoreBtn = document.querySelector(".know-more-btn");
+
+const timelinePoints = document.querySelectorAll(".timeline-point");
+
+/* =========================
+   INIT – FILL BRAND DROPDOWN
+   ========================= */
+const brands = [...new Set(VEHICLES.map(v => v.brand))];
+
+brands.forEach(brand => {
   const opt = document.createElement("option");
-  opt.value = b.name;
-  opt.textContent = b.name;
-  select.appendChild(opt);
+  opt.value = brand;
+  opt.textContent = brand;
+  brandSelect.appendChild(opt);
 });
 
-/* Read URL params (Select → Know) */
-const params = new URLSearchParams(window.location.search);
-const brandParam = params.get("brand");
+/* =========================
+   BRAND → TYPE
+   ========================= */
+brandSelect.addEventListener("change", () => {
+  resetType();
+  resetModel();
+  resetPreview();
+  resetTimeline();
 
-/* Auto-load if coming from Select */
-if (brandParam) {
-  select.value = brandParam;
-  renderBrand(brandParam);
-}
+  if (!brandSelect.value) return;
 
-/* Dropdown change */
-select.addEventListener("change", () => {
-  const brandName = select.value;
-  if (!brandName) return;
-  renderBrand(brandName);
+  const types = [
+    ...new Set(
+      VEHICLES
+        .filter(v => v.brand === brandSelect.value)
+        .map(v => v.type)
+    )
+  ];
+
+  typeSelect.disabled = false;
+  types.forEach(type => {
+    const opt = document.createElement("option");
+    opt.value = type;
+    opt.textContent = type;
+    typeSelect.appendChild(opt);
+  });
+
+  highlightBrandTimeline();
 });
 
-function renderBrand(name) {
-  const brand = BRANDS.find(
-    b => b.name.toLowerCase() === name.toLowerCase()
+/* =========================
+   TYPE → MODEL
+   ========================= */
+typeSelect.addEventListener("change", () => {
+  resetModel();
+  resetPreview();
+  resetTimeline();
+
+  if (!typeSelect.value) return;
+
+  const models = VEHICLES.filter(
+    v =>
+      v.brand === brandSelect.value &&
+      v.type === typeSelect.value
   );
 
-  if (!brand) return;
+  modelSelect.disabled = false;
+  models.forEach(v => {
+    const opt = document.createElement("option");
+    opt.value = v.id;
+    opt.textContent = v.model;
+    modelSelect.appendChild(opt);
+  });
+});
 
-  result.innerHTML = `
-    <div class="card">
-      <h2>${brand.name}</h2>
-      <p><b>Founded:</b> ${brand.founded}</p>
-      <p><b>Country:</b> ${brand.country}</p>
-      <p>${brand.description}</p>
+/* =========================
+   MODEL → PREVIEW
+   ========================= */
+modelSelect.addEventListener("change", () => {
+  resetPreview();
+  resetTimeline();
 
-      <h3>Famous Models</h3>
-      <ul>
-        ${brand.famousModels.map(m => `<li>${m}</li>`).join("")}
-      </ul>
+  const vehicle = VEHICLES.find(v => v.id === modelSelect.value);
+  if (!vehicle) return;
 
-      <h3>Milestones</h3>
-      <div class="timeline">
-        ${brand.milestones.map(m => `
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-year">${m.year}</div>
-            <div class="timeline-text">${m.text}</div>
-          </div>
-        `).join("")}
-      </div>
-    </div>
+  previewName.textContent =
+    `${vehicle.brand} · ${vehicle.model}`;
+
+  previewList.innerHTML = `
+    <li>Category: ${vehicle.segment}</li>
+    <li>Introduced: ${vehicle.launchYear || "—"}</li>
+    <li>Type: ${vehicle.type}</li>
   `;
 
-  goBtn.classList.remove("hidden");
+  knowMoreBtn.href =
+    `know-more.html?brand=${vehicle.brand}&model=${vehicle.model}`;
 
-  /* Store brand for Select page */
-  localStorage.setItem("selectedBrand", brand.name);
+  highlightModelTimeline(vehicle);
+});
+
+/* =========================
+   USAGE (OPTIONAL)
+   ========================= */
+usageSelect.addEventListener("change", () => {
+  if (!modelSelect.value) return;
+
+  const usage = usageSelect.value;
+  if (!usage) return;
+
+  const li = document.createElement("li");
+  li.textContent = `Best for: ${usage}`;
+  previewList.appendChild(li);
+});
+
+/* =========================
+   TIMELINE HELPERS
+   ========================= */
+function highlightBrandTimeline() {
+  // simple visual cue (first dot)
+  if (timelinePoints[0]) {
+    timelinePoints[0].classList.add("active");
+  }
 }
 
-/* Know → Select */
-goBtn.addEventListener("click", () => {
-  window.location.href = "../Select_Your_Ride_V5/select.html";
-});
+function highlightModelTimeline(vehicle) {
+  timelinePoints.forEach(p => {
+    const year = p.querySelector(".year").innerText;
+    if (
+      vehicle.launchYear &&
+      year == vehicle.launchYear
+    ) {
+      p.classList.add("active");
+    }
+  });
+}
+
+function resetTimeline() {
+  timelinePoints.forEach(p =>
+    p.classList.remove("active")
+  );
+}
+
+/* =========================
+   RESET HELPERS
+   ========================= */
+function resetType() {
+  typeSelect.innerHTML =
+    `<option value="">Select type</option>`;
+  typeSelect.disabled = true;
+}
+
+function resetModel() {
+  modelSelect.innerHTML =
+    `<option value="">Select model</option>`;
+  modelSelect.disabled = true;
+}
+
+function resetPreview() {
+  previewName.textContent = "Brand · Model Name";
+  previewList.innerHTML = `
+    <li>Category: —</li>
+    <li>Introduced: —</li>
+    <li>Engine / Power summary</li>
+  `;
+  knowMoreBtn.href = "#";
+}
