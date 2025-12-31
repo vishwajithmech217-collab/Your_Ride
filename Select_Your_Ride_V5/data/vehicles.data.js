@@ -306,3 +306,182 @@ const VEHICLES = [
   segment: "roadster",
   skillLevel: "beginner"
 }
+
+{
+  id: "honda_activa_6g",
+  brand: "Honda",
+  model: "Activa 6G",
+  type: "scooter",
+
+  ergonomics: {
+    seatHeight: 765,
+    posture: "relaxed",
+    wheelSize: 12
+  },
+
+  usage: {
+    city: 93,
+    highway: 35
+  },
+
+  physical: {
+    kerbWeight: 106,
+    groundClearance: 162
+  },
+
+  segment: "family_scooter",
+  skillLevel: "beginner"
+},
+{
+  id: "honda_dio_125",
+  brand: "Honda",
+  model: "Dio 125",
+  type: "scooter",
+
+  ergonomics: {
+    seatHeight: 765,
+    posture: "relaxed",
+    wheelSize: 12
+  },
+
+  usage: {
+    city: 90,
+    highway: 40
+  },
+
+  physical: {
+    kerbWeight: 107,
+    groundClearance: 160
+  },
+
+  segment: "youth_scooter",
+  skillLevel: "beginner"
+}
+
+{
+  id: "tvs_jupiter_125",
+  brand: "TVS",
+  model: "Jupiter 125",
+  type: "scooter",
+
+  ergonomics: {
+    seatHeight: 765,
+    posture: "relaxed",
+    wheelSize: 12
+  },
+
+  usage: {
+    city: 92,
+    highway: 38
+  },
+
+  physical: {
+    kerbWeight: 108,
+    groundClearance: 163
+  },
+
+  segment: "family_scooter",
+  skillLevel: "beginner"
+},
+{
+  id: "tvs_ntorq_125",
+  brand: "TVS",
+  model: "Ntorq 125",
+  type: "scooter",
+
+  ergonomics: {
+    seatHeight: 770,
+    posture: "sport",
+    wheelSize: 12
+  },
+
+  usage: {
+    city: 90,
+    highway: 40
+  },
+
+  physical: {
+    kerbWeight: 118,
+    groundClearance: 155
+  },
+
+  segment: "performance_scooter",
+  skillLevel: "beginner"
+}
+
+{
+  id: "suzuki_access_125",
+  brand: "Suzuki",
+  model: "Access 125",
+  type: "scooter",
+
+  ergonomics: {
+    seatHeight: 773,
+    posture: "relaxed",
+    wheelSize: 12
+  },
+
+  usage: {
+    city: 90,
+    highway: 45
+  },
+
+  physical: {
+    kerbWeight: 104,
+    groundClearance: 160
+  },
+
+  segment: "family_scooter",
+  skillLevel: "beginner"
+},
+{
+  id: "suzuki_burgman_street",
+  brand: "Suzuki",
+  model: "Burgman Street",
+  type: "scooter",
+
+  ergonomics: {
+    seatHeight: 780,
+    posture: "relaxed",
+    wheelSize: 12
+  },
+
+  usage: {
+    city: 85,
+    highway: 50
+  },
+
+  physical: {
+    kerbWeight: 111,
+    groundClearance: 160
+  },
+
+  segment: "maxi_scooter",
+  skillLevel: "beginner"
+}
+
+{
+  id: "yamaha_ray_zr_125",
+  brand: "Yamaha",
+  model: "Ray ZR 125",
+  type: "scooter",
+
+  ergonomics: {
+    seatHeight: 785,
+    posture: "sport",
+    wheelSize: 12
+  },
+
+  usage: {
+    city: 88,
+    highway: 45
+  },
+
+  physical: {
+    kerbWeight: 99,
+    groundClearance: 145
+  },
+
+  segment: "youth_scooter",
+  skillLevel: "beginner"
+}
