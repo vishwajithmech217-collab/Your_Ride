@@ -46,6 +46,23 @@ function calculateScore(vehicle, user) {
 
   total += seatScore;
 
+// ---- Weight vs Kerb Weight (10) ----
+let weightPenalty = 0;
+
+if (user.weight && vehicle.physical?.kerbWeight) {
+  const ratio = vehicle.physical.kerbWeight / user.weight;
+
+  if (ratio > 3) {
+    weightPenalty = -10;
+    reasons.push("⚠ Heavy bike for your body weight");
+  } else if (ratio > 2.5) {
+    weightPenalty = -5;
+    reasons.push("⚠ Slightly heavy for comfortable handling");
+  }
+}
+
+total += weightPenalty;
+
   // ---- Usage Match (30) ----
   const usageScore =
     user.usage < 50
@@ -62,6 +79,15 @@ function calculateScore(vehicle, user) {
 
   // ---- Frequency (20) ----
   total += Math.round(user.frequency * 0.2);
+
+// ---- Skill Level Check (Warning only) ----
+if (vehicle.skillLevel === "intermediate") {
+  reasons.push("⚠ Better suited for experienced riders");
+}
+
+if (vehicle.skillLevel === "expert") {
+  reasons.push("⚠ Not beginner friendly");
+}
 
   return {
     total: Math.min(total, 100),
