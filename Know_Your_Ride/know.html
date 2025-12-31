@@ -1,27 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Know Your Ride</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="know.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
 
-<h1>Know Your Ride</h1>
-<p class="subtitle">History. Trust. Evolution.</p>
+  <!-- PAGE HEADER -->
+  <header>
+    <h1>Know Your Ride</h1>
+    <p>History · Evolution · Identity</p>
+  </header>
 
-<select id="brandSelect">
-  <option value="">Select Brand</option>
-</select>
+  <!-- SELECTION FLOW (HORIZONTAL) -->
+  <section class="selection-flow">
 
-<div id="brandResult"></div>
+    <!-- BRAND -->
+    <div class="field">
+      <label for="brandSelect">Brand</label>
+      <select id="brandSelect">
+        <option value="">Select brand</option>
+        <!-- Yamaha, Honda, etc -->
+      </select>
+    </div>
 
-<button id="goToSelect" class="hidden">
-  Find Best Ride →
-</button>
+    <!-- TYPE -->
+    <div class="field">
+      <label for="typeSelect">Type</label>
+      <select id="typeSelect" disabled>
+        <option value="">Select type</option>
+        <!-- Bike, Scooter, Car, SUV -->
+      </select>
+    </div>
 
-<script src="data/brands.data.js"></script>
-<script src="know.js"></script>
+    <!-- MODEL -->
+    <div class="field">
+      <label for="modelSelect">Model</label>
+      <select id="modelSelect" disabled>
+        <option value="">Select model</option>
+      </select>
+    </div>
+
+    <!-- USAGE (OPTIONAL) -->
+    <div class="field">
+      <label for="usageSelect">Usage (optional)</label>
+      <select id="usageSelect">
+        <option value="">Any</option>
+        <option value="city">City</option>
+        <option value="highway">Highway</option>
+        <option value="racing">Racing</option>
+        <option value="touring">Touring</option>
+      </select>
+    </div>
+
+  </section>
+
+  <!-- HORIZONTAL TIMELINE -->
+  <section class="timeline">
+
+    <div class="timeline-line">
+
+      <div class="timeline-point">
+        <span class="year">1955</span>
+      </div>
+
+      <div class="timeline-point">
+        <span class="year">2008</span>
+      </div>
+
+      <div class="timeline-point">
+        <span class="year">2015</span>
+      </div>
+
+      <div class="timeline-point">
+        <span class="year">2023</span>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PREVIEW INFO CARD -->
+  <section class="preview-card">
+
+    <h2>Model Preview</h2>
+
+    <p class="model-name">Brand · Model Name</p>
+
+    <ul>
+      <li>Category: Sport / Cruiser / etc</li>
+      <li>Introduced: Year</li>
+      <li>Engine / Power summary</li>
+    </ul>
+
+    <a href="#" class="know-more-btn">
+      Know more →
+    </a>
+
+  </section>
+
 </body>
 </html>
