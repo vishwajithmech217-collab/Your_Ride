@@ -18,37 +18,56 @@ document.addEventListener("DOMContentLoaded", () => {
    SCORE LOGIC
 ====================== */
 function calculateScore(vehicle, user) {
-  let score = 0;
+  let total = 0;
+  let reasons = [];
 
-  // Use leg height if provided, else estimate
+  // ---- Seat Height vs Leg Height (40) ----
   const legHeight =
     user.legHeight && user.legHeight > 0
       ? user.legHeight
       : Math.round(user.height * 0.46);
 
-  const seatHeight = vehicle.ergonomics.seatHeight;
-  const diff = Math.abs(seatHeight - legHeight);
+  const diff = Math.abs(vehicle.ergonomics.seatHeight - legHeight);
 
-  // Seat comfort score (0–40)
   let seatScore = 0;
-  if (diff <= 10) seatScore = 40;       // flat foot
-  else if (diff <= 30) seatScore = 30;  // comfortable
-  else if (diff <= 60) seatScore = 20;  // tiptoe
-  else seatScore = 10;                  // risky
+  if (diff <= 10) {
+    seatScore = 40;
+    reasons.push("Excellent seat height match");
+  } else if (diff <= 30) {
+    seatScore = 30;
+    reasons.push("Comfortable seat height");
+  } else if (diff <= 60) {
+    seatScore = 20;
+    reasons.push("Seat height may feel tall");
+  } else {
+    seatScore = 10;
+    reasons.push("Seat height not ideal");
+  }
 
-  score += seatScore;
+  total += seatScore;
 
-  // Usage
+  // ---- Usage Match (30) ----
   const usageScore =
     user.usage < 50
       ? vehicle.usage.city
       : vehicle.usage.highway;
-  score += usageScore * 0.3;
 
-  // Frequency
-  score += user.frequency * 0.2;
+  total += Math.round(usageScore * 0.3);
 
-  return Math.round(Math.min(score, 100));
+  if (user.usage < 50) {
+    reasons.push("Good for city riding");
+  } else {
+    reasons.push("Comfortable on highways");
+  }
+
+  // ---- Frequency (20) ----
+  total += Math.round(user.frequency * 0.2);
+
+  return {
+    total: Math.min(total, 100),
+    seatScore,
+    reasons
+  };
 }
 
 /* ======================
@@ -70,7 +89,7 @@ function recommend() {
     .filter(v => v.type === type)
     .map(v => ({
       vehicle: v,
-      score: calculateScore(v, userData)
+      const score: calculateScore(v, userData)
     }));
 
   if (list.length === 0) {
@@ -89,22 +108,20 @@ function recommend() {
     if (isWinner) card.classList.add("winner");
 
     card.innerHTML = `
-      ${isWinner ? `<div class="winner-badge">BEST MATCH</div>` : ""}
+  <h3>${v.brand} ${v.model}</h3>
+  <b>Score: ${score.total}/100</b>
 
-      <h3>${vehicle.brand} ${vehicle.model}</h3>
-      <p><b>Score:</b> ${score.total}/100</p>
+  <p>✓ ${score.reasons[0]}</p>
+  <p>✓ ${score.reasons[1]}</p>
 
-      <div class="hint">✔ ${score.seatFit}</div>
-      <div class="hint">✔ ${score.usageMatch}</div>
+  <button onclick='showDetails(${JSON.stringify(v)}, ${JSON.stringify(score)})'>
+    Details
+  </button>
 
-      <button onclick='showDetails(${JSON.stringify(vehicle)}, ${JSON.stringify(score)})'>
-        Details
-      </button>
-
-      <button onclick='knowRide("${vehicle.brand}", "${vehicle.model}")'>
-        Know this Ride →
-      </button>
-    `;
+  <button onclick="knowRide('${v.brand}', '${v.model}')">
+    Know this Ride →
+  </button>
+`;
 
     results.appendChild(card);
   });
