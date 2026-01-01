@@ -17,83 +17,86 @@
   }
 
   svg {
-    width: 90vmin;
-    height: 90vmin;
+    width: 92vmin;
+    height: 92vmin;
   }
 
   .wing {
-    fill: #020617;
+    fill: #0a66b2;
+    stroke: #084d86;
+    stroke-width: 2;
     cursor: pointer;
-    transition: fill 0.2s ease;
+    transition: transform 0.2s ease, fill 0.2s ease;
   }
 
   .wing:hover {
-    fill: #111827;
+    fill: #0d78cc;
+    transform: scale(1.02);
   }
 
   .center {
-    fill: #020617;
+    fill: #2f3b46;
     stroke: #1f2937;
-    stroke-width: 2;
+    stroke-width: 3;
   }
 
   text {
-    fill: #e5e7eb;
+    fill: #ffffff;
+    font-weight: 700;
     text-anchor: middle;
     dominant-baseline: middle;
-    font-weight: 600;
     pointer-events: none;
   }
 
-  .subtitle {
-    font-size: 11px;
-    opacity: 0.7;
-    font-weight: 400;
+  .tagline {
+    fill: #9ca3af;
+    font-size: 13px;
+    font-weight: 500;
   }
 </style>
 </head>
 
 <body>
 
-<svg viewBox="0 0 400 400">
+<svg viewBox="0 0 500 500">
 
-  <!-- TOP LEFT (NW) -->
+  <!-- TOP LEFT -->
   <a href="Select_Your_Ride_V5/select.html">
     <polygon class="wing"
-      points="70,80 170,120 150,190 50,150" />
-    <text x="110" y="135">Select</text>
-    <text x="110" y="153" class="subtitle">Your Ride</text>
+      points="90,110 260,140 240,210 70,180" />
+    <text x="165" y="160" font-size="22">Select</text>
+    <text x="165" y="185" font-size="20">Your Ride</text>
   </a>
 
-  <!-- TOP RIGHT (NE) -->
+  <!-- TOP RIGHT -->
   <a href="Know_Your_Ride/know.html">
     <polygon class="wing"
-      points="230,120 330,80 350,150 250,190" />
-    <text x="290" y="135">Know</text>
-    <text x="290" y="153" class="subtitle">Your Ride</text>
+      points="240,140 410,110 430,180 260,210" />
+    <text x="335" y="160" font-size="22">Know</text>
+    <text x="335" y="185" font-size="20">Your Ride</text>
   </a>
 
-  <!-- BOTTOM LEFT (SW) -->
+  <!-- BOTTOM LEFT -->
   <a href="Improve_Your_Ride/improve.html">
     <polygon class="wing"
-      points="50,250 150,210 170,280 70,320" />
-    <text x="110" y="255">Improve</text>
-    <text x="110" y="273" class="subtitle">Your Ride</text>
+      points="70,320 240,290 260,360 90,390" />
+    <text x="165" y="330" font-size="22">Improve</text>
+    <text x="165" y="355" font-size="20">Your Ride</text>
   </a>
 
-  <!-- BOTTOM RIGHT (SE) -->
+  <!-- BOTTOM RIGHT -->
   <a href="Join_Your_Ride/join.html">
     <polygon class="wing"
-      points="250,210 350,250 330,320 230,280" />
-    <text x="290" y="255">Join</text>
-    <text x="290" y="273" class="subtitle">Your Ride</text>
+      points="260,290 430,320 410,390 240,360" />
+    <text x="335" y="330" font-size="22">Join</text>
+    <text x="335" y="355" font-size="20">Your Ride</text>
   </a>
 
-  <!-- CENTER CIRCLE (FRONT) -->
-  <circle cx="200" cy="200" r="50" class="center" />
+  <!-- CENTER CIRCLE -->
+  <circle cx="250" cy="250" r="75" class="center" />
 
-  <text x="200" y="192" font-size="18">Your Ride</text>
-  <text x="200" y="212" class="subtitle">
+  <text x="250" y="240" font-size="28">Your Ride</text>
+  <text x="250" y="270" class="tagline">
     Choose · Know · Improve · Ride Together
   </text>
 
