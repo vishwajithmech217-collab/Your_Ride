@@ -1,90 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Your Ride</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<title>Your Ride</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #0b1220;
-      font-family: system-ui, sans-serif;
-    }
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0b1220;
+    font-family: system-ui, sans-serif;
+  }
 
-    svg {
-      width: 90vmin;
-      height: 90vmin;
-    }
+  svg {
+    width: 90vmin;
+    height: 90vmin;
+  }
 
-    .arm {
-      fill: #020617;
-      cursor: pointer;
-    }
+  .blade {
+    fill: #020617;
+    cursor: pointer;
+  }
 
-    .arm:hover {
-      fill: #111827;
-    }
+  .blade:hover {
+    fill: #111827;
+  }
 
-    .center {
-      fill: #020617;
-      stroke: #1f2937;
-      stroke-width: 2;
-    }
+  .center {
+    fill: #020617;
+    stroke: #1f2937;
+    stroke-width: 2;
+  }
 
-    text {
-      fill: #e5e7eb;
-      font-weight: 600;
-      text-anchor: middle;
-      dominant-baseline: middle;
-      pointer-events: none;
-    }
+  text {
+    fill: #e5e7eb;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    font-weight: 600;
+    pointer-events: none;
+  }
 
-    .subtitle {
-      font-size: 11px;
-      opacity: 0.7;
-      font-weight: 400;
-    }
-  </style>
+  .subtitle {
+    font-size: 11px;
+    opacity: 0.7;
+    font-weight: 400;
+  }
+</style>
 </head>
+
 <body>
 
 <svg viewBox="0 0 400 400">
 
-  <!-- TOP RECTANGLE -->
+  <!-- TOP LEFT (NW) -->
   <a href="Select_Your_Ride_V5/select.html">
-    <rect class="arm" x="140" y="20" width="120" height="110" rx="6"/>
-    <text x="200" y="75">Select</text>
-    <text x="200" y="95" class="subtitle">Your Ride</text>
+    <polygon class="blade"
+      points="60,60 180,90 160,160 40,130" />
+    <text x="110" y="110">Select</text>
+    <text x="110" y="128" class="subtitle">Your Ride</text>
   </a>
 
-  <!-- RIGHT RECTANGLE -->
+  <!-- TOP RIGHT (NE) -->
   <a href="Know_Your_Ride/know.html">
-    <rect class="arm" x="250" y="145" width="110" height="120" rx="6"/>
-    <text x="305" y="195">Know</text>
-    <text x="305" y="215" class="subtitle">Your Ride</text>
+    <polygon class="blade"
+      points="220,90 340,60 360,130 240,160" />
+    <text x="290" y="110">Know</text>
+    <text x="290" y="128" class="subtitle">Your Ride</text>
   </a>
 
-  <!-- BOTTOM RECTANGLE -->
+  <!-- BOTTOM LEFT (SW) -->
   <a href="Improve_Your_Ride/improve.html">
-    <rect class="arm" x="140" y="270" width="120" height="110" rx="6"/>
-    <text x="200" y="325">Improve</text>
-    <text x="200" y="345" class="subtitle">Your Ride</text>
+    <polygon class="blade"
+      points="40,270 160,240 180,310 60,340" />
+    <text x="110" y="285">Improve</text>
+    <text x="110" y="303" class="subtitle">Your Ride</text>
   </a>
 
-  <!-- LEFT RECTANGLE -->
+  <!-- BOTTOM RIGHT (SE) -->
   <a href="Join_Your_Ride/join.html">
-    <rect class="arm" x="40" y="145" width="110" height="120" rx="6"/>
-    <text x="95" y="195">Join</text>
-    <text x="95" y="215" class="subtitle">Your Ride</text>
+    <polygon class="blade"
+      points="240,240 360,270 340,340 220,310" />
+    <text x="290" y="285">Join</text>
+    <text x="290" y="303" class="subtitle">Your Ride</text>
   </a>
 
-  <!-- CENTER CIRCLE (ON TOP) -->
-  <circle cx="200" cy="200" r="55" class="center"/>
+  <!-- CENTER CIRCLE (FRONT) -->
+  <circle cx="200" cy="200" r="55" class="center" />
 
   <text x="200" y="190" font-size="18">Your Ride</text>
   <text x="200" y="210" class="subtitle">
