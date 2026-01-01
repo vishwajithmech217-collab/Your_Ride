@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: system-ui, sans-serif;
+  background: radial-gradient(circle at center, #0b1220, #020617);
+  color: #e5e7eb;
+}
+
+/* HUB CONTAINER */
+.hub {
+  position: relative;
+  width: 320px;
+  height: 320px;
+}
+
+/* CENTER CIRCLE */
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 140px;
+  height: 140px;
+  background: #020617;
+  border-radius: 50%;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+.center h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.center p {
+  margin-top: 6px;
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* PANELS */
+.panel {
+  position: absolute;
+  width: 120px;
+  height: 60px;
+  background: #020617;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  transition: transform 0.2s ease;
+}
+
+.panel:hover {
+  transform: scale(1.05);
+}
+
+/* POSITIONS (MATCH DIAGRAM) */
+.p1 { top: 0; left: 50%; transform: translateX(-50%); }
+.p2 { right: 0; top: 50%; transform: translateY(-50%); }
+.p3 { bottom: 0; left: 50%; transform: translateX(-50%); }
+.p4 { left: 0; top: 50%; transform: translateY(-50%); }
+
+/* MOBILE FRIENDLY */
+@media (max-width: 420px) {
+  .hub {
+    width: 260px;
+    height: 260px;
+  }
+
+  .center {
+    width: 120px;
+    height: 120px;
+  }
+
+  .panel {
+    width: 110px;
+    height: 54px;
+    font-size: 13px;
+  }
+}
