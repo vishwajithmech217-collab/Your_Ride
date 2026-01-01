@@ -8,6 +8,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const typeSelect = document.getElementById("typeSelect");
   const modelSelect = document.getElementById("modelSelect");
 
+// -------- MODEL → PREVIEW UPDATE --------
+modelSelect.addEventListener("change", () => {
+
+  const selectedId = modelSelect.value;
+  if (!selectedId) return;
+
+  const vehicle = VEHICLES.find(v => v.id === selectedId);
+  if (!vehicle) return;
+
+  // Update preview text
+  document.querySelector(".model-name").textContent =
+    `${vehicle.brand} · ${vehicle.model}`;
+
+  const previewList = document.querySelector(".preview-card ul");
+  previewList.innerHTML = `
+    <li>Category: ${vehicle.segment.replace("_", " ")}</li>
+    <li>Type: ${vehicle.type}</li>
+    <li>Skill level: ${vehicle.skillLevel}</li>
+  `;
+
+  // Store selected vehicle for Know More page
+  document.querySelector(".know-more-btn").href =
+    `model.html?id=${vehicle.id}`;
+
+});
+  
   // -------- BRAND POPULATION --------
   function loadBrands() {
     const brands = [...new Set(VEHICLES.map(v => v.brand))];
