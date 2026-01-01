@@ -6,9 +6,10 @@ buttons.forEach(btn => {
     const target = btn.dataset.target;
 
     contents.forEach(c => {
-      c.style.display = (c.id === target && c.style.display !== "block")
-        ? "block"
-        : "none";
+      c.style.display =
+        (c.id === target && c.style.display !== "block")
+          ? "block"
+          : "none";
     });
   });
 });
