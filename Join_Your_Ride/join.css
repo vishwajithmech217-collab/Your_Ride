@@ -1,1 +1,54 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: radial-gradient(circle at top, #0b1220, #020617);
+  color: #e5e7eb;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+header p {
+  opacity: 0.7;
+}
+
+.groups {
+  max-width: 700px;
+  margin: auto;
+  display: grid;
+  gap: 16px;
+}
+
+.group-card {
+  background: #020617;
+  border-radius: 14px;
+  padding: 16px;
+  border-left: 4px solid #22c55e;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.group-card h2 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.group-card p {
+  margin: 4px 0;
+  opacity: 0.9;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 15px;
+  opacity: 0.85;
+}
 
