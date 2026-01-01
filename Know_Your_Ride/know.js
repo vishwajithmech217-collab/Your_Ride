@@ -1,3 +1,5 @@
+console.log("First vehicle object:", VEHICLES[0]);
+
 console.log("JS running");
 console.log("VEHICLES:", VEHICLES);
 
