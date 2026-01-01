@@ -8,7 +8,7 @@ body {
 
 header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 header h1 {
@@ -20,8 +20,22 @@ header p {
   opacity: 0.7;
 }
 
+.filter {
+  max-width: 400px;
+  margin: 0 auto 20px;
+}
+
+select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #020617;
+  color: #e5e7eb;
+}
+
 .groups {
-  max-width: 700px;
+  max-width: 600px;
   margin: auto;
   display: grid;
   gap: 16px;
@@ -29,26 +43,42 @@ header p {
 
 .group-card {
   background: #020617;
-  border-radius: 14px;
   padding: 16px;
-  border-left: 4px solid #22c55e;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
-.group-card h2 {
-  margin-top: 0;
+.group-card h3 {
+  margin: 0 0 6px;
+}
+
+.group-meta {
+  font-size: 14px;
+  opacity: 0.85;
   margin-bottom: 8px;
 }
 
-.group-card p {
-  margin: 4px 0;
-  opacity: 0.9;
+.badge {
+  display: inline-block;
+  background: #1f2937;
+  color: #9ca3af;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 999px;
 }
 
 footer {
   text-align: center;
   margin-top: 40px;
-  font-size: 15px;
-  opacity: 0.85;
 }
 
+.app-cta {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 14px 22px;
+  background: #22c55e;
+  color: #022c22;
+  font-weight: 700;
+  border-radius: 14px;
+  text-decoration: none;
+}
