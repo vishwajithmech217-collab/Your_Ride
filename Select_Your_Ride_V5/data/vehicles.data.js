@@ -1,4 +1,4 @@
-const VEHICLES = [
+window.VEHICLES = [
 
   /* ================= BIKES ================= */
 
