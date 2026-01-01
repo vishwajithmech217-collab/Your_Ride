@@ -4,36 +4,46 @@
   <meta charset="UTF-8" />
   <title>Your Ride</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <style>
+    /* ===== RESET ===== */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: radial-gradient(circle, #0b1220, #020617);
+      background: radial-gradient(circle at center, #0b1220, #020617);
       font-family: system-ui, sans-serif;
     }
 
     svg {
-      max-width: 90vmin;
-      max-height: 90vmin;
+      width: 90vmin;
+      height: 90vmin;
     }
 
+    /* ===== SHAPES ===== */
     .blade {
       fill: #020617;
       cursor: pointer;
-      transition: fill 0.2s ease;
+      transition: fill 0.25s ease, transform 0.25s ease;
     }
 
     .blade:hover {
       fill: #111827;
+      transform: scale(1.03);
+      transform-origin: center;
     }
 
     .center {
       fill: #020617;
     }
 
+    /* ===== TEXT ===== */
     text {
       fill: #e5e7eb;
       font-weight: 600;
@@ -51,55 +61,49 @@
 </head>
 <body>
 
-<svg viewBox="0 0 400 400">
+<svg viewBox="0 0 400 400" aria-label="Your Ride Navigation Diagram">
 
-  <!-- TOP -->
+  <!-- ===== TOP BLADE : SELECT YOUR RIDE ===== -->
   <a href="Select_Your_Ride_V5/select.html">
     <polygon class="blade"
-      points="200,40 140,120 260,120"/>
-    <text x="200" y="95">Select</text>
-    <text x="200" y="112" class="subtitle">Your Ride</text>
+      points="170,70 230,70 260,140 140,140"/>
+    <text x="200" y="105">Select</text>
+    <text x="200" y="122" class="subtitle">Your Ride</text>
   </a>
 
-  <!-- RIGHT -->
+  <!-- ===== RIGHT BLADE : KNOW YOUR RIDE ===== -->
   <a href="Know_Your_Ride/know.html">
     <polygon class="blade"
-      points="360,200 280,140 280,260"/>
-    <text x="305" y="195">Know</text>
-    <text x="305" y="212" class="subtitle">Your Ride</text>
+      points="330,170 330,230 260,260 260,140"/>
+    <text x="295" y="200">Know</text>
+    <text x="295" y="217" class="subtitle">Your Ride</text>
   </a>
 
-  <!-- BOTTOM -->
+  <!-- ===== BOTTOM BLADE : IMPROVE YOUR RIDE ===== -->
   <a href="Improve_Your_Ride/improve.html">
     <polygon class="blade"
-      points="200,360 140,280 260,280"/>
-    <text x="200" y="305">Improve</text>
-    <text x="200" y="322" class="subtitle">Your Ride</text>
+      points="170,330 230,330 260,260 140,260"/>
+    <text x="200" y="295">Improve</text>
+    <text x="200" y="312" class="subtitle">Your Ride</text>
   </a>
 
-  <!-- LEFT -->
+  <!-- ===== LEFT BLADE : JOIN YOUR RIDE ===== -->
   <a href="Join_Your_Ride/join.html">
     <polygon class="blade"
-      points="40,200 120,140 120,260"/>
-    <text x="95" y="195">Join</text>
-    <text x="95" y="212" class="subtitle">Your Ride</text>
+      points="70,170 70,230 140,260 140,140"/>
+    <text x="105" y="200">Join</text>
+    <text x="105" y="217" class="subtitle">Your Ride</text>
   </a>
 
-  <!-- CENTER -->
-  <circle cx="200" cy="200" r="60" class="center"/>
+  <!-- ===== CENTER CIRCLE ===== -->
+  <circle cx="200" cy="200" r="55" class="center"/>
 
-  <text x="200" y="185" font-size="18">Your Ride</text>
-  <text x="200" y="205" class="subtitle">
+  <text x="200" y="190" font-size="18">Your Ride</text>
+  <text x="200" y="210" class="subtitle">
     Choose · Know · Improve · Ride Together
   </text>
 
 </svg>
-
-</body>
-</html>
-
-
-</div>
 
 </body>
 </html>
