@@ -32,6 +32,21 @@ modelSelect.addEventListener("change", () => {
   document.querySelector(".know-more-btn").href =
     `model.html?id=${vehicle.id}`;
 
+  // -------- TIMELINE HIGHLIGHT (STEP F) --------
+const points = document.querySelectorAll(".timeline-point");
+points.forEach(p => p.classList.remove("active"));
+
+// Simple logic: highlight by type category
+if (vehicle.type === "bike") {
+  points[1]?.classList.add("active");
+}
+if (vehicle.type === "scooter") {
+  points[2]?.classList.add("active");
+}
+if (vehicle.type === "car" || vehicle.type === "suv") {
+  points[3]?.classList.add("active");
+}
+
 });
   
   // -------- BRAND POPULATION --------
