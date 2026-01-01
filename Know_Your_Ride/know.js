@@ -1,83 +1,69 @@
-console.log("First vehicle object:", VEHICLES[0]);
+console.log("know.js loaded");
 
-console.log("JS running");
+// CHECK DATA
 console.log("VEHICLES:", VEHICLES);
 
-console.log("Know Your Ride JS loaded");
-
+// DOM ELEMENTS
 const brandSelect = document.getElementById("brandSelect");
 const typeSelect = document.getElementById("typeSelect");
 const modelSelect = document.getElementById("modelSelect");
 
-// Safety check
-if (!window.VEHICLES || !Array.isArray(VEHICLES)) {
-  console.error("VEHICLES not loaded");
-  return;
+// -------- BRAND POPULATION --------
+function loadBrands() {
+  const brands = [...new Set(VEHICLES.map(v => v.brand))];
+
+  console.log("Brands found:", brands);
+
+  brands.forEach(brand => {
+    const option = document.createElement("option");
+    option.value = brand;
+    option.textContent = brand;
+    brandSelect.appendChild(option);
+  });
 }
 
-// -------------------------
-// 1. Populate Brand
-// -------------------------
-const brands = [...new Set(VEHICLES.map(v => v.brand))];
-
-brands.forEach(brand => {
-  const opt = document.createElement("option");
-  opt.value = brand;
-  opt.textContent = brand;
-  brandSelect.appendChild(opt);
-});
-
-// -------------------------
-// 2. Brand → Type
-// -------------------------
+// -------- EVENTS --------
 brandSelect.addEventListener("change", () => {
   typeSelect.innerHTML = `<option value="">Select type</option>`;
   modelSelect.innerHTML = `<option value="">Select model</option>`;
-  typeSelect.disabled = true;
-  modelSelect.disabled = true;
+  typeSelect.disabled = false;
 
-  const brand = brandSelect.value;
-  if (!brand) return;
+  const selectedBrand = brandSelect.value;
 
   const types = [
     ...new Set(
       VEHICLES
-        .filter(v => v.brand === brand)
+        .filter(v => v.brand === selectedBrand)
         .map(v => v.type)
     )
   ];
 
   types.forEach(type => {
-    const opt = document.createElement("option");
-    opt.value = type;
-    opt.textContent = type;
-    typeSelect.appendChild(opt);
+    const option = document.createElement("option");
+    option.value = type;
+    option.textContent = type;
+    typeSelect.appendChild(option);
   });
-
-  typeSelect.disabled = false;
 });
 
-// -------------------------
-// 3. Type → Model
-// -------------------------
 typeSelect.addEventListener("change", () => {
   modelSelect.innerHTML = `<option value="">Select model</option>`;
-  modelSelect.disabled = true;
+  modelSelect.disabled = false;
 
   const brand = brandSelect.value;
   const type = typeSelect.value;
-  if (!type) return;
 
   const models = VEHICLES.filter(
     v => v.brand === brand && v.type === type
   );
 
   models.forEach(v => {
-    const opt = document.createElement("option");
-    opt.value = v.id;
-    opt.textContent = v.model;
-    modelSelect.appendChild(opt);
+    const option = document.createElement("option");
+    option.value = v.id;
+    option.textContent = v.model;
+    modelSelect.appendChild(option);
   });
-
-  modelSelect.disabled = false;
 });
+
+// INIT
+loadBrands();
