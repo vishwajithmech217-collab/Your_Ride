@@ -107,17 +107,32 @@ if (vehicle.skillLevel === "expert") {
    RECOMMEND
 ====================== */
 function recommend() {
+
+if (
+  !userData.height || userData.height < 130 || userData.height > 210
+) {
+  alert("Please enter a valid height (cm)");
+  return;
+}
+
+if (
+  !userData.weight || userData.weight < 30 || userData.weight > 200
+) {
+  alert("Please enter a valid weight (kg)");
+  return;
+}
+
   const type = document.getElementById("type").value;
   const results = document.getElementById("results");
   results.innerHTML = "";
 
-  userData = {
-    height: +document.getElementById("height").value,
-    weight: +document.getElementById("weight").value || null,
-    usage: +document.getElementById("usage").value,
-    frequency: +document.getElementById("frequency").value,
-    legHeight: +document.getElementById("legHeight").value || null
-  };
+ userData = {
+  height: +document.getElementById("height").value,
+  weight: +document.getElementById("weight").value,
+  usage: +document.getElementById("usage").value,
+  frequency: +document.getElementById("frequency").value,
+  legHeight: +document.getElementById("legHeight").value || null
+};
 
   let list = vehicles
     .filter(v => v.type === type)
