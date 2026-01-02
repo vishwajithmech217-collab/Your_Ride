@@ -284,3 +284,10 @@ button {
 .score-breakdown li {
   margin-bottom: 6px;
 }
+
+.app-footer {
+  text-align: center;
+  margin-top: 40px;
+  opacity: 0.85;
+  font-size: 14px;
+}
