@@ -20,12 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
 function calculateScore(vehicle, user) {
   let total = 0;
   let reasons = [];
+  let weightPenalty = 0; // ✅ FIX 1
 
   // ---- Seat Height vs Leg Height (40) ----
-  const legHeight =
-    user.legHeight && user.legHeight > 0
-      ? user.legHeight
-      : Math.round(user.height * 0.46);
+  const legHeight = user.legHeight && user.legHeight > 0
+    ? user.legHeight
+    : Math.round(user.height * 0.46);
 
   const diff = Math.abs(vehicle.ergonomics.seatHeight - legHeight);
 
@@ -46,61 +46,49 @@ function calculateScore(vehicle, user) {
 
   total += seatScore;
 
-// ---- SAFETY CHECK: Weight vs Vehicle Mass ----
+  // ---- SAFETY CHECK: Weight vs Vehicle Mass ----
   if (user.weight < 50 && vehicle.physical.kerbWeight > 180) {
-    reasons.push(
-      "Heavy vehicle may feel unstable for your body weight"
-    );
-    total -= 5; // small penalty (optional)
+    reasons.push("Heavy vehicle may feel unstable for your body weight");
+    weightPenalty -= 5;
   }
 
   if (user.weight > 90 && vehicle.physical.kerbWeight < 120) {
-    reasons.push(
-      "Light vehicle may feel unstable at high speeds"
-    );
-    total -= 5;
+    reasons.push("Light vehicle may feel unstable at high speeds");
+    weightPenalty -= 5;
   }
 
-total += weightPenalty;
+  total += weightPenalty; // ✅ apply ONCE
 
   // ---- Usage Match (30) ----
   const usageScore =
-    user.usage < 50
-      ? vehicle.usage.city
-      : vehicle.usage.highway;
+    user.usage < 50 ? vehicle.usage.city : vehicle.usage.highway;
+  const usagePoints = Math.round(usageScore * 0.3);
+  total += usagePoints;
 
-  total += Math.round(usageScore * 0.3);
-
-  if (user.usage < 50) {
-    reasons.push("Good for city riding");
-  } else {
-    reasons.push("Comfortable on highways");
-  }
+  reasons.push(
+    user.usage < 50 ? "Good for city riding" : "Comfortable on highways"
+  );
 
   // ---- Frequency (20) ----
-  total += Math.round(user.frequency * 0.2);
+  const freqScore = Math.round(user.frequency * 0.2);
+  total += freqScore;
 
-// ---- Skill Level Check (Warning only) ----
-if (vehicle.skillLevel === "intermediate") {
-  reasons.push("⚠ Better suited for experienced riders");
-}
-
-if (vehicle.skillLevel === "expert") {
-  reasons.push("⚠ Not beginner friendly");
-}
+  // ---- Skill Level Warning ----
+  if (vehicle.skillLevel === "intermediate") {
+    reasons.push("⚠ Better suited for experienced riders");
+  }
+  if (vehicle.skillLevel === "expert") {
+    reasons.push("⚠ Not beginner friendly");
+  }
 
   return {
-  total: Math.min(total, 100),
-  seatScore,
-  usageScore: Math.round(
-    (user.usage < 50
-      ? vehicle.usage.city
-      : vehicle.usage.highway) * 0.3
-  ),
-  freqScore: Math.round(user.frequency * 0.2),
-  weightPenalty,
-  reasons
-};
+    total: Math.max(0, Math.min(total, 100)),
+    seatScore,
+    usageScore: usagePoints,
+    freqScore,
+    weightPenalty,
+    reasons
+  };
 }
 
 /* ======================
@@ -108,31 +96,23 @@ if (vehicle.skillLevel === "expert") {
 ====================== */
 function recommend() {
 
-if (
-  !userData.height || userData.height < 130 || userData.height > 210
-) {
-  alert("Please enter a valid height (cm)");
-  return;
-}
+  userData = {
+    height: +document.getElementById("height").value,
+    weight: +document.getElementById("weight").value,
+    usage: +document.getElementById("usage").value,
+    frequency: +document.getElementById("frequency").value,
+    legHeight: +document.getElementById("legHeight").value || null
+  };
 
-if (
-  !userData.weight || userData.weight < 30 || userData.weight > 200
-) {
-  alert("Please enter a valid weight (kg)");
-  return;
-}
+  if (!userData.height || userData.height < 130 || userData.height > 210) {
+    alert("Please enter a valid height (cm)");
+    return;
+  }
 
-  const type = document.getElementById("type").value;
-  const results = document.getElementById("results");
-  results.innerHTML = "";
-
- userData = {
-  height: +document.getElementById("height").value,
-  weight: +document.getElementById("weight").value,
-  usage: +document.getElementById("usage").value,
-  frequency: +document.getElementById("frequency").value,
-  legHeight: +document.getElementById("legHeight").value || null
-};
+  if (!userData.weight || userData.weight < 30 || userData.weight > 200) {
+    alert("Please enter a valid weight (kg)");
+    return;
+  }
 
   let list = vehicles
     .filter(v => v.type === type)
@@ -192,13 +172,13 @@ function showDetails(vehicle, score) {
     `Overall Score: ${score.total}/100`;
 
   document.getElementById("barSeat").style.width =
-    score.seatScore * 2.5 + "%";
+  (score.seatScore / 40) * 100 + "%";
 
-  document.getElementById("barUsage").style.width =
-    Math.round(score.total * 0.3) + "%";
+document.getElementById("barUsage").style.width =
+  score.usageScore + "%";
 
-  document.getElementById("barFreq").style.width =
-    Math.round(score.total * 0.2) + "%";
+document.getElementById("barFreq").style.width =
+  score.freqScore + "%";
 
 document.getElementById("bSeat").innerText = score.seatScore;
 document.getElementById("bUsage").innerText = score.usageScore;
