@@ -107,3 +107,10 @@ footer {
   border-radius: 14px;
   text-decoration: none;
 }
+
+.app-footer {
+  text-align: center;
+  margin-top: 40px;
+  opacity: 0.85;
+  font-size: 14px;
+}
