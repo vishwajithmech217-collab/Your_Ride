@@ -178,3 +178,10 @@ select:disabled {
 .know-more-btn:hover {
   transform: translateX(4px);
 }
+
+.app-footer {
+  text-align: center;
+  margin-top: 40px;
+  opacity: 0.85;
+  font-size: 14px;
+}
