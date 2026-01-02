@@ -46,20 +46,20 @@ function calculateScore(vehicle, user) {
 
   total += seatScore;
 
-// ---- Weight vs Kerb Weight (10) ----
-let weightPenalty = 0;
-
-if (user.weight && vehicle.physical?.kerbWeight) {
-  const ratio = vehicle.physical.kerbWeight / user.weight;
-
-  if (ratio > 3) {
-    weightPenalty = -10;
-    reasons.push("⚠ Heavy bike for your body weight");
-  } else if (ratio > 2.5) {
-    weightPenalty = -5;
-    reasons.push("⚠ Slightly heavy for comfortable handling");
+// ---- SAFETY CHECK: Weight vs Vehicle Mass ----
+  if (user.weight < 50 && vehicle.physical.kerbWeight > 180) {
+    reasons.push(
+      "Heavy vehicle may feel unstable for your body weight"
+    );
+    total -= 5; // small penalty (optional)
   }
-}
+
+  if (user.weight > 90 && vehicle.physical.kerbWeight < 120) {
+    reasons.push(
+      "Light vehicle may feel unstable at high speeds"
+    );
+    total -= 5;
+  }
 
 total += weightPenalty;
 
