@@ -8,32 +8,20 @@
 <style>
 body {
   font-family: system-ui, sans-serif;
-  background: #0b1220;
-  color: #e5e7eb;
+  background: #0f172a;
+  color: white;
   padding: 20px;
 }
-
-input, select, button {
-  width: 100%;
+button {
   padding: 14px;
-  margin-bottom: 14px;
-  border-radius: 8px;
-  border: none;
+  width: 100%;
   font-size: 16px;
 }
-
-button {
-  background: #22c55e;
-  color: #022c22;
-  font-weight: bold;
-  cursor: pointer;
-}
-
 .card {
+  margin-top: 20px;
   background: #020617;
   padding: 14px;
   border-radius: 10px;
-  margin-top: 10px;
 }
 </style>
 </head>
@@ -42,30 +30,14 @@ button {
 
 <h2>Select Your Ride</h2>
 
-<label>Height (cm)</label>
-<input id="height" type="number" placeholder="Eg: 170">
-
-<label>Weight (kg)</label>
-<input id="weight" type="number" placeholder="Eg: 70">
-
-<label>Vehicle Type</label>
-<select id="type">
-  <option value="bike">Bike</option>
-  <option value="scooter">Scooter</option>
-  <option value="car">Car</option>
-  <option value="suv">SUV</option>
-</select>
-
-<label>Usage (City ↔ Highway)</label>
-<input id="usage" type="range" min="0" max="100" value="50">
-
-<label>Frequency (Daily ↔ Occasional)</label>
-<input id="frequency" type="range" min="0" max="100" value="50">
+<input id="height" placeholder="Height">
+<input id="weight" placeholder="Weight">
 
 <button onclick="recommend()">Get Recommendation</button>
 
 <div id="results"></div>
 
+<!-- ⚠️ THIS MUST BE LAST LINE BEFORE </body> -->
 <script src="select.js"></script>
 </body>
 </html>
