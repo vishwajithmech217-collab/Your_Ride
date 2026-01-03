@@ -1,26 +1,26 @@
-alert("select.js loaded");
+console.log("select.js loaded ✅");
+
+document.getElementById("recommendBtn").addEventListener("click", recommend);
 
 function recommend() {
-  const height = +document.getElementById("height").value;
-  const weight = +document.getElementById("weight").value;
-  const resultBox = document.getElementById("resultBox");
+  console.log("recommend() called ✅");
 
-  resultBox.classList.remove("hidden");
+  const height = Number(document.getElementById("height").value);
+  const weight = Number(document.getElementById("weight").value);
+  const box = document.getElementById("resultBox");
 
-  // Validation
   if (!height || height < 130 || height > 210) {
-    resultBox.innerHTML = "❌ Please enter a valid height (130–210 cm)";
+    box.innerHTML = "❌ Please enter a valid height (130–210 cm)";
     return;
   }
 
   if (!weight || weight < 30 || weight > 200) {
-    resultBox.innerHTML = "❌ Please enter a valid weight (30–200 kg)";
+    box.innerHTML = "❌ Please enter a valid weight (30–200 kg)";
     return;
   }
 
-  // Decision logic
   let status = "✅ Recommended";
-  let reason = "Good balance between height and weight.";
+  let reason = "Your height and weight are well balanced.";
 
   if (height < 150) {
     status = "🔴 Avoid";
@@ -30,17 +30,5 @@ function recommend() {
     reason = "Heavy vehicles may feel unstable for your weight.";
   }
 
-  resultBox.innerHTML = `
-    <h3>${status}</h3>
-    <p>${reason}</p>
-  `;
+  box.innerHTML = `<h3>${status}</h3><p>${reason}</p>`;
 }
-
-
-  alert(
-    "Inputs received:\n" +
-    "Height: " + height + " cm\n" +
-    "Weight: " + weight + " kg"
-  );
-}
-
