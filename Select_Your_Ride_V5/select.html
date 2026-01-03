@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8">
 <title>Select Your Ride</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body {
@@ -15,8 +15,8 @@ body {
 
 input, select, button {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 12px;
+  padding: 14px;
+  margin-bottom: 14px;
   border-radius: 8px;
   border: none;
   font-size: 16px;
@@ -28,8 +28,6 @@ button {
   font-weight: bold;
   cursor: pointer;
 }
-
-.hidden { display: none; }
 
 .card {
   background: #020617;
@@ -63,13 +61,6 @@ button {
 
 <label>Frequency (Daily ↔ Occasional)</label>
 <input id="frequency" type="range" min="0" max="100" value="50">
-
-<button id="advancedBtn">Advanced Options</button>
-
-<div id="advancedBox" class="hidden">
-  <label>Leg Height (optional)</label>
-  <input id="legHeight" type="number" placeholder="Optional">
-</div>
 
 <button onclick="recommend()">Get Recommendation</button>
 
