@@ -5,12 +5,20 @@ console.log("select.js loaded");
 const vehicles = VEHICLES;
 
 function recommend() {
-  const height = +document.getElementById("height").value;
-  const weight = +document.getElementById("weight").value;
-  const type = document.getElementById("type").value;
+  alert("Inside recommend");
 
-  const results = document.getElementById("results");
-  results.innerHTML = "";
+  const h = document.getElementById("height");
+  const w = document.getElementById("weight");
+  const t = document.getElementById("type");
+  const r = document.getElementById("results");
+
+  alert(
+    "height: " + h +
+    "\nweight: " + w +
+    "\ntype: " + t +
+    "\nresults: " + r
+  );
+}
 
   // ----- VALIDATION -----
   if (!height || height < 130 || height > 210) {
