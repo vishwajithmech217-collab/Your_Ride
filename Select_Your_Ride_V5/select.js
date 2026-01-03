@@ -83,15 +83,20 @@ function recommend() {
 
     // Seat height logic
     const legHeight = Math.round(height * 0.46);
-    const diff = Math.abs(v.seatHeight - legHeight);
+const seatHeightCm = v.seatHeight > 200 ? v.seatHeight / 10 : v.seatHeight;
+const diff = Math.abs(seatHeightCm - legHeight);
 
-    if (diff > 80) {
-      status = "🔴 Avoid";
-      reason = "Seat height may feel very uncomfortable.";
-    } else if (diff > 40) {
-      status = "🟡 Caution";
-      reason = "Seat height may feel slightly tall.";
-    }
+if (diff > 25) {
+  status = "🔴 Avoid";
+  reason = "Seat height may feel uncomfortable.";
+} else if (diff > 12) {
+  status = "🟡 Caution";
+  reason = "Seat height may feel slightly tall.";
+} else {
+  status = "✅ Recommended";
+  reason = "Seat height suits your body well.";
+}
+
 
     // Weight safety logic
     if (weight < 50 && v.kerbWeight > 180) {
