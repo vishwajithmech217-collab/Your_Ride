@@ -1,5 +1,50 @@
 console.log("select.js loaded ✅");
 
+const VEHICLES = [
+  // BIKES
+  {
+    brand: "Yamaha",
+    model: "MT-15",
+    type: "bike",
+    seatHeight: 810,
+    kerbWeight: 141
+  },
+  {
+    brand: "Royal Enfield",
+    model: "Classic 350",
+    type: "bike",
+    seatHeight: 805,
+    kerbWeight: 195
+  },
+
+  // SCOOTERS
+  {
+    brand: "Honda",
+    model: "Activa 6G",
+    type: "scooter",
+    seatHeight: 765,
+    kerbWeight: 106
+  },
+
+  // CARS
+  {
+    brand: "Maruti",
+    model: "Swift",
+    type: "car",
+    seatHeight: 1650,
+    kerbWeight: 875
+  },
+
+  // SUV
+  {
+    brand: "Tata",
+    model: "Nexon",
+    type: "suv",
+    seatHeight: 1700,
+    kerbWeight: 1200
+  }
+];
+
 document.getElementById("recommendBtn").addEventListener("click", recommend);
 
 function recommend() {
@@ -8,57 +53,60 @@ function recommend() {
   const type = document.getElementById("type").value;
   const box = document.getElementById("resultBox");
 
+  box.innerHTML = "";
+
   if (!height || height < 130 || height > 210) {
-    box.innerHTML = "❌ Please enter a valid height (130–210 cm)";
+    box.innerHTML = "❌ Enter valid height (130–210 cm)";
     return;
   }
 
   if (!weight || weight < 30 || weight > 200) {
-    box.innerHTML = "❌ Please enter a valid weight (30–200 kg)";
+    box.innerHTML = "❌ Enter valid weight (30–200 kg)";
     return;
   }
 
   if (!type) {
-    box.innerHTML = "❌ Please select a vehicle type";
+    box.innerHTML = "❌ Select vehicle type";
     return;
   }
 
-  let status = "✅ Recommended";
-  let reason = "Good match for your body profile.";
+  const filtered = VEHICLES.filter(v => v.type === type);
 
-  // 🚲 BIKE LOGIC
-  if (type === "bike") {
-    if (height < 150) {
+  if (filtered.length === 0) {
+    box.innerHTML = "❌ No vehicles found";
+    return;
+  }
+
+  filtered.forEach(v => {
+    let status = "✅ Recommended";
+    let reason = "Good overall match.";
+
+    // Seat height logic
+    const legHeight = Math.round(height * 0.46);
+    const diff = Math.abs(v.seatHeight - legHeight);
+
+    if (diff > 80) {
       status = "🔴 Avoid";
-      reason = "Most bikes may feel tall for your height.";
-    } else if (weight < 50) {
+      reason = "Seat height may feel very uncomfortable.";
+    } else if (diff > 40) {
       status = "🟡 Caution";
-      reason = "Heavy bikes may feel unstable.";
+      reason = "Seat height may feel slightly tall.";
     }
-  }
 
-  // 🛵 SCOOTER LOGIC
-  if (type === "scooter") {
-    if (height < 140) {
+    // Weight safety logic
+    if (weight < 50 && v.kerbWeight > 180) {
       status = "🟡 Caution";
-      reason = "Seat height may be uncomfortable.";
+      reason = "Heavy vehicle may feel unstable.";
     }
-  }
 
-  // 🚗 CAR LOGIC
-  if (type === "car") {
-    status = "✅ Recommended";
-    reason = "Cars are suitable for most height and weight ranges.";
-  }
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <h3>${v.brand} ${v.model}</h3>
+      <p><b>${status}</b></p>
+      <p>${reason}</p>
+    `;
 
-  // 🚙 SUV LOGIC
-  if (type === "suv") {
-    if (height < 155) {
-      status = "🟡 Caution";
-      reason = "SUV height may feel difficult in city usage.";
-    }
-  }
-
-  box.innerHTML = `<h3>${status}</h3><p>${reason}</p>`;
+    box.appendChild(card);
+  });
 }
-
