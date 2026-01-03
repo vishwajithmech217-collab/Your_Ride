@@ -1,8 +1,23 @@
-alert("JS LOADED");
+alert("select.js loaded");
 
 function recommend() {
-  alert("BUTTON CLICKED");
+  const height = document.getElementById("height").value;
+  const weight = document.getElementById("weight").value;
 
-  document.getElementById("results").innerHTML =
-    "<div class='card'>JS IS WORKING ✅</div>";
+  if (!height || height < 130 || height > 210) {
+    alert("Please enter a valid height (130–210 cm)");
+    return;
+  }
+
+  if (!weight || weight < 30 || weight > 200) {
+    alert("Please enter a valid weight (30–200 kg)");
+    return;
+  }
+
+  alert(
+    "Inputs received:\n" +
+    "Height: " + height + " cm\n" +
+    "Weight: " + weight + " kg"
+  );
 }
+
