@@ -1,3 +1,5 @@
+alert("JS file loaded");
+
 console.log("select.js loaded");
 
 const vehicles = VEHICLES;
