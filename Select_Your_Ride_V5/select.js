@@ -1,8 +1,14 @@
 console.log("select.js loaded");
 
+/* ======================
+   DATA
+====================== */
 const vehicles = VEHICLES;
 let userData = {};
 
+/* ======================
+   ADVANCED TOGGLE
+====================== */
 document.addEventListener("DOMContentLoaded", () => {
   const advBtn = document.getElementById("advancedBtn");
   const advBox = document.getElementById("advancedBox");
@@ -20,9 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
 function calculateScore(vehicle, user) {
   let total = 0;
   let reasons = [];
-  let weightPenalty = 0; // ✅ FIX 1
+  let weightPenalty = 0;
 
-  // ---- Seat Height vs Leg Height (40) ----
+  /* ---- Seat Height vs Leg Height (40) ---- */
   const legHeight = user.legHeight && user.legHeight > 0
     ? user.legHeight
     : Math.round(user.height * 0.46);
@@ -46,7 +52,7 @@ function calculateScore(vehicle, user) {
 
   total += seatScore;
 
-  // ---- SAFETY CHECK: Weight vs Vehicle Mass ----
+  /* ---- SAFETY: Weight vs Vehicle ---- */
   if (user.weight < 50 && vehicle.physical.kerbWeight > 180) {
     reasons.push("Heavy vehicle may feel unstable for your body weight");
     weightPenalty -= 5;
@@ -57,23 +63,24 @@ function calculateScore(vehicle, user) {
     weightPenalty -= 5;
   }
 
-  total += weightPenalty; // ✅ apply ONCE
+  total += weightPenalty;
 
-  // ---- Usage Match (30) ----
-  const usageScore =
+  /* ---- Usage Match (30) ---- */
+  const usageRaw =
     user.usage < 50 ? vehicle.usage.city : vehicle.usage.highway;
-  const usagePoints = Math.round(usageScore * 0.3);
-  total += usagePoints;
+
+  const usageScore = Math.round(usageRaw * 0.3);
+  total += usageScore;
 
   reasons.push(
     user.usage < 50 ? "Good for city riding" : "Comfortable on highways"
   );
 
-  // ---- Frequency (20) ----
+  /* ---- Frequency (20) ---- */
   const freqScore = Math.round(user.frequency * 0.2);
   total += freqScore;
 
-  // ---- Skill Level Warning ----
+  /* ---- Skill Level Warning ---- */
   if (vehicle.skillLevel === "intermediate") {
     reasons.push("⚠ Better suited for experienced riders");
   }
@@ -84,7 +91,7 @@ function calculateScore(vehicle, user) {
   return {
     total: Math.max(0, Math.min(total, 100)),
     seatScore,
-    usageScore: usagePoints,
+    usageScore,
     freqScore,
     weightPenalty,
     reasons
@@ -96,7 +103,9 @@ function calculateScore(vehicle, user) {
 ====================== */
 function recommend() {
 
-  const type = document.getElementById("type").value;
+  const type =
+    document.getElementById("type").value.toLowerCase();
+
   const results = document.getElementById("results");
   results.innerHTML = "";
 
@@ -108,162 +117,11 @@ function recommend() {
     legHeight: +document.getElementById("legHeight").value || null
   };
 
+  /* ---- VALIDATION ---- */
   if (!userData.height || userData.height < 130 || userData.height > 210) {
-    alert("Height must be between 130 cm and 210 cm");
+    alert("Please enter a valid height (cm)");
     return;
   }
 
   if (!userData.weight || userData.weight < 30 || userData.weight > 200) {
-    alert("Weight must be between 30 kg and 200 kg");
-    return;
-  }
-
-  let list = vehicles
-    .filter(v => v.type === type)
-    .map(v => ({
-      vehicle: v,
-      score: calculateScore(v, userData)
-    }));
-
-  if (list.length === 0) {
-    results.innerHTML = "<p>No vehicles found.</p>";
-    return;
-  }
-
-  // 🏆 Find winner
-  const winnerScore = Math.max(...list.map(x => x.score.total));
-
-  list.forEach(({ vehicle, score }) => {
-    const isWinner = score.total === winnerScore;
-
-    const card = document.createElement("div");
-    card.className = "card";
-    if (isWinner) card.classList.add("winner");
-
-    card.innerHTML = `
-      <h3>${vehicle.brand} ${vehicle.model}</h3>
-      <b>Score: ${score.total}/100</b>
-
-      <p>✓ ${score.reasons[0]}</p>
-      <p>✓ ${score.reasons[1]}</p>
-
-      <button onclick='showDetails(${JSON.stringify(vehicle)}, ${JSON.stringify(score)})'>
-        Details
-      </button>
-
-      <button onclick="knowRide('${vehicle.brand}', '${vehicle.model}')">
-        Know this Ride →
-      </button>
-    `;
-
-    results.appendChild(card);
-  });
-}
-
-/* ======================
-   DETAILS
-====================== */
-
-let selectedForCompare = null;
-
-function showDetails(vehicle, score) {
-  selectedForCompare = { vehicle, score };
-
-  document.getElementById("dName").innerText =
-    `${vehicle.brand} ${vehicle.model}`;
-
-  document.getElementById("dScore").innerText =
-    `Overall Score: ${score.total}/100`;
-
-  document.getElementById("barSeat").style.width =
-  (score.seatScore / 40) * 100 + "%";
-
-document.getElementById("barUsage").style.width =
-  score.usageScore + "%";
-
-document.getElementById("barFreq").style.width =
-  score.freqScore + "%";
-
-document.getElementById("bSeat").innerText = score.seatScore;
-document.getElementById("bUsage").innerText = score.usageScore;
-document.getElementById("bFreq").innerText = score.freqScore;
-document.getElementById("bWeight").innerText =
-  score.weightPenalty < 0 ? score.weightPenalty : "0";
-
-  const ul = document.getElementById("detailReasons");
-  ul.innerHTML = "";
-  score.reasons.forEach(r => {
-    const li = document.createElement("li");
-    li.textContent = r;
-    ul.appendChild(li);
-  });
-
-  document.getElementById("detailModal")
-    .classList.remove("hidden");
-}
-
-function closeDetail() {
-  document.getElementById("detailModal")
-    .classList.add("hidden");
-}
-
-/* ======================
-   KNOW RIDE LINK
-====================== */
-function knowRide(brand, model) {
-  const params = new URLSearchParams({ brand, model });
-  window.location.href =
-    "../Know_Your_Ride/know.html?" + params.toString();
-}
-
-let compareList = [];
-
-function addToCompare() {
-  if (!selectedForCompare) return;
-
-  if (compareList.length >= 2) {
-    alert("You can compare only 2 vehicles");
-    return;
-  }
-
-  compareList.push(selectedForCompare);
-
-  if (compareList.length === 2) {
-    showCompare();
-  }
-
-  closeDetail();
-}
-
-function showCompare() {
-  const grid = document.getElementById("compareGrid");
-  grid.innerHTML = "";
-
-  const [a, b] = compareList;
-  const winner =
-    a.score.total >= b.score.total ? a : b;
-
-  [a, b].forEach(item => {
-    const card = document.createElement("div");
-    card.className = "compare-card";
-    if (item === winner) card.classList.add("winner");
-
-    card.innerHTML = `
-      <h3>${item.vehicle.brand} ${item.vehicle.model}</h3>
-      <b>Score: ${item.score.total}/100</b>
-      <p>Seat Fit: ${item.score.seatScore}</p>
-      <p>${item.score.reasons.join("<br>")}</p>
-    `;
-
-    grid.appendChild(card);
-  });
-
-  document.getElementById("compareModal")
-    .classList.remove("hidden");
-}
-
-function closeCompare() {
-  compareList = [];
-  document.getElementById("compareModal")
-    .classList.add("hidden");
-}
+    alert("Please enter a valid weight (kg)");
