@@ -1,126 +1,65 @@
-/* ===== BASE ===== */
 body {
   font-family: system-ui, sans-serif;
-  background: #0f172a;
+  background: #0b1220;
   color: #e5e7eb;
   margin: 0;
   padding: 20px;
-  line-height: 1.6;
 }
 
-/* ===== HEADER ===== */
-.app-header {
+h1 {
   text-align: center;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  text-align: center;
+  opacity: 0.7;
   margin-bottom: 30px;
-  position: relative;
 }
 
-.app-header h1 {
-  margin: 0;
-  font-size: 28px;
-}
-
-.app-header p {
-  margin-top: 6px;
-  opacity: 0.75;
-}
-
-.back {
-  position: absolute;
-  left: 0;
-  top: 0;
-  font-size: 14px;
-  color: #9ca3af;
-  text-decoration: none;
-}
-
-/* ===== CONTAINER ===== */
 .container {
   max-width: 420px;
   margin: auto;
 }
 
-/* ===== FORM ===== */
 label {
   display: block;
   margin-top: 16px;
   font-size: 14px;
 }
 
-input,
-select {
+input, select {
   width: 100%;
   padding: 12px;
   margin-top: 6px;
   border-radius: 8px;
   border: none;
-  font-size: 15px;
 }
 
-.hint {
-  font-size: 12px;
-  opacity: 0.7;
-  margin-top: 4px;
+input[type="range"] {
+  padding: 0;
 }
 
-/* ===== BUTTONS ===== */
 button {
+  margin-top: 25px;
   width: 100%;
-  margin-top: 18px;
   padding: 14px;
-  border-radius: 10px;
+  background: #22c55e;
   border: none;
-  font-size: 15px;
+  border-radius: 10px;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-}
-
-.primary {
-  background: #22c55e;
   color: #022c22;
 }
 
-.secondary {
-  background: #1e293b;
-  color: #e5e7eb;
-}
-
-/* ===== RESULTS ===== */
-#results {
-  margin-top: 30px;
+button:hover {
+  opacity: 0.9;
 }
 
 .card {
   background: #020617;
+  margin-top: 16px;
   padding: 14px;
   border-radius: 12px;
-  margin-bottom: 12px;
-}
-
-.card h3 {
-  margin: 0 0 6px 0;
-  font-size: 18px;
-}
-
-.card b {
-  display: block;
-  margin-bottom: 6px;
-}
-
-.card p {
-  margin: 4px 0;
-  font-size: 14px;
-}
-
-/* ===== FOOTER NOTE ===== */
-.app-footer {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 14px;
-  opacity: 0.8;
-}
-
-/* ===== UTIL ===== */
-.hidden {
-  display: none;
 }
