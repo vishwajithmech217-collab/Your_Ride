@@ -1,29 +1,6 @@
-console.log("Basic select.js loaded");
+console.log("select.js loaded");
 
-/* BASIC VEHICLE DATA */
-const VEHICLES = [
-  {
-    brand: "Yamaha",
-    model: "MT-15",
-    type: "bike",
-    seatHeight: 810,
-    weight: 141
-  },
-  {
-    brand: "Royal Enfield",
-    model: "Classic 350",
-    type: "bike",
-    seatHeight: 805,
-    weight: 195
-  },
-  {
-    brand: "Honda",
-    model: "Activa",
-    type: "scooter",
-    seatHeight: 765,
-    weight: 109
-  }
-];
+const vehicles = VEHICLES;
 
 function recommend() {
   const height = +document.getElementById("height").value;
@@ -33,32 +10,75 @@ function recommend() {
   const results = document.getElementById("results");
   results.innerHTML = "";
 
+  // ----- VALIDATION -----
   if (!height || height < 130 || height > 210) {
-    alert("Enter valid height (130–210 cm)");
+    alert("Please enter a valid height (130–210 cm)");
     return;
   }
 
   if (!weight || weight < 30 || weight > 200) {
-    alert("Enter valid weight (30–200 kg)");
+    alert("Please enter a valid weight (30–200 kg)");
     return;
   }
 
-  const matches = VEHICLES.filter(v => v.type === type);
+  const list = vehicles.filter(v => v.type === type);
 
-  matches.forEach(v => {
+  list.forEach(vehicle => {
+    const reasons = [];
+    let label = "Recommended";
+    let labelClass = "good";
+
+    // ---- Seat height check ----
     const legHeight = Math.round(height * 0.46);
-    const diff = Math.abs(v.seatHeight - legHeight);
+    const diff = Math.abs(vehicle.ergonomics.seatHeight - legHeight);
 
-    let reason = diff < 40
-      ? "Seat height suitable for your height"
-      : "Seat height may feel tall";
+    if (diff > 60) {
+      label = "Not Ideal";
+      labelClass = "bad";
+      reasons.push("Seat height is too tall for your height");
+    } else if (diff > 30) {
+      label = "Caution";
+      labelClass = "warn";
+      reasons.push("Seat height may feel slightly tall");
+    } else {
+      reasons.push("Seat height suits your height");
+    }
 
+    // ---- Weight safety check ----
+    if (weight < 50 && vehicle.physical.kerbWeight > 180) {
+      label = "Caution";
+      labelClass = "warn";
+      reasons.push("Heavy vehicle for your body weight");
+    }
+
+    if (weight > 90 && vehicle.physical.kerbWeight < 120) {
+      label = "Caution";
+      labelClass = "warn";
+      reasons.push("Light vehicle may feel unstable at speed");
+    }
+
+    // ---- Card UI ----
     const card = document.createElement("div");
-    card.className = "card";
+    card.className = `card ${labelClass}`;
+
     card.innerHTML = `
-      <b>${v.brand} ${v.model}</b><br>
-      ${reason}
+      <h3>${vehicle.brand} ${vehicle.model}</h3>
+      <span class="label ${labelClass}">${label}</span>
+      <ul>
+        ${reasons.map(r => `<li>${r}</li>`).join("")}
+      </ul>
+      <button onclick="knowRide('${vehicle.brand}', '${vehicle.model}')">
+        Know this Ride →
+      </button>
     `;
+
     results.appendChild(card);
   });
+}
+
+// ---- KNOW RIDE LINK ----
+function knowRide(brand, model) {
+  const params = new URLSearchParams({ brand, model });
+  window.location.href =
+    "../Know_Your_Ride/know.html?" + params.toString();
 }
