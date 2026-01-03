@@ -96,6 +96,10 @@ function calculateScore(vehicle, user) {
 ====================== */
 function recommend() {
 
+  const type = document.getElementById("type").value;
+  const results = document.getElementById("results");
+  results.innerHTML = "";
+
   userData = {
     height: +document.getElementById("height").value,
     weight: +document.getElementById("weight").value,
@@ -105,12 +109,12 @@ function recommend() {
   };
 
   if (!userData.height || userData.height < 130 || userData.height > 210) {
-    alert("Please enter a valid height (cm)");
+    alert("Height must be between 130 cm and 210 cm");
     return;
   }
 
   if (!userData.weight || userData.weight < 30 || userData.weight > 200) {
-    alert("Please enter a valid weight (kg)");
+    alert("Weight must be between 30 kg and 200 kg");
     return;
   }
 
