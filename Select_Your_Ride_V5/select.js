@@ -103,8 +103,10 @@ function calculateScore(vehicle, user) {
 ====================== */
 function recommend() {
 
-  const type =
-    document.getElementById("type").value.toLowerCase();
+  const type = document
+    .getElementById("type")
+    .value
+    .toLowerCase();
 
   const results = document.getElementById("results");
   results.innerHTML = "";
@@ -116,6 +118,7 @@ function recommend() {
     frequency: +document.getElementById("frequency").value,
     legHeight: +document.getElementById("legHeight").value || null
   };
+
 
   /* ---- VALIDATION ---- */
   if (!userData.height || userData.height < 130 || userData.height > 210) {
