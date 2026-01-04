@@ -101,3 +101,9 @@ button:hover {
   width: 90%;
   max-width: 360px;
 }
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* SIDE BY SIDE */
+  gap: 16px;
+}
