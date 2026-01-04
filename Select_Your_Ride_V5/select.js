@@ -209,5 +209,11 @@ function showCompare() {
 
 function closeCompare() {
   compareList = [];
-  document.getElementById("compareModal").classList.add("hidden");
+
+  const compareModal = document.getElementById("compareModal");
+  const detailModal = document.getElementById("detailModal");
+
+  if (compareModal) compareModal.classList.add("hidden");
+  if (detailModal) detailModal.classList.add("hidden");
 }
+
