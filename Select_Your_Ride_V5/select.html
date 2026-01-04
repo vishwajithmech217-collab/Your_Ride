@@ -9,47 +9,44 @@
 
 <body>
 
-  <h1>Select Your Ride</h1>
-  <p class="subtitle">Find the ride that fits you best</p>
+<h1>Select Your Ride</h1>
+<p class="subtitle">Find the ride that fits you best</p>
 
-  <div class="container">
+<div class="container">
 
-    <label>Height (cm)</label>
-    <input type="number" id="height" placeholder="Eg: 170" />
+  <label>Height (cm)</label>
+  <input type="number" id="height" placeholder="Eg: 170">
 
-    <label>Weight (kg)</label>
-    <input type="number" id="weight" placeholder="Eg: 70" />
+  <label>Weight (kg)</label>
+  <input type="number" id="weight" placeholder="Eg: 70">
 
-    <label>Vehicle Type</label>
-    <select id="type">
-      <option value="bike">Bike</option>
-      <option value="scooter">Scooter</option>
-      <option value="car">Car</option>
-      <option value="suv">SUV</option>
-    </select>
+  <label>Vehicle Type</label>
+  <select id="type">
+    <option value="bike">Bike</option>
+    <option value="scooter">Scooter</option>
+    <option value="car">Car</option>
+    <option value="suv">SUV</option>
+  </select>
 
-    <label>Usage (City ↔ Highway)</label>
-    <input type="range" id="usage" min="0" max="100" value="50" />
+  <label>Usage (City ↔ Highway)</label>
+  <input type="range" id="usage" min="0" max="100" value="50">
 
-    <label>Frequency (Daily ↔ Occasional)</label>
-    <input type="range" id="frequency" min="0" max="100" value="50" />
-    
-<button type="button" id="advancedBtn">Advanced Options</button>
+  <label>Frequency (Daily ↔ Occasional)</label>
+  <input type="range" id="frequency" min="0" max="100" value="50">
 
-<div id="advancedBox" class="hidden">
-  <label>Leg Height (cm) – Optional</label>
-  <input type="number" id="legHeight" placeholder="Eg: 78" />
-  <p class="hint">If not entered, it will be auto-calculated</p>
-</div>
+  <button id="advancedBtn" class="secondary">Advanced Options</button>
 
-    <button onclick="recommend()">Get Recommendation</button>
-
-    <div id="results"></div>
-
+  <div id="advancedBox" class="hidden">
+    <label>Leg Height (cm) – Optional</label>
+    <input type="number" id="legHeight" placeholder="Eg: 78">
+    <p class="hint">If not entered, it will be auto-calculated</p>
   </div>
-  
-<script src="data/vehicles.data.js"></script>
-<script src="select.js"></script>
+
+  <button class="primary" onclick="recommend()">Get Recommendation</button>
+
+  <div id="results"></div>
+
+</div>
 
 <!-- DETAILS MODAL -->
 <div id="detailModal" class="modal hidden">
@@ -59,10 +56,22 @@
 
     <ul id="detailReasons"></ul>
 
-    <button onclick="closeDetails()">Close</button>
+    <button class="secondary" onclick="addToCompare()">Compare</button>
+    <button class="primary" onclick="closeDetails()">Close</button>
   </div>
 </div>
 
-  
+<!-- COMPARE MODAL -->
+<div id="compareModal" class="modal hidden">
+  <div class="modal-box wide">
+    <h3>Vehicle Comparison</h3>
+    <div id="compareGrid" class="compare-grid"></div>
+    <button class="primary" onclick="closeCompare()">Close</button>
+  </div>
+</div>
+
+<script src="data/vehicles.data.js"></script>
+<script src="select.js"></script>
+
 </body>
 </html>
