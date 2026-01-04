@@ -80,14 +80,18 @@ button:hover {
   font-weight: bold;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.75);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 100;
+  z-index: 999;
 }
 
 .modal-box {
