@@ -1,6 +1,7 @@
 console.log("select.js loaded");
 alert("NEW LOGIC ACTIVE");
-const vehicles = window.VEHICLES;
+
+const vehicles = window.VEHICLES || [];
 
 /* ======================
    HELPERS
@@ -20,7 +21,8 @@ function calculateScore(vehicle, user) {
 
   /* 1️⃣ Seat / Leg fit (0–4) */
   const legHeight = getLegHeight(user.height, user.legHeight);
-  const diff = Math.abs(vehicle.ergonomics.seatHeight - legHeight);
+  const seatHeightCm = vehicle.ergonomics.seatHeight / 10; // FIX
+  const diff = Math.abs(seatHeightCm - legHeight);
 
   let seatPoints = 0;
   if (diff <= 5) seatPoints = 4;
@@ -29,12 +31,11 @@ function calculateScore(vehicle, user) {
   else if (diff <= 50) seatPoints = 1;
 
   score += seatPoints;
-  reasons.push(`Seat fit score: ${seatPoints}/4`);
+  reasons.push(`Seat fit: ${seatPoints}/4`);
 
   /* 2️⃣ Usage match (0–3) */
-  const usagePref = user.usage < 50
-    ? vehicle.usage.city
-    : vehicle.usage.highway;
+  const usagePref =
+    user.usage < 50 ? vehicle.usage.city : vehicle.usage.highway;
 
   let usagePoints = 0;
   if (usagePref >= 80) usagePoints = 3;
@@ -50,7 +51,7 @@ function calculateScore(vehicle, user) {
   else if (user.frequency < 70) freqPoints = 1;
 
   score += freqPoints;
-  reasons.push(`Usage frequency: ${freqPoints}/2`);
+  reasons.push(`Frequency fit: ${freqPoints}/2`);
 
   /* 4️⃣ Weight safety (0–1) */
   let weightPoints = 1;
@@ -81,7 +82,9 @@ function recommend() {
   const type = document.getElementById("type").value;
   const usage = +document.getElementById("usage").value;
   const frequency = +document.getElementById("frequency").value;
-  const legHeight = +document.getElementById("legHeight").value || null;
+
+  const legHeightInput = document.getElementById("legHeight");
+  const legHeight = legHeightInput ? +legHeightInput.value : null;
 
   if (!height || height < 130 || height > 210) {
     alert("Enter valid height (cm)");
@@ -98,24 +101,32 @@ function recommend() {
   const results = document.getElementById("results");
   results.innerHTML = "";
 
-  vehicles
-    .filter(v => v.type === type)
-    .forEach(v => {
-      const result = calculateScore(v, user);
+  const filtered = vehicles.filter(v => v.type === type);
 
-      let label = "Not Ideal";
-      if (result.total >= 8) label = "Recommended";
-      else if (result.total >= 5) label = "Consider";
+  if (filtered.length === 0) {
+    results.innerHTML = "<p>No vehicles found.</p>";
+    return;
+  }
 
-      const card = document.createElement("div");
-      card.className = "card";
+  filtered.forEach(v => {
+    const result = calculateScore(v, user);
 
-      card.innerHTML = `
-        <h3>${v.brand} ${v.model}</h3>
-        <b>Score: ${result.total}/10</b>
-        <p>${label}</p>
-      `;
+    let label = "Not Ideal";
+    if (result.total >= 8) label = "Recommended";
+    else if (result.total >= 5) label = "Consider";
 
-      results.appendChild(card);
-    });
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <h3>${v.brand} ${v.model}</h3>
+      <b>Score: ${result.total}/10</b>
+      <p><strong>${label}</strong></p>
+      <ul>
+        ${result.reasons.map(r => `<li>${r}</li>`).join("")}
+      </ul>
+    `;
+
+    results.appendChild(card);
+  });
 }
