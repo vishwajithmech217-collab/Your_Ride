@@ -95,21 +95,46 @@ function closeDetails() {
 
 /* COMPARE */
 function addToCompare() {
-  if (compareList.length < 2) compareList.push(currentDetail);
-  if (compareList.length === 2) showCompare();
+  if (!currentDetail) {
+    alert("No vehicle selected");
+    return;
+  }
+
+  if (compareList.length >= 2) {
+    alert("You can compare only 2 vehicles");
+    return;
+  }
+
+  compareList.push(currentDetail);
+
+  if (compareList.length === 2) {
+    showCompare();
+  }
+
   closeDetails();
 }
 
 function showCompare() {
-  compareGrid.innerHTML = compareList.map(v => `
-    <div class="card">
-      <h4>${v.vehicle.brand} ${v.vehicle.model}</h4>
-      <b>${v.score.total}/10</b>
-      <p>${v.score.reasons.join("<br>")}</p>
-    </div>
-  `).join("");
-  compareModal.classList.remove("hidden");
+  const grid = document.getElementById("compareGrid");
+  grid.innerHTML = "";
+
+  compareList.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <h4>${item.vehicle.brand} ${item.vehicle.model}</h4>
+      <b>${item.score.total}/10</b>
+      <p>${item.score.reasons.join("<br>")}</p>
+    `;
+
+    grid.appendChild(card);
+  });
+
+  document.getElementById("compareModal")
+    .classList.remove("hidden");
 }
+
 
 function closeCompare() {
   compareList = [];
