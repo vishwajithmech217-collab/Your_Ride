@@ -77,11 +77,18 @@ function calculateScore(vehicle, user) {
    RECOMMEND
 ====================== */
 function recommend() {
-  const height = +document.getElementById("height").value;
-  const weight = +document.getElementById("weight").value;
+  const heightInput = document.getElementById("height");
+const weightInput = document.getElementById("weight");
+
+const height = heightInput ? +heightInput.value : 0;
+const weight = weightInput ? +weightInput.value : 0;
+
   const type = document.getElementById("type").value;
-  const usage = +document.getElementById("usage").value;
-  const frequency = +document.getElementById("frequency").value;
+  const usageInput = document.getElementById("usage");
+const frequencyInput = document.getElementById("frequency");
+
+const usage = usageInput ? +usageInput.value : 50;
+const frequency = frequencyInput ? +frequencyInput.value : 50;
 
   const legHeightInput = document.getElementById("legHeight");
   const legHeight = legHeightInput ? +legHeightInput.value : null;
