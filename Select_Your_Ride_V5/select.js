@@ -157,15 +157,47 @@ function showCompare() {
   const grid = document.getElementById("compareGrid");
   grid.innerHTML = "";
 
+  const winner =
+    compareList[0].score.total >= compareList[1].score.total
+      ? compareList[0]
+      : compareList[1];
+
   compareList.forEach(item => {
+    const s = item.score;
+
     const card = document.createElement("div");
-    card.className = "card";
+    card.className = "compare-card" + (item === winner ? " winner" : "");
 
     card.innerHTML = `
       <h4>${item.vehicle.brand} ${item.vehicle.model}</h4>
-      <b>${item.score.total}/10</b>
-      <p>${item.score.reasons.join("<br>")}</p>
+      <b>Total: ${s.total}/10</b>
+
+      <div class="chart">
+        <div class="chart-label">Seat Fit (${s.reasons[0]})</div>
+        <div class="chart-bar">
+          <div class="chart-fill" style="width:${(parseInt(s.reasons[0].match(/\d/)[0]) / 4) * 100}%"></div>
+        </div>
+      </div>
+
+      <div class="chart">
+        <div class="chart-label">Usage Match</div>
+        <div class="chart-bar">
+          <div class="chart-fill" style="width:${(parseInt(s.reasons[1].match(/\d/)[0]) / 3) * 100}%"></div>
+        </div>
+      </div>
+
+      <div class="chart">
+        <div class="chart-label">Frequency Fit</div>
+        <div class="chart-bar">
+          <div class="chart-fill" style="width:${(parseInt(s.reasons[2].match(/\d/)[0]) / 2) * 100}%"></div>
+        </div>
+      </div>
+
+      <p style="margin-top:10px; font-size:13px;">
+        ${s.reasons[3]}
+      </p>
     `;
+
     grid.appendChild(card);
   });
 
