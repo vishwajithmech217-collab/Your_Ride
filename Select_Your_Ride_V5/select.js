@@ -152,3 +152,29 @@ function recommend() {
     results.appendChild(card);
   });
 }
+let currentDetail = null;
+
+function showDetails(vehicle, score) {
+  currentDetail = { vehicle, score };
+
+  document.getElementById("detailTitle").innerText =
+    vehicle.brand + " " + vehicle.model;
+
+  document.getElementById("detailScore").innerText =
+    score.total;
+
+  const ul = document.getElementById("detailReasons");
+  ul.innerHTML = "";
+
+  score.reasons.forEach(reason => {
+    const li = document.createElement("li");
+    li.innerText = reason;
+    ul.appendChild(li);
+  });
+
+  document.getElementById("detailModal").classList.remove("hidden");
+}
+
+function closeDetails() {
+  document.getElementById("detailModal").classList.add("hidden");
+}
