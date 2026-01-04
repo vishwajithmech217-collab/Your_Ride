@@ -1,8 +1,19 @@
 console.log("select.js loaded");
 
 window.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("detailModal")?.classList.add("hidden");
-  document.getElementById("compareModal")?.classList.add("hidden");
+
+  document.getElementById("recommendBtn")
+    ?.addEventListener("click", recommend);
+
+  document.getElementById("compareBtn")
+    ?.addEventListener("click", addToCompare);
+
+  document.getElementById("closeDetailBtn")
+    ?.addEventListener("click", closeDetails);
+
+  document.getElementById("closeCompareBtn")
+    ?.addEventListener("click", closeCompare);
+
 });
 
 const vehicles = window.VEHICLES || [];
@@ -222,3 +233,8 @@ function closeCompare() {
   if (detailModal) detailModal.classList.add("hidden");
 }
 
+window.recommend = recommend;
+window.showDetails = showDetails;
+window.addToCompare = addToCompare;
+window.closeDetails = closeDetails;
+window.closeCompare = closeCompare;
