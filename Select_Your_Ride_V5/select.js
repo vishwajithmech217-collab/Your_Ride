@@ -7,12 +7,8 @@ let currentDetail = null;
 
 /* ===== INIT ===== */
 window.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("detailModal").classList.add("hidden");
-  document.getElementById("compareModal").classList.add("hidden");
-
-  document.getElementById("advancedBtn").onclick = () => {
-    document.getElementById("advancedBox").classList.toggle("hidden");
-  };
+  document.getElementById("detailModal")?.classList.add("hidden");
+  document.getElementById("compareModal")?.classList.add("hidden");
 });
 
 /* ===== HELPERS ===== */
