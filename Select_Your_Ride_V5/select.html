@@ -33,6 +33,14 @@
 
     <label>Frequency (Daily ↔ Occasional)</label>
     <input type="range" id="frequency" min="0" max="100" value="50" />
+    
+<button type="button" id="advancedBtn">Advanced Options</button>
+
+<div id="advancedBox" class="hidden">
+  <label>Leg Height (cm) – Optional</label>
+  <input type="number" id="legHeight" placeholder="Eg: 78" />
+  <p class="hint">If not entered, it will be auto-calculated</p>
+</div>
 
     <button onclick="recommend()">Get Recommendation</button>
 
