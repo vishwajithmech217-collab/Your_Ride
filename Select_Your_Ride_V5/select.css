@@ -131,3 +131,15 @@ button:hover {
   background: linear-gradient(90deg, #22c55e, #16a34a);
   width: 0%;
 }
+.bar span.good {
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+}
+
+.bar span.ok {
+  background: linear-gradient(90deg, #facc15, #eab308);
+}
+
+.bar span.bad {
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+
