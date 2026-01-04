@@ -4,269 +4,114 @@ const vehicles = window.VEHICLES || [];
 let compareList = [];
 let currentDetail = null;
 
-/* ======================
-   ADVANCED TOGGLE
-====================== */
-document.addEventListener("DOMContentLoaded", () => {
-  const advBtn = document.getElementById("advancedBtn");
-  const advBox = document.getElementById("advancedBox");
+document.getElementById("advancedBtn").onclick = () =>
+  document.getElementById("advancedBox").classList.toggle("hidden");
 
-  if (advBtn && advBox) {
-    advBtn.addEventListener("click", () => {
-      advBox.classList.toggle("hidden");
-    });
-  }
-});
-
-/* ======================
-   HELPERS
-====================== */
-function getLegHeight(height, input) {
-  return input && input > 0 ? input : Math.round(height * 0.46);
+/* HELPERS */
+function legHeightCalc(height, leg) {
+  return leg && leg > 0 ? leg : Math.round(height * 0.46);
 }
 
-/* ======================
-   SCORE LOGIC ( /10 )
-====================== */
+/* SCORE OUT OF 10 */
 function calculateScore(vehicle, user) {
-  let total = 0;
+  let score = 0;
   let reasons = [];
 
-  /* Seat vs Leg (0–4) */
-  const leg = getLegHeight(user.height, user.legHeight);
+  const leg = legHeightCalc(user.height, user.legHeight);
   const seat = vehicle.ergonomics.seatHeight / 10;
   const diff = Math.abs(seat - leg);
 
-  let seatPts = diff <= 5 ? 4 : diff <= 15 ? 3 : diff <= 30 ? 2 : diff <= 50 ? 1 : 0;
-  total += seatPts;
-  reasons.push(`Seat fit: ${seatPts}/4`);
+  let seatScore = diff <= 5 ? 4 : diff <= 15 ? 3 : diff <= 30 ? 2 : 1;
+  score += seatScore;
+  reasons.push(`Seat fit: ${seatScore}/4`);
 
-  /* Usage (0–3) */
-  const usagePref = user.usage < 50 ? vehicle.usage.city : vehicle.usage.highway;
-  let usagePts = usagePref >= 80 ? 3 : usagePref >= 60 ? 2 : usagePref >= 40 ? 1 : 0;
-  total += usagePts;
-  reasons.push(`Usage match: ${usagePts}/3`);
+  let usagePref = user.usage < 50 ? vehicle.usage.city : vehicle.usage.highway;
+  let usageScore = usagePref >= 80 ? 3 : usagePref >= 60 ? 2 : 1;
+  score += usageScore;
+  reasons.push(`Usage match: ${usageScore}/3`);
 
-  /* Frequency (0–2) */
-  let freqPts = user.frequency < 40 ? 2 : user.frequency < 70 ? 1 : 0;
-  total += freqPts;
-  reasons.push(`Frequency fit: ${freqPts}/2`);
+  let freqScore = user.frequency < 40 ? 2 : user.frequency < 70 ? 1 : 0;
+  score += freqScore;
+  reasons.push(`Frequency fit: ${freqScore}/2`);
 
-  /* Weight safety (0–1) */
-  let weightPts = 1;
+  let weightScore = 1;
   if (
     (user.weight < 50 && vehicle.physical.kerbWeight > 180) ||
     (user.weight > 90 && vehicle.physical.kerbWeight < 120)
-  ) {
-    weightPts = 0;
-    reasons.push("Weight mismatch may affect stability");
-  } else {
-    reasons.push("Weight compatibility good");
-  }
+  ) weightScore = 0;
 
-  total += weightPts;
+  score += weightScore;
+  reasons.push(weightScore ? "Weight compatible" : "Weight mismatch");
 
-  return { total, reasons };
+  return { total: score, reasons };
 }
 
-/* ======================
-   RECOMMEND
-====================== */
+/* RECOMMEND */
 function recommend() {
-  const height = +document.getElementById("height").value;
-  const weight = +document.getElementById("weight").value;
-  const type = document.getElementById("type").value;
-  const usage = +document.getElementById("usage").value;
-  const frequency = +document.getElementById("frequency").value;
-  const legHeightInput = document.getElementById("legHeight");
-  const legHeight = legHeightInput && legHeightInput.value ? +legHeightInput.value : null;
+  const height = +height.value;
+  const weight = +weight.value;
 
-  if (!height || height < 130 || height > 210) {
-    alert("Enter valid height");
-    return;
-  }
+  if (!height || !weight) return alert("Enter height & weight");
 
-  if (!weight || weight < 30 || weight > 200) {
-    alert("Enter valid weight");
-    return;
-  }
+  const user = {
+    height,
+    weight,
+    usage: +usage.value,
+    frequency: +frequency.value,
+    legHeight: +legHeight.value || null
+  };
 
-  const user = { height, weight, usage, frequency, legHeight };
-  const results = document.getElementById("results");
   results.innerHTML = "";
 
   const list = vehicles
-    .filter(v => v.type === type)
+    .filter(v => v.type === type.value)
     .map(v => ({ vehicle: v, score: calculateScore(v, user) }))
-    .sort((a, b) => b.score.total - a.score.total);
-
-  if (!list.length) {
-    results.innerHTML = "<p>No vehicles found.</p>";
-    return;
-  }
+    .sort((a,b) => b.score.total - a.score.total);
 
   list.forEach((item, i) => {
     const card = document.createElement("div");
-    card.className = "card";
-    if (i === 0) card.classList.add("winner");
-
-    const btn = document.createElement("button");
-    btn.textContent = "Details";
-    btn.className = "secondary";
-    btn.onclick = () => showDetails(item.vehicle, item.score);
-
+    card.className = "card" + (i === 0 ? " winner" : "");
     card.innerHTML = `
-      ${i === 0 ? `<div class="winner-badge">Best Match</div>` : ""}
       <h3>${item.vehicle.brand} ${item.vehicle.model}</h3>
-      <b>Score: ${item.score.total}/10</b>
+      <b>${item.score.total}/10</b>
+      <button onclick='showDetails(${JSON.stringify(item.vehicle)}, ${JSON.stringify(item.score)})'>Details</button>
     `;
-
-    card.appendChild(btn);
     results.appendChild(card);
   });
 }
 
-/* ======================
-   DETAILS
-====================== */
+/* DETAILS */
 function showDetails(vehicle, score) {
   currentDetail = { vehicle, score };
-
-  document.getElementById("detailTitle").innerText =
-    `${vehicle.brand} ${vehicle.model}`;
-  document.getElementById("detailScore").innerText = score.total;
-
-   document.getElementById("detailWhy").innerText =
-  buildWhySummary(score);
-
-  const ul = document.getElementById("detailReasons");
-  ul.innerHTML = "";
-  score.reasons.forEach(r => {
-    const li = document.createElement("li");
-    li.textContent = r;
-    ul.appendChild(li);
-  });
-
-   document.getElementById("detailAI").innerText =
-  aiExplanation(vehicle, currentUser, score);
-
-   document.getElementById("radarSeat").innerText =
-  `Seat Fit: ${score.seat}/4`;
-
-document.getElementById("radarUsage").innerText =
-  `Usage Match: ${score.usage}/3`;
-
-document.getElementById("radarFreq").innerText =
-  `Frequency Fit: ${score.freq}/2`;
-
-document.getElementById("radarWeight").innerText =
-  `Weight Safety: ${score.weight}/1`;
-
-  document.getElementById("detailModal").classList.remove("hidden");
+  detailTitle.innerText = vehicle.brand + " " + vehicle.model;
+  detailScore.innerText = score.total;
+  detailReasons.innerHTML = score.reasons.map(r => `<li>${r}</li>`).join("");
+  detailModal.classList.remove("hidden");
 }
 
 function closeDetails() {
-  document.getElementById("detailModal").classList.add("hidden");
+  detailModal.classList.add("hidden");
 }
 
-/* ======================
-   COMPARE
-====================== */
+/* COMPARE */
 function addToCompare() {
-  if (!currentDetail) return;
-
-  if (compareList.length >= 2) {
-    alert("Only 2 vehicles can be compared");
-    return;
-  }
-
-  compareList.push(currentDetail);
-  closeDetails();
-
+  if (compareList.length < 2) compareList.push(currentDetail);
   if (compareList.length === 2) showCompare();
+  closeDetails();
 }
 
 function showCompare() {
-  const grid = document.getElementById("compareGrid");
-  grid.innerHTML = "";
-
-  const [a, b] = compareList;
-  const winner = a.score.total >= b.score.total ? a : b;
-
-  [a, b].forEach(item => {
-    const card = document.createElement("div");
-    card.className = "compare-card";
-    if (item === winner) card.classList.add("winner");
-
-    card.innerHTML = `
-      <h3>${item.vehicle.brand} ${item.vehicle.model}</h3>
-      <b>${item.score.total}/10</b>
-
-      ${buildMetric("Seat Fit", item.score.reasons[0], item.score.total, 4)}
-      ${buildMetric("Usage Match", item.score.reasons[1], item.score.total, 3)}
-      ${buildMetric("Frequency Fit", item.score.reasons[2], item.score.total, 2)}
-      ${buildMetric("Weight Safety", item.score.reasons[3], item.score.total, 1)}
-    `;
-
-    grid.appendChild(card);
-  });
-
-  document.getElementById("compareModal").classList.remove("hidden");
-}
-
-function buildMetric(label, text, value, max) {
-  const percent = Math.round((value / max) * 100);
-
-  let cls = "bad";
-  if (percent >= 70) cls = "good";
-  else if (percent >= 40) cls = "ok";
-
-  return `
-    <div class="metric">
-      <div class="metric-label">${label}</div>
-      <div class="bar">
-        <span class="${cls}" style="width:${percent}%"></span>
-      </div>
-      <small>${text}</small>
+  compareGrid.innerHTML = compareList.map(v => `
+    <div class="card">
+      <h4>${v.vehicle.brand} ${v.vehicle.model}</h4>
+      <b>${v.score.total}/10</b>
+      <p>${v.score.reasons.join("<br>")}</p>
     </div>
-  `;
-}
-
-function buildWhySummary(score) {
-  if (score.total >= 8) {
-    return "Excellent match based on your height, usage pattern and riding frequency.";
-  }
-  if (score.total >= 5) {
-    return "Decent match but some compromises in comfort or usage.";
-  }
-  return "Not ideal for your body fit or riding needs.";
-}
-
-function aiExplanation(vehicle, user, score) {
-  let text = `This ${vehicle.type} suits you because `;
-
-  if (score.seat >= 3) {
-    text += "the seat height closely matches your leg reach, ";
-  } else {
-    text += "the seat height may feel challenging, ";
-  }
-
-  if (user.usage >= 50) {
-    text += "your riding is more highway-oriented, ";
-  } else {
-    text += "your riding is more city-focused, ";
-  }
-
-  if (score.weight === 1) {
-    text += "and the vehicle weight is well balanced for your body.";
-  } else {
-    text += "but the weight balance may feel less stable.";
-  }
-
-  return text;
+  `).join("");
+  compareModal.classList.remove("hidden");
 }
 
 function closeCompare() {
   compareList = [];
-  document.getElementById("compareModal").classList.add("hidden");
+  compareModal.classList.add("hidden");
 }
