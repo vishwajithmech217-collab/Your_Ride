@@ -3,6 +3,18 @@ alert("NEW LOGIC ACTIVE");
 
 const vehicles = window.VEHICLES || [];
 
+document.addEventListener("DOMContentLoaded", () => {
+  const advBtn = document.getElementById("advancedBtn");
+  const advBox = document.getElementById("advancedBox");
+
+  if (advBtn && advBox) {
+    advBtn.addEventListener("click", () => {
+      advBox.classList.toggle("hidden");
+    });
+  }
+});
+
+
 /* ======================
    HELPERS
 ====================== */
@@ -77,21 +89,19 @@ function calculateScore(vehicle, user) {
    RECOMMEND
 ====================== */
 function recommend() {
-  const heightInput = document.getElementById("height");
-const weightInput = document.getElementById("weight");
-
-const height = heightInput ? +heightInput.value : 0;
-const weight = weightInput ? +weightInput.value : 0;
-
+  const height = +document.getElementById("height").value;
+  const weight = +document.getElementById("weight").value;
   const type = document.getElementById("type").value;
+
   const usageInput = document.getElementById("usage");
-const frequencyInput = document.getElementById("frequency");
-
-const usage = usageInput ? +usageInput.value : 50;
-const frequency = frequencyInput ? +frequencyInput.value : 50;
-
+  const frequencyInput = document.getElementById("frequency");
   const legHeightInput = document.getElementById("legHeight");
-  const legHeight = legHeightInput ? +legHeightInput.value : null;
+
+  const usage = usageInput ? +usageInput.value : 50;
+  const frequency = frequencyInput ? +frequencyInput.value : 50;
+  const legHeight = legHeightInput && legHeightInput.value
+    ? +legHeightInput.value
+    : null;
 
   if (!height || height < 130 || height > 210) {
     alert("Enter valid height (cm)");
@@ -108,29 +118,35 @@ const frequency = frequencyInput ? +frequencyInput.value : 50;
   const results = document.getElementById("results");
   results.innerHTML = "";
 
-  const filtered = vehicles.filter(v => v.type === type);
+  /* 🔹 SCORE + SORT 🔹 */
+  const scoredVehicles = vehicles
+    .filter(v => v.type === type)
+    .map(v => ({
+      vehicle: v,
+      score: calculateScore(v, user)
+    }))
+    .sort((a, b) => b.score.total - a.score.total);
 
-  if (filtered.length === 0) {
+  if (scoredVehicles.length === 0) {
     results.innerHTML = "<p>No vehicles found.</p>";
     return;
   }
 
-  filtered.forEach(v => {
-    const result = calculateScore(v, user);
+  const winnerScore = scoredVehicles[0].score.total;
 
-    let label = "Not Ideal";
-    if (result.total >= 8) label = "Recommended";
-    else if (result.total >= 5) label = "Consider";
+  scoredVehicles.forEach(({ vehicle, score }, index) => {
+    const isWinner = index === 0;
 
     const card = document.createElement("div");
     card.className = "card";
+    if (isWinner) card.classList.add("winner");
 
     card.innerHTML = `
-      <h3>${v.brand} ${v.model}</h3>
-      <b>Score: ${result.total}/10</b>
-      <p><strong>${label}</strong></p>
+      ${isWinner ? `<div class="winner-badge">Best Match</div>` : ""}
+      <h3>${vehicle.brand} ${vehicle.model}</h3>
+      <b>Score: ${score.total}/10</b>
       <ul>
-        ${result.reasons.map(r => `<li>${r}</li>`).join("")}
+        ${score.reasons.map(r => `<li>${r}</li>`).join("")}
       </ul>
     `;
 
