@@ -136,6 +136,9 @@ function showDetails(vehicle, score) {
     `${vehicle.brand} ${vehicle.model}`;
   document.getElementById("detailScore").innerText = score.total;
 
+   document.getElementById("detailWhy").innerText =
+  buildWhySummary(score);
+
   const ul = document.getElementById("detailReasons");
   ul.innerHTML = "";
   score.reasons.forEach(r => {
@@ -197,18 +200,33 @@ function showCompare() {
 }
 
 function buildMetric(label, text, value, max) {
-  const percent = Math.min((value / 10) * 100, 100);
+  const percent = Math.round((value / max) * 100);
+
+  let cls = "bad";
+  if (percent >= 70) cls = "good";
+  else if (percent >= 40) cls = "ok";
 
   return `
     <div class="metric">
       <div class="metric-label">${label}</div>
       <div class="bar">
-        <span style="width:${percent}%"></span>
+        <span class="${cls}" style="width:${percent}%"></span>
       </div>
       <small>${text}</small>
     </div>
   `;
 }
+
+function buildWhySummary(score) {
+  if (score.total >= 8) {
+    return "Excellent match based on your height, usage pattern and riding frequency.";
+  }
+  if (score.total >= 5) {
+    return "Decent match but some compromises in comfort or usage.";
+  }
+  return "Not ideal for your body fit or riding needs.";
+}
+
 
 function closeCompare() {
   compareList = [];
