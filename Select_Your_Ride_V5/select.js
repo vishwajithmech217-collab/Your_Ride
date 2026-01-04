@@ -1,5 +1,10 @@
 console.log("select.js loaded");
 
+window.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("detailModal")?.classList.add("hidden");
+  document.getElementById("compareModal")?.classList.add("hidden");
+});
+
 const vehicles = window.VEHICLES || [];
 let compareList = [];
 let currentDetail = null;
