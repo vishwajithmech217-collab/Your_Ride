@@ -1,5 +1,5 @@
 console.log("select.js loaded");
-
+alert("NEW LOGIC ACTIVE");
 const vehicles = window.VEHICLES;
 
 /* ======================
