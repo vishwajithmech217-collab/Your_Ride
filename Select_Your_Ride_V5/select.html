@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Select Your Ride</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="select.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="select.css">
 </head>
 
 <body>
@@ -24,8 +24,6 @@
   <select id="type">
     <option value="bike">Bike</option>
     <option value="scooter">Scooter</option>
-    <option value="car">Car</option>
-    <option value="suv">SUV</option>
   </select>
 
   <label>Usage (City ↔ Highway)</label>
@@ -39,13 +37,12 @@
   <div id="advancedBox" class="hidden">
     <label>Leg Height (cm) – Optional</label>
     <input type="number" id="legHeight" placeholder="Eg: 78">
-    <p class="hint">If not entered, it will be auto-calculated</p>
+    <p class="hint">Auto-calculated if not entered</p>
   </div>
 
   <button class="primary" onclick="recommend()">Get Recommendation</button>
 
   <div id="results"></div>
-
 </div>
 
 <!-- DETAILS MODAL -->
@@ -54,17 +51,8 @@
     <h3 id="detailTitle"></h3>
     <p><b>Score:</b> <span id="detailScore"></span>/10</p>
 
-<h4 style="margin-top:14px;">Fit Analysis</h4>
-
-<div class="radar">
-  <div id="radarSeat"></div>
-  <div id="radarUsage"></div>
-  <div id="radarFreq"></div>
-  <div id="radarWeight"></div>
-</div>
-
     <ul id="detailReasons"></ul>
-<p id="detailWhy" style="margin-top:12px; opacity:0.9;"></p>
+
     <button class="secondary" onclick="addToCompare()">Compare</button>
     <button class="primary" onclick="closeDetails()">Close</button>
   </div>
@@ -79,11 +67,7 @@
   </div>
 </div>
 
-<h4 style="margin-top:16px;">Why this suits you</h4>
-<p id="detailAI" style="opacity:0.9; font-size:14px;"></p>
-  
 <script src="data/vehicles.data.js"></script>
 <script src="select.js"></script>
-
 </body>
 </html>
