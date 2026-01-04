@@ -147,6 +147,18 @@ function showDetails(vehicle, score) {
     ul.appendChild(li);
   });
 
+   document.getElementById("radarSeat").innerText =
+  `Seat Fit: ${score.seat}/4`;
+
+document.getElementById("radarUsage").innerText =
+  `Usage Match: ${score.usage}/3`;
+
+document.getElementById("radarFreq").innerText =
+  `Frequency Fit: ${score.freq}/2`;
+
+document.getElementById("radarWeight").innerText =
+  `Weight Safety: ${score.weight}/1`;
+
   document.getElementById("detailModal").classList.remove("hidden");
 }
 
