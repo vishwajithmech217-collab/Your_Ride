@@ -176,19 +176,38 @@ function showCompare() {
   const winner = a.score.total >= b.score.total ? a : b;
 
   [a, b].forEach(item => {
-    const div = document.createElement("div");
-    div.className = "compare-card";
-    if (item === winner) div.classList.add("winner");
+    const card = document.createElement("div");
+    card.className = "compare-card";
+    if (item === winner) card.classList.add("winner");
 
-    div.innerHTML = `
-      <h4>${item.vehicle.brand} ${item.vehicle.model}</h4>
+    card.innerHTML = `
+      <h3>${item.vehicle.brand} ${item.vehicle.model}</h3>
       <b>${item.score.total}/10</b>
-      <p>${item.score.reasons.join("<br>")}</p>
+
+      ${buildMetric("Seat Fit", item.score.reasons[0], item.score.total, 4)}
+      ${buildMetric("Usage Match", item.score.reasons[1], item.score.total, 3)}
+      ${buildMetric("Frequency Fit", item.score.reasons[2], item.score.total, 2)}
+      ${buildMetric("Weight Safety", item.score.reasons[3], item.score.total, 1)}
     `;
-    grid.appendChild(div);
+
+    grid.appendChild(card);
   });
 
   document.getElementById("compareModal").classList.remove("hidden");
+}
+
+function buildMetric(label, text, value, max) {
+  const percent = Math.min((value / 10) * 100, 100);
+
+  return `
+    <div class="metric">
+      <div class="metric-label">${label}</div>
+      <div class="bar">
+        <span style="width:${percent}%"></span>
+      </div>
+      <small>${text}</small>
+    </div>
+  `;
 }
 
 function closeCompare() {
