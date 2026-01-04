@@ -147,6 +147,9 @@ function showDetails(vehicle, score) {
     ul.appendChild(li);
   });
 
+   document.getElementById("detailAI").innerText =
+  aiExplanation(vehicle, currentUser, score);
+
    document.getElementById("radarSeat").innerText =
   `Seat Fit: ${score.seat}/4`;
 
@@ -239,6 +242,29 @@ function buildWhySummary(score) {
   return "Not ideal for your body fit or riding needs.";
 }
 
+function aiExplanation(vehicle, user, score) {
+  let text = `This ${vehicle.type} suits you because `;
+
+  if (score.seat >= 3) {
+    text += "the seat height closely matches your leg reach, ";
+  } else {
+    text += "the seat height may feel challenging, ";
+  }
+
+  if (user.usage >= 50) {
+    text += "your riding is more highway-oriented, ";
+  } else {
+    text += "your riding is more city-focused, ";
+  }
+
+  if (score.weight === 1) {
+    text += "and the vehicle weight is well balanced for your body.";
+  } else {
+    text += "but the weight balance may feel less stable.";
+  }
+
+  return text;
+}
 
 function closeCompare() {
   compareList = [];
