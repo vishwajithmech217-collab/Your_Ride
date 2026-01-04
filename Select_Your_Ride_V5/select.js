@@ -141,13 +141,18 @@ function recommend() {
     if (isWinner) card.classList.add("winner");
 
     card.innerHTML = `
-      ${isWinner ? `<div class="winner-badge">Best Match</div>` : ""}
-      <h3>${vehicle.brand} ${vehicle.model}</h3>
-      <b>Score: ${score.total}/10</b>
-      <ul>
-        ${score.reasons.map(r => `<li>${r}</li>`).join("")}
-      </ul>
-    `;
+  ${isWinner ? `<div class="winner-badge">Best Match</div>` : ""}
+  <h3>${vehicle.brand} ${vehicle.model}</h3>
+  <b>Score: ${score.total}/10</b>
+
+  <button onclick='showDetails(
+    ${JSON.stringify(vehicle)},
+    ${JSON.stringify(score)}
+  )'>
+    Details
+  </button>
+`;
+
 
     results.appendChild(card);
   });
