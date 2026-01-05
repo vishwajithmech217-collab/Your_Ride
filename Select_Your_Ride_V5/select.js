@@ -2,6 +2,29 @@ console.log("select.js loaded");
 
 /* ===== GLOBAL STATE ===== */
 const vehicles = window.VEHICLES || [];
+
+/* ======================
+   INIT VEHICLE TYPES
+====================== */
+function populateVehicleTypes() {
+  const typeSelect = document.getElementById("type");
+  if (!typeSelect) return;
+
+  const types = [...new Set(vehicles.map(v => v.type))];
+
+  typeSelect.innerHTML = "";
+
+  types.forEach(type => {
+    const option = document.createElement("option");
+    option.value = type;
+    option.textContent =
+      type.charAt(0).toUpperCase() + type.slice(1);
+    typeSelect.appendChild(option);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", populateVehicleTypes);
+
 let compareList = [];
 let currentDetail = null;
 
