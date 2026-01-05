@@ -9,17 +9,22 @@
 
 <body>
 
-  <a href="know.html" class="back">← Back</a>
+  <header class="header">
+    <a href="know.html" class="back">← Back</a>
+    <h1 id="modelName">Loading…</h1>
+    <p class="subtitle" id="modelSubtitle"></p>
+  </header>
 
-  <h1 id="modelName">Loading...</h1>
-
-  <div class="card">
-    <p><b>Brand:</b> <span id="brand"></span></p>
-    <p><b>Type:</b> <span id="type"></span></p>
-    <p><b>Segment:</b> <span id="segment"></span></p>
-    <p><b>Engine:</b> <span id="engine"></span></p>
-    <p><b>Launch Year:</b> <span id="year"></span></p>
-  </div>
+  <section class="card">
+    <h2>Basic Information</h2>
+    <div class="info-grid">
+      <div><span>Brand</span><p id="brand"></p></div>
+      <div><span>Type</span><p id="type"></p></div>
+      <div><span>Segment</span><p id="segment"></p></div>
+      <div><span>Engine</span><p id="engine"></p></div>
+      <div><span>Launch Year</span><p id="year"></p></div>
+    </div>
+  </section>
 
   <script src="data/brands.data.js"></script>
   <script src="model.js"></script>
