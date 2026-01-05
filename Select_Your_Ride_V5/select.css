@@ -19,6 +19,25 @@ label {
   margin-top: 14px;
 }
 
+.app-header {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.back-link {
+  position: absolute;
+  left: 0;
+  top: 0;
+  text-decoration: none;
+  color: #9ca3af;
+  font-size: 14px;
+  padding: 6px 10px;
+}
+
+.back-link:hover {
+  color: #22c55e;
+}
+
 input, select {
   width: 100%;
   padding: 12px;
