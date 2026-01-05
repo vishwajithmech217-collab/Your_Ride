@@ -1,32 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
+  const modelId = params.get("id");
 
-  if (!id) return;
+  if (!modelId) {
+    document.body.innerHTML = "<h2>No model selected</h2>";
+    return;
+  }
 
-  const vehicle = VEHICLES.find(v => v.id === id);
-  if (!vehicle) return;
+  let foundModel = null;
+  let foundBrand = null;
 
-  // Title
+  window.BRANDS.forEach(brand => {
+    brand.models.forEach(model => {
+      if (model.id === modelId) {
+        foundModel = model;
+        foundBrand = brand;
+      }
+    });
+  });
+
+  if (!foundModel) {
+    document.body.innerHTML = "<h2>Vehicle not found</h2>";
+    return;
+  }
+
+  // Populate UI
   document.getElementById("modelTitle").textContent =
-    `${vehicle.brand} ${vehicle.model}`;
+    `${foundBrand.brand} ${foundModel.name}`;
 
-  document.getElementById("modelSubtitle").textContent =
-    `${vehicle.type.toUpperCase()} · ${vehicle.segment.replace("_", " ")}`;
-
-  // Overview
   document.getElementById("modelDetails").innerHTML = `
-    <li>Category: ${vehicle.segment.replace("_", " ")}</li>
-    <li>Seat height: ${vehicle.ergonomics.seatHeight} mm</li>
-    <li>Kerb weight: ${vehicle.physical.kerbWeight} kg</li>
-    <li>Skill level: ${vehicle.skillLevel}</li>
+    <li>Category: ${foundModel.category || "-"}</li>
+    <li>Engine: ${foundModel.engine || "-"}</li>
+    <li>Launch year: ${foundModel.launchYear || "-"}</li>
+    <li>Type: ${foundModel.type || "-"}</li>
   `;
-
-  // Usage
-  document.getElementById("usageDetails").innerHTML = `
-    <li>City: ${vehicle.usage.city}/100</li>
-    <li>Highway: ${vehicle.usage.highway}/100</li>
-  `;
-
 });
