@@ -11,11 +11,11 @@ if (!modelId) {
 let foundModel = null;
 let foundBrand = null;
 
-window.BRANDS.forEach(brand => {
-  brand.models.forEach(model => {
-    if (model.id === modelId) {
-      foundModel = model;
-      foundBrand = brand.brand;
+window.BRANDS.forEach(b => {
+  b.models.forEach(m => {
+    if (m.id === modelId) {
+      foundModel = m;
+      foundBrand = b.brand;
     }
   });
 });
@@ -25,10 +25,14 @@ if (!foundModel) {
   throw new Error("Model not found");
 }
 
-// Fill UI
-document.getElementById("modelName").textContent = foundModel.name;
+document.getElementById("modelName").textContent =
+  foundModel.name;
+
+document.getElementById("modelSubtitle").textContent =
+  `${foundBrand} · ${foundModel.segment || "—"}`;
+
 document.getElementById("brand").textContent = foundBrand;
-document.getElementById("type").textContent = foundModel.type;
-document.getElementById("segment").textContent = foundModel.segment;
-document.getElementById("engine").textContent = foundModel.engine;
-document.getElementById("year").textContent = foundModel.launchYear;
+document.getElementById("type").textContent = foundModel.type || "—";
+document.getElementById("segment").textContent = foundModel.segment || "—";
+document.getElementById("engine").textContent = foundModel.engine || "—";
+document.getElementById("year").textContent = foundModel.launchYear || "—";
