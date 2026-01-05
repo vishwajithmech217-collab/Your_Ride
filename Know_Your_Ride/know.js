@@ -48,26 +48,44 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* -------- MODEL → PREVIEW -------- */
-  modelSelect.addEventListener("change", () => {
-    const modelId = modelSelect.value;
-    if (!modelId) return;
 
-    let foundModel = null;
-    let foundBrand = null;
+modelSelect.addEventListener("change", () => {
+  const modelId = modelSelect.value;
+  if (!modelId) return;
 
-    window.BRANDS.forEach(brand => {
-      brand.models.forEach(model => {
-        if (model.id === modelId) {
-          foundModel = model;
-          foundBrand = brand;
-        }
-      });
+  let foundModel = null;
+  let foundBrand = null;
+
+  window.BRANDS.forEach(brand => {
+    brand.models.forEach(model => {
+      if (model.id === modelId) {
+        foundModel = model;
+        foundBrand = brand;
+      }
     });
+  });
 
-    if (!foundModel) {
-      alert("Model not found");
-      return;
-    }
+  if (!foundModel) {
+    alert("Vehicle not found");
+    return;
+  }
+
+  // Update preview
+  document.querySelector(".model-name").textContent =
+    `${foundBrand.brand} · ${foundModel.name}`;
+
+  const previewList = document.querySelector(".preview-card ul");
+  previewList.innerHTML = `
+    <li>Category: ${foundModel.category || "-"}</li>
+    <li>Engine: ${foundModel.engine || "-"}</li>
+    <li>Introduced: ${foundModel.launchYear || "-"}</li>
+  `;
+
+  // 🔗 CONNECT KNOW MORE
+  document.querySelector(".know-more-btn").href =
+    `model.html?id=${foundModel.id}`;
+});
+
 
     // UPDATE PREVIEW
     document.querySelector(".model-name").textContent =
