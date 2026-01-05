@@ -4,18 +4,24 @@
   <meta charset="UTF-8" />
   <title>Vehicle Details</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="know.css" />
+  <link rel="stylesheet" href="model.css" />
 </head>
 
 <body>
 
-<a href="know.html">← Back</a>
+  <a href="know.html" class="back">← Back</a>
 
-<h1 id="modelTitle">Loading...</h1>
+  <h1 id="modelName">Loading...</h1>
 
-<ul id="modelInfo"></ul>
+  <div class="card">
+    <p><b>Brand:</b> <span id="brand"></span></p>
+    <p><b>Type:</b> <span id="type"></span></p>
+    <p><b>Segment:</b> <span id="segment"></span></p>
+    <p><b>Engine:</b> <span id="engine"></span></p>
+    <p><b>Launch Year:</b> <span id="year"></span></p>
+  </div>
 
-<script src="./data/brands.data.js"></script>
-<script src="model.js"></script>
+  <script src="data/brands.data.js"></script>
+  <script src="model.js"></script>
 </body>
 </html>
