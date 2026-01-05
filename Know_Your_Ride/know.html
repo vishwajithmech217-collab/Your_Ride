@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>Know Your Ride</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../model.css" />
 </head>
+
 <body>
 
+<a href="../index.html" class="back">← Home</a>
+
 <h1>Know Your Ride</h1>
+<p class="subtitle">Explore vehicles by brand</p>
 
 <label>Brand</label>
 <select id="brandSelect">
   <option value="">Select brand</option>
 </select>
-
-<br><br>
 
 <label>Model</label>
 <select id="modelSelect" disabled>
@@ -21,12 +26,11 @@
 
 <br><br>
 
-<a id="knowMoreBtn" class="primary" style="display:none">
-  <button>Know more →</button>
+<a id="knowMoreBtn" class="back" style="display:none">
+  Know more →
 </a>
 
 <script src="./data/brands.data.js"></script>
-<script src="./know.js"></script>
-
+<script src="know.js"></script>
 </body>
 </html>
