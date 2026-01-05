@@ -6,7 +6,7 @@ window.BRANDS = [
         id: "yamaha_mt15",
         name: "MT-15",
         type: "bike",
-        segment: "Street",
+        segment: "street",
         engine: "155cc",
         launchYear: 2020
       },
@@ -14,7 +14,7 @@ window.BRANDS = [
         id: "yamaha_r15",
         name: "R15",
         type: "bike",
-        segment: "Sports",
+        segment: "sports",
         engine: "155cc",
         launchYear: 2019
       }
@@ -27,7 +27,7 @@ window.BRANDS = [
         id: "honda_activa",
         name: "Activa",
         type: "scooter",
-        segment: "Scooter",
+        segment: "scooter",
         engine: "110cc",
         launchYear: 2021
       }
