@@ -1,3 +1,9 @@
+alert(
+  window.BRANDS
+    ? "BRANDS loaded: " + window.BRANDS.length
+    : "BRANDS NOT LOADED"
+);
+
 document.addEventListener("DOMContentLoaded", () => {
   console.log("know.js loaded");
   console.log("BRANDS:", window.BRANDS);
