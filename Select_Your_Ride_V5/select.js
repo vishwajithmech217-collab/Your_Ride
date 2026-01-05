@@ -4,6 +4,23 @@ console.log("select.js loaded");
 const vehicles = window.VEHICLES || [];
 
 /* ======================
+   ADVANCED OPTIONS TOGGLE  ✅ PUT HERE
+====================== */
+document.addEventListener("DOMContentLoaded", () => {
+  const advBtn = document.getElementById("advancedBtn");
+  const advBox = document.getElementById("advancedBox");
+
+  if (!advBtn || !advBox) {
+    console.warn("Advanced Options elements missing");
+    return;
+  }
+
+  advBtn.addEventListener("click", () => {
+    advBox.classList.toggle("hidden");
+  });
+});
+
+/* ======================
    INIT VEHICLE TYPES
 ====================== */
 function populateVehicleTypes() {
