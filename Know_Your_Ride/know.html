@@ -1,81 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
   <title>Know Your Ride</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="know.css" />
 </head>
 <body>
 
-<header class="app-header">
-  <a href="../index.html" class="back">← Home</a>
-  <h1>Know Your Ride</h1>
-</header>
+<h1>Know Your Ride</h1>
 
-<section class="selection-flow">
+<label>Brand</label>
+<select id="brandSelect">
+  <option value="">Select brand</option>
+</select>
 
-  <div class="field">
-    <label for="brandSelect">Brand</label>
-    <select id="brandSelect">
-      <option value="">Select brand</option>
-    </select>
-  </div>
+<br><br>
 
-  <div class="field">
-    <label for="typeSelect">Type</label>
-    <select id="typeSelect" disabled>
-      <option value="">Select type</option>
-    </select>
-  </div>
+<label>Model</label>
+<select id="modelSelect" disabled>
+  <option value="">Select model</option>
+</select>
 
-  <div class="field">
-    <label for="modelSelect">Model</label>
-    <select id="modelSelect" disabled>
-      <option value="">Select model</option>
-    </select>
-  </div>
+<br><br>
 
-  <div class="field">
-    <label for="usageSelect">Usage (optional)</label>
-    <select id="usageSelect">
-      <option value="">Any</option>
-      <option value="city">City</option>
-      <option value="highway">Highway</option>
-      <option value="racing">Racing</option>
-      <option value="touring">Touring</option>
-    </select>
-  </div>
-
-</section>
-
-<section class="timeline">
-  <div class="timeline-line">
-    <div class="timeline-point"><span class="year">1955</span></div>
-    <div class="timeline-point"><span class="year">2008</span></div>
-    <div class="timeline-point"><span class="year">2015</span></div>
-    <div class="timeline-point"><span class="year">2023</span></div>
-  </div>
-</section>
-
-<section class="preview-card">
-  <h2>Model Preview</h2>
-  <p class="model-name">Brand · Model Name</p>
-  <ul>
-    <li>Category: —</li>
-    <li>Introduced: —</li>
-    <li>Engine / Power summary</li>
-  </ul>
-  <a href="#" class="know-more-btn">Know more →</a>
-</section>
+<a id="knowMoreBtn" href="#" style="display:none;">
+  <button>Know more →</button>
+</a>
 
 <script src="data/brands.data.js"></script>
 <script src="know.js"></script>
-
-
-<footer class="app-footer">
-  <p>For advanced features → <strong>Install the app</strong></p>
-</footer>
 
 </body>
 </html>
