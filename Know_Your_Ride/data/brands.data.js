@@ -1,26 +1,55 @@
-const BRANDS = [
+window.BRANDS = [
   {
-    name: "Yamaha",
-    founded: 1955,
+    brand: "Yamaha",
     country: "Japan",
-    description: "Performance-driven Japanese manufacturer.",
-    famousModels: ["R15", "MT-15", "FZ"],
-    milestones: [
-      { year: 1955, text: "Yamaha Motor Company founded" },
-      { year: 2008, text: "R15 redefined entry sport bikes" },
-      { year: 2023, text: "MT series global success" }
+    founded: 1955,
+    description: "Yamaha is known for sporty motorcycles and advanced engine tech.",
+    models: [
+      {
+        id: "yamaha_mt15",
+        name: "MT-15",
+        category: "Street / Naked",
+        engine: "155cc, liquid-cooled",
+        power: "18.4 PS",
+        torque: "14.1 Nm",
+        highlights: [
+          "VVA technology",
+          "Aggressive styling",
+          "Lightweight chassis"
+        ],
+        launchYear: 2019
+      },
+      {
+        id: "yamaha_r15_v4",
+        name: "R15 V4",
+        category: "Sport",
+        engine: "155cc, liquid-cooled",
+        highlights: [
+          "Traction control",
+          "Quick shifter",
+          "Race-inspired design"
+        ]
+      }
     ]
   },
+
   {
-    name: "Royal Enfield",
-    founded: 1901,
-    country: "UK / India",
-    description: "Pure motorcycling heritage brand.",
-    famousModels: ["Classic 350", "Bullet", "Interceptor 650"],
-    milestones: [
-      { year: 1901, text: "Brand founded in UK" },
-      { year: 1955, text: "Indian production begins" },
-      { year: 2021, text: "650 twins go global" }
+    brand: "Honda",
+    country: "Japan",
+    founded: 1948,
+    description: "Honda focuses on reliability, refinement, and mass-market vehicles.",
+    models: [
+      {
+        id: "honda_activa_6g",
+        name: "Activa 6G",
+        category: "Scooter",
+        engine: "109cc",
+        highlights: [
+          "Extremely reliable",
+          "Great mileage",
+          "Low maintenance"
+        ]
+      }
     ]
   }
 ];
