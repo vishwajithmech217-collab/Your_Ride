@@ -1,37 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
-  const modelId = params.get("id");
-
-  if (!modelId) {
-    document.body.innerHTML = "<h2>No model selected</h2>";
-    return;
-  }
+  const id = params.get("id");
 
   let foundModel = null;
   let foundBrand = null;
 
-  window.BRANDS.forEach(brand => {
-    brand.models.forEach(model => {
-      if (model.id === modelId) {
-        foundModel = model;
-        foundBrand = brand;
+  window.BRANDS.forEach(b => {
+    b.models.forEach(m => {
+      if (m.id === id) {
+        foundModel = m;
+        foundBrand = b;
       }
     });
   });
 
   if (!foundModel) {
-    document.body.innerHTML = "<h2>Vehicle not found</h2>";
+    document.body.innerHTML = "<h2>Model not found</h2>";
     return;
   }
 
-  // Populate UI
-  document.getElementById("modelTitle").textContent =
+  document.getElementById("title").textContent =
     `${foundBrand.brand} ${foundModel.name}`;
 
-  document.getElementById("modelDetails").innerHTML = `
-    <li>Category: ${foundModel.category || "-"}</li>
-    <li>Engine: ${foundModel.engine || "-"}</li>
-    <li>Launch year: ${foundModel.launchYear || "-"}</li>
-    <li>Type: ${foundModel.type || "-"}</li>
+  document.getElementById("details").innerHTML = `
+    <li>Type: ${foundModel.type}</li>
+    <li>Category: ${foundModel.category}</li>
+    <li>Engine: ${foundModel.engine}</li>
+    <li>Launch Year: ${foundModel.launchYear}</li>
   `;
 });
