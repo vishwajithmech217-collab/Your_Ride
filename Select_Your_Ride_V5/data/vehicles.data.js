@@ -252,7 +252,7 @@ type: "scooter",
 ergonomics: { seatHeight: 773 },
 usage: { city: 88, highway: 42 },
 physical: { kerbWeight: 104 }
-}
+},
 
 /* ================= CARS ================= */
 
