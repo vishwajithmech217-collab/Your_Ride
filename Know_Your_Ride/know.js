@@ -102,5 +102,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
     previewCard.classList.remove("hidden");
   });
+/* =========================
+     TIMELINE LOGIC
+  ========================== */
 
+  const timelineWrapper = document.getElementById("timelineWrapper");
+  const timelineSlider  = document.getElementById("timelineSlider");
+  const timelinePoints  = document.querySelectorAll(".timeline-point");
+
+  /* BRAND SELECTED → SHOW SLIDER */
+  brandSelect.addEventListener("change", () => {
+    timelineWrapper.classList.remove("hidden");
+    timelineSlider.disabled = false;
+
+    timelinePoints.forEach(p =>
+      p.classList.remove("active")
+    );
+  });
+
+  /* MODEL SELECTED → LOCK & HIGHLIGHT */
+  modelSelect.addEventListener("change", () => {
+
+    const brandObj = window.BRANDS.find(
+      b => b.brand === brandSelect.value
+    );
+    if (!brandObj) return;
+
+    const modelObj = brandObj.models.find(
+      m => m.id === modelSelect.value
+    );
+    if (!modelObj || !modelObj.era) return;
+
+    timelineSlider.disabled = true;
+
+    timelinePoints.forEach(p => {
+      p.classList.toggle(
+        "active",
+        p.dataset.era === modelObj.era
+      );
+    });
+
+  });
 });
