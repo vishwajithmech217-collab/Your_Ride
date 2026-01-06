@@ -32,7 +32,28 @@
   <select id="modelSelect" disabled>
     <option value="">Select model</option>
   </select>
+<!-- TIMELINE -->
+<div class="timeline-wrapper hidden" id="timelineWrapper">
 
+  <!-- SLIDER -->
+  <input
+    type="range"
+    min="0"
+    max="100"
+    value="50"
+    id="timelineSlider"
+    class="timeline-slider"
+  />
+
+  <!-- DOTS -->
+  <div class="timeline">
+    <div class="timeline-point" data-era="classic"></div>
+    <div class="timeline-point" data-era="modern"></div>
+    <div class="timeline-point" data-era="bs6"></div>
+    <div class="timeline-point" data-era="electric"></div>
+  </div>
+
+</div>
   <!-- PREVIEW CARD -->
   <div class="preview-card hidden" id="previewCard">
     <h3 class="model-name">Brand · Model</h3>
