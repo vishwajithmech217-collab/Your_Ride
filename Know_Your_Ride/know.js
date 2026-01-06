@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
    TIMELINE CONTROL
 ========================= */
 
-const timelineWrapper = document.getElementById("timeline");
+timelineWrapper.classList.remove("hidden");
 const timelineSlider  = document.getElementById("timelineSlider");
 const timelinePoints  = document.querySelectorAll(".timeline-point");
 
