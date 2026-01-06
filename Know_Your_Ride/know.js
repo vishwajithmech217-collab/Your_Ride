@@ -12,7 +12,44 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("Required elements or data missing");
     return;
   }
+/* ---------- MODEL → PREVIEW ---------- */
+modelSelect.addEventListener("change", () => {
+  const selectedId = modelSelect.value;
+  if (!selectedId) return;
 
+  let foundBrand = null;
+  let foundModel = null;
+
+  window.BRANDS.forEach(brand => {
+    brand.models.forEach(model => {
+      if (model.id === selectedId) {
+        foundBrand = brand;
+        foundModel = model;
+      }
+    });
+  });
+
+  if (!foundModel) return;
+
+  // 🔹 UPDATE PREVIEW TEXT
+  document.querySelector(".model-name").textContent =
+    `${foundBrand.brand} · ${foundModel.name}`;
+
+  document.querySelector(".category").textContent =
+    `Category: ${foundModel.category}`;
+
+  document.querySelector(".engine").textContent =
+    `Engine: ${foundModel.engine}`;
+
+  document.querySelector(".launch").textContent =
+    `Launched: ${foundModel.launchYear}`;
+
+  // 🔹 KNOW MORE LINK
+  const knowBtn = document.querySelector(".know-more-btn");
+  if (knowBtn) {
+    knowBtn.href = `model.html?id=${foundModel.id}`;
+  }
+});
   /* ---------- LOAD BRANDS ---------- */
   brandSelect.innerHTML = `<option value="">Select brand</option>`;
   window.BRANDS.forEach(b => {
