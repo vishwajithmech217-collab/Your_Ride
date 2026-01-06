@@ -1,14 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("know.js loaded");
 
+  /* =====================
+     DOM ELEMENTS
+  ===================== */
   const brandSelect = document.getElementById("brandSelect");
   const typeSelect = document.getElementById("typeSelect");
   const modelSelect = document.getElementById("modelSelect");
   const previewCard = document.getElementById("previewCard");
 
-  /* ===== LOAD BRANDS ===== */
-  brandSelect.innerHTML = `<option value="">Select brand</option>`;
+  const timelineWrapper = document.getElementById("timelineWrapper");
+  const timelineSlider = document.getElementById("timelineSlider");
+  const timelinePoints = document.querySelectorAll(".timeline-point");
 
+  if (!brandSelect || !typeSelect || !modelSelect || !window.BRANDS) {
+    console.error("Missing required elements or BRANDS data");
+    return;
+  }
+
+  /* =====================
+     ERA → SLIDER POSITION
+  ===================== */
+  const ERA_POSITION = {
+    classic: 10,
+    modern: 40,
+    bs6: 70,
+    electric: 95
+  };
+
+  /* =====================
+     LOAD BRANDS
+  ===================== */
+  brandSelect.innerHTML = `<option value="">Select brand</option>`;
   window.BRANDS.forEach(b => {
     const opt = document.createElement("option");
     opt.value = b.brand;
@@ -16,13 +39,22 @@ document.addEventListener("DOMContentLoaded", () => {
     brandSelect.appendChild(opt);
   });
 
-  /* ===== BRAND → TYPE ===== */
+  /* =====================
+     BRAND → TYPE
+  ===================== */
   brandSelect.addEventListener("change", () => {
     typeSelect.innerHTML = `<option value="">Select type</option>`;
     modelSelect.innerHTML = `<option value="">Select model</option>`;
     typeSelect.disabled = true;
     modelSelect.disabled = true;
     previewCard.classList.add("hidden");
+
+    if (timelineWrapper) {
+      timelineWrapper.classList.remove("hidden");
+      timelineSlider.disabled = false;
+      timelineSlider.value = 50;
+      timelinePoints.forEach(p => p.classList.remove("active"));
+    }
 
     const brandObj = window.BRANDS.find(
       b => b.brand === brandSelect.value
@@ -41,7 +73,9 @@ document.addEventListener("DOMContentLoaded", () => {
     typeSelect.disabled = false;
   });
 
-  /* ===== TYPE → MODEL ===== */
+  /* =====================
+     TYPE → MODEL
+  ===================== */
   typeSelect.addEventListener("change", () => {
     modelSelect.innerHTML = `<option value="">Select model</option>`;
     modelSelect.disabled = true;
@@ -66,7 +100,9 @@ document.addEventListener("DOMContentLoaded", () => {
     modelSelect.disabled = false;
   });
 
-  /* ===== MODEL → PREVIEW ===== */
+  /* =====================
+     MODEL → PREVIEW + TIMELINE LOCK
+  ===================== */
   modelSelect.addEventListener("change", () => {
     const modelId = modelSelect.value;
     if (!modelId) return;
@@ -85,127 +121,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!foundModel) return;
 
+    /* PREVIEW UPDATE */
     document.querySelector(".model-name").textContent =
       `${foundBrand.brand} · ${foundModel.name}`;
 
     document.getElementById("previewCategory").textContent =
-      foundModel.category;
+      foundModel.category || "—";
 
     document.getElementById("previewEngine").textContent =
-      foundModel.engine;
+      foundModel.engine || "—";
 
     document.getElementById("previewYear").textContent =
-      foundModel.launchYear;
+      foundModel.launchYear || "—";
 
     document.querySelector(".know-more-btn").href =
       `model.html?id=${foundModel.id}`;
 
     previewCard.classList.remove("hidden");
-  });
-/* =========================
-     TIMELINE LOGIC
-  ========================== */
 
-  const timelineWrapper = document.getElementById("timelineWrapper");
-  const timelineSlider  = document.getElementById("timelineSlider");
-  const timelinePoints  = document.querySelectorAll(".timeline-point");
+    /* TIMELINE LOCK */
+    if (foundModel.era && ERA_POSITION[foundModel.era] && timelineWrapper) {
+      timelineSlider.value = ERA_POSITION[foundModel.era];
+      timelineSlider.disabled = true;
 
-  /* BRAND SELECTED → SHOW SLIDER */
-  brandSelect.addEventListener("change", () => {
-    timelineWrapper.classList.remove("hidden");
-    timelineSlider.disabled = false;
-
-    timelinePoints.forEach(p =>
-      p.classList.remove("active")
-    );
-  });
-
-  /* MODEL SELECTED → LOCK & HIGHLIGHT */
-  modelSelect.addEventListener("change", () => {
-
-    const brandObj = window.BRANDS.find(
-      b => b.brand === brandSelect.value
-    );
-    if (!brandObj) return;
-
-    const modelObj = brandObj.models.find(
-      m => m.id === modelSelect.value
-    );
-    if (!modelObj || !modelObj.era) return;
-
-    timelineSlider.disabled = true;
-
-    timelinePoints.forEach(p => {
-      p.classList.toggle(
-        "active",
-        p.dataset.era === modelObj.era
+      timelinePoints.forEach(p =>
+        p.classList.toggle(
+          "active",
+          p.dataset.era === foundModel.era
+        )
       );
-    });
-
+    }
   });
-
-/* =========================
-   TIMELINE CONTROL
-========================= */
-
-timelineWrapper.classList.remove("hidden");
-const timelineSlider  = document.getElementById("timelineSlider");
-const timelinePoints  = document.querySelectorAll(".timeline-point");
-
-const ERA_POSITION = {
-  classic: 10,
-  modern: 40,
-  bs6: 70,
-  electric: 95
-};
-
-/* SHOW TIMELINE ON BRAND */
-brandSelect.addEventListener("change", () => {
-  timelineWrapper.classList.remove("hidden");
-  timelineSlider.disabled = false;
-  timelineSlider.value = 50;
-
-  timelinePoints.forEach(p => p.classList.remove("active"));
-});
-
-/* LOCK & MOVE ON MODEL */
-modelSelect.addEventListener("change", () => {
-
-  const brandObj = BRANDS.find(b => b.brand === brandSelect.value);
-  if (!brandObj) return;
-
-  const modelObj = brandObj.models.find(
-    m => m.id === modelSelect.value
-  );
-  if (!modelObj || !modelObj.era) return;
-
-  const pos = ERA_POSITION[modelObj.era];
-  timelineSlider.value = pos;
-  timelineSlider.disabled = true;
-
-  timelinePoints.forEach(p =>
-    p.classList.toggle(
-      "active",
-      p.dataset.era === modelObj.era
-    )
-  );
-
-  /* PREVIEW UPDATE */
-  document.getElementById("previewCard").classList.remove("hidden");
-  document.querySelector(".model-name").textContent =
-    `${brandObj.brand} · ${modelObj.name}`;
-
-  document.getElementById("previewCategory").textContent =
-    modelObj.category;
-
-  document.getElementById("previewEngine").textContent =
-    modelObj.engine;
-
-  document.getElementById("previewYear").textContent =
-    modelObj.launchYear;
-
-  document.querySelector(".know-more-btn").href =
-    `model.html?id=${modelObj.id}`;
-});
-
 });
