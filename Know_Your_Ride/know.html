@@ -8,45 +8,47 @@
 </head>
 
 <body>
-  <div class="app-header">
-    <a href="../index.html" class="back-link">← Home</a>
+
+<div class="app-header">
+  <a href="../index.html" class="back-link">← Home</a>
+</div>
+
+<h1>Know Your Ride</h1>
+<p class="subtitle">Explore details of any vehicle</p>
+
+<div class="container">
+
+  <label>Brand</label>
+  <select id="brandSelect">
+    <option value="">Select brand</option>
+  </select>
+
+  <label>Type</label>
+  <select id="typeSelect" disabled>
+    <option value="">Select type</option>
+  </select>
+
+  <label>Model</label>
+  <select id="modelSelect" disabled>
+    <option value="">Select model</option>
+  </select>
+
+  <!-- PREVIEW CARD -->
+  <div class="preview-card hidden" id="previewCard">
+    <h3 class="model-name">Brand · Model</h3>
+
+    <ul>
+      <li><b>Category:</b> <span id="previewCategory">—</span></li>
+      <li><b>Engine:</b> <span id="previewEngine">—</span></li>
+      <li><b>Launched:</b> <span id="previewYear">—</span></li>
+    </ul>
+
+    <a class="primary-btn know-more-btn" href="#">Know more →</a>
   </div>
 
-  <h1>Know Your Ride</h1>
-  <p class="subtitle">Explore details of any vehicle</p>
+</div>
 
-  <div class="container">
-
-    <label>Brand</label>
-    <select id="brandSelect">
-      <option value="">Select brand</option>
-    </select>
-
-    <label>Type</label>
-    <select id="typeSelect" disabled>
-      <option value="">Select type</option>
-    </select>
-
-    <label>Model</label>
-    <select id="modelSelect" disabled>
-      <option value="">Select model</option>
-    </select>
-
-    <!-- PREVIEW -->
-    <div class="preview-card hidden" id="previewCard">
-      <h3 class="model-name">Brand · Model</h3>
-      <ul>
-        <li><b>Category:</b> <span id="previewCategory">—</span></li>
-        <li><b>Engine:</b> <span id="previewEngine">—</span></li>
-        <li><b>Launched:</b> <span id="previewYear">—</span></li>
-      </ul>
-
-      <a class="primary-btn know-more-btn" href="#">Know more →</a>
-    </div>
-
-  </div>
-
-  <script src="data/brands.data.js"></script>
-  <script src="know.js"></script>
+<script src="data/brands.data.js"></script>
+<script src="know.js"></script>
 </body>
 </html>
