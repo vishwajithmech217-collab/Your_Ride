@@ -24,28 +24,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ---------- BRAND → TYPE ---------- */
   brandSelect.addEventListener("change", () => {
-    typeSelect.innerHTML = `<option value="">Select type</option>`;
-    modelSelect.innerHTML = `<option value="">Select model</option>`;
-    typeSelect.disabled = true;
-    modelSelect.disabled = true;
-    previewCard.classList.add("hidden");
+  console.log("Selected brand:", brandSelect.value);
 
-    const brand = window.BRANDS.find(
-      b => b.brand === brandSelect.value
-    );
-    if (!brand) return;
+  typeSelect.innerHTML = `<option value="">Select type</option>`;
+  typeSelect.disabled = true;
 
-    const types = [...new Set(brand.models.map(m => m.type))];
+  const brandObj = window.BRANDS.find(
+    b => b.brand === brandSelect.value
+  );
 
-    types.forEach(t => {
-      const opt = document.createElement("option");
-      opt.value = t;
-      opt.textContent = t;
-      typeSelect.appendChild(opt);
-    });
+  console.log("Brand object:", brandObj);
 
-    typeSelect.disabled = false;
+  if (!brandObj) return;
+
+  const types = [...new Set(brandObj.models.map(m => m.type))];
+  console.log("Types found:", types);
+
+  types.forEach(t => {
+    const opt = document.createElement("option");
+    opt.value = t;
+    opt.textContent = t;
+    typeSelect.appendChild(opt);
   });
+
+  typeSelect.disabled = false;
+});
 
   /* ---------- TYPE → MODEL ---------- */
   typeSelect.addEventListener("change", () => {
