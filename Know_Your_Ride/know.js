@@ -1,20 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("know.js loaded");
 
-  console.log("brandSelect:", document.getElementById("brandSelect"));
-  console.log("typeSelect:", document.getElementById("typeSelect"));
-  console.log("modelSelect:", document.getElementById("modelSelect"));
-  console.log("BRANDS:", window.BRANDS);
-});
+  const brandSelect = document.getElementById("brandSelect");
+  const typeSelect = document.getElementById("typeSelect");
+  const modelSelect = document.getElementById("modelSelect");
 
-  const previewCard = document.getElementById("previewCard");
-  const modelName = document.querySelector(".model-name");
-  const previewCategory = document.getElementById("previewCategory");
-  const previewEngine = document.getElementById("previewEngine");
-  const previewYear = document.getElementById("previewYear");
-  const knowMoreBtn = document.querySelector(".know-more-btn");
+  console.log("brandSelect:", brandSelect);
+  console.log("BRANDS:", window.BRANDS);
+
+  if (!brandSelect || !window.BRANDS) {
+    console.error("Required elements or data missing");
+    return;
+  }
 
   /* ---------- LOAD BRANDS ---------- */
+  brandSelect.innerHTML = `<option value="">Select brand</option>`;
   window.BRANDS.forEach(b => {
     const opt = document.createElement("option");
     opt.value = b.brand;
@@ -24,44 +24,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ---------- BRAND → TYPE ---------- */
   brandSelect.addEventListener("change", () => {
-  console.log("Selected brand:", brandSelect.value);
+    typeSelect.innerHTML = `<option value="">Select type</option>`;
+    modelSelect.innerHTML = `<option value="">Select model</option>`;
+    typeSelect.disabled = true;
+    modelSelect.disabled = true;
 
-  typeSelect.innerHTML = `<option value="">Select type</option>`;
-  typeSelect.disabled = true;
+    const brandObj = window.BRANDS.find(
+      b => b.brand === brandSelect.value
+    );
 
-  const brandObj = window.BRANDS.find(
-    b => b.brand === brandSelect.value
-  );
+    if (!brandObj) return;
 
-  console.log("Brand object:", brandObj);
+    const types = [...new Set(brandObj.models.map(m => m.type))];
 
-  if (!brandObj) return;
+    types.forEach(t => {
+      const opt = document.createElement("option");
+      opt.value = t;
+      opt.textContent = t;
+      typeSelect.appendChild(opt);
+    });
 
-  const types = [...new Set(brandObj.models.map(m => m.type))];
-  console.log("Types found:", types);
-
-  types.forEach(t => {
-    const opt = document.createElement("option");
-    opt.value = t;
-    opt.textContent = t;
-    typeSelect.appendChild(opt);
+    typeSelect.disabled = false;
   });
-
-  typeSelect.disabled = false;
-});
 
   /* ---------- TYPE → MODEL ---------- */
   typeSelect.addEventListener("change", () => {
     modelSelect.innerHTML = `<option value="">Select model</option>`;
     modelSelect.disabled = true;
-    previewCard.classList.add("hidden");
 
-    const brand = window.BRANDS.find(
+    const brandObj = window.BRANDS.find(
       b => b.brand === brandSelect.value
     );
-    if (!brand) return;
+    if (!brandObj) return;
 
-    const models = brand.models.filter(
+    const models = brandObj.models.filter(
       m => m.type === typeSelect.value
     );
 
@@ -73,27 +69,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     modelSelect.disabled = false;
-  });
-
-  /* ---------- MODEL → PREVIEW ---------- */
-  modelSelect.addEventListener("change", () => {
-    const brand = window.BRANDS.find(
-      b => b.brand === brandSelect.value
-    );
-    if (!brand) return;
-
-    const model = brand.models.find(
-      m => m.id === modelSelect.value
-    );
-    if (!model) return;
-
-    modelName.textContent = `${brand.brand} · ${model.name}`;
-    previewCategory.textContent = model.category;
-    previewEngine.textContent = model.engine;
-    previewYear.textContent = model.launchYear;
-
-    knowMoreBtn.href = `model.html?id=${model.id}`;
-
-    previewCard.classList.remove("hidden");
   });
 });
