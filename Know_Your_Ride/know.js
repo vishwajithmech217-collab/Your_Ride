@@ -143,4 +143,69 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   });
+
+/* =========================
+   TIMELINE CONTROL
+========================= */
+
+const timelineWrapper = document.getElementById("timelineWrapper");
+const timelineSlider  = document.getElementById("timelineSlider");
+const timelinePoints  = document.querySelectorAll(".timeline-point");
+
+const ERA_POSITION = {
+  classic: 10,
+  modern: 40,
+  bs6: 70,
+  electric: 95
+};
+
+/* SHOW TIMELINE ON BRAND */
+brandSelect.addEventListener("change", () => {
+  timelineWrapper.classList.remove("hidden");
+  timelineSlider.disabled = false;
+  timelineSlider.value = 50;
+
+  timelinePoints.forEach(p => p.classList.remove("active"));
+});
+
+/* LOCK & MOVE ON MODEL */
+modelSelect.addEventListener("change", () => {
+
+  const brandObj = BRANDS.find(b => b.brand === brandSelect.value);
+  if (!brandObj) return;
+
+  const modelObj = brandObj.models.find(
+    m => m.id === modelSelect.value
+  );
+  if (!modelObj || !modelObj.era) return;
+
+  const pos = ERA_POSITION[modelObj.era];
+  timelineSlider.value = pos;
+  timelineSlider.disabled = true;
+
+  timelinePoints.forEach(p =>
+    p.classList.toggle(
+      "active",
+      p.dataset.era === modelObj.era
+    )
+  );
+
+  /* PREVIEW UPDATE */
+  document.getElementById("previewCard").classList.remove("hidden");
+  document.querySelector(".model-name").textContent =
+    `${brandObj.brand} · ${modelObj.name}`;
+
+  document.getElementById("previewCategory").textContent =
+    modelObj.category;
+
+  document.getElementById("previewEngine").textContent =
+    modelObj.engine;
+
+  document.getElementById("previewYear").textContent =
+    modelObj.launchYear;
+
+  document.querySelector(".know-more-btn").href =
+    `model.html?id=${modelObj.id}`;
+});
+
 });
