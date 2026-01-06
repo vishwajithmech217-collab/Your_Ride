@@ -92,3 +92,26 @@ select {
 .timeline-wrapper.hidden {
   display: none;
 }
+
+.timeline-wrapper {
+  margin-top: 20px;
+}
+
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.timeline-point {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #374151;
+  transition: 0.3s;
+}
+
+.timeline-point.active {
+  background: #22c55e;
+  box-shadow: 0 0 10px #22c55e;
+}
