@@ -62,3 +62,33 @@ select {
   text-decoration: none;
   font-size: 14px;
 }
+.timeline-wrapper {
+  margin: 24px 0;
+}
+
+.timeline-slider {
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.timeline-point {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #374151;
+}
+
+.timeline-point.active {
+  background: #22c55e;
+  box-shadow: 0 0 10px rgba(34,197,94,.6);
+}
+
+.timeline-wrapper.hidden {
+  display: none;
+}
