@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("know.js loaded");
-  console.log("BRANDS:", window.BRANDS);
 
-  const brandSelect = document.getElementById("brandSelect");
-  const typeSelect = document.getElementById("typeSelect");
-  const modelSelect = document.getElementById("modelSelect");
+  console.log("brandSelect:", document.getElementById("brandSelect"));
+  console.log("typeSelect:", document.getElementById("typeSelect"));
+  console.log("modelSelect:", document.getElementById("modelSelect"));
+  console.log("BRANDS:", window.BRANDS);
+});
 
   const previewCard = document.getElementById("previewCard");
   const modelName = document.querySelector(".model-name");
