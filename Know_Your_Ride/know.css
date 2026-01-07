@@ -1,12 +1,16 @@
 body {
   font-family: system-ui, sans-serif;
-  background: #0f172a;
+  background: linear-gradient(180deg, #020617, #0f172a);
   color: #e5e7eb;
   padding: 20px;
 }
 
 h1, .subtitle {
   text-align: center;
+}
+
+.subtitle {
+  opacity: 0.7;
 }
 
 .container {
@@ -16,7 +20,8 @@ h1, .subtitle {
 
 label {
   display: block;
-  margin-top: 14px;
+  margin-top: 16px;
+  font-size: 14px;
 }
 
 select {
@@ -29,110 +34,38 @@ select {
   color: #e5e7eb;
 }
 
-.preview-card {
-  background: #020617;
-  margin-top: 20px;
-  padding: 16px;
-  border-radius: 14px;
+.app-header {
+  margin-bottom: 12px;
 }
 
-.preview-card ul {
-  padding-left: 16px;
-  font-size: 14px;
-}
-
-.primary-btn {
-  display: block;
-  margin-top: 16px;
-  text-align: center;
-  padding: 12px;
-  border-radius: 10px;
-  background: #22c55e;
-  color: #022c22;
+.back-link {
+  color: #9ca3af;
   text-decoration: none;
-  font-weight: bold;
+}
+
+.back-link:hover {
+  color: #22c55e;
 }
 
 .hidden {
   display: none;
 }
 
-.back-link {
-  color: #9ca3af;
-  text-decoration: none;
-  font-size: 14px;
-}
-.timeline-wrapper {
-  margin: 24px 0;
-}
-
-.timeline-slider {
-  width: 100%;
-  margin-bottom: 14px;
-}
-
-.timeline {
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-}
-
-.timeline-point {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #374151;
-}
-
-.timeline-point.active {
-  background: #22c55e;
-  box-shadow: 0 0 10px rgba(34,197,94,.6);
-}
-
-.timeline-wrapper.hidden {
-  display: none;
-}
-
-.timeline-wrapper {
-  margin-top: 20px;
-}
-
-.timeline {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 12px;
-}
-
-.timeline-point {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #374151;
-  transition: 0.3s;
-}
-
-.timeline-point.active {
-  background: #22c55e;
-  box-shadow: 0 0 10px #22c55e;
-}
-
 /* ===== TIMELINE ===== */
+
 .timeline {
   margin-top: 30px;
 }
 
 .timeline-track {
-  position: relative;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 12px;
-  padding: 0 6px;
+  margin-bottom: 8px;
 }
 
 .timeline-point {
   font-size: 12px;
-  opacity: 0.5;
-  transition: all 0.3s ease;
+  opacity: 0.4;
 }
 
 .timeline-point.active {
@@ -143,4 +76,28 @@ select {
 
 #timelineSlider {
   width: 100%;
+}
+
+/* ===== PREVIEW ===== */
+
+.preview-card {
+  background: #020617;
+  padding: 16px;
+  border-radius: 14px;
+  margin-top: 24px;
+}
+
+.preview-card ul {
+  padding-left: 18px;
+}
+
+.primary-btn {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 12px 16px;
+  background: #22c55e;
+  color: #022c22;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 600;
 }
