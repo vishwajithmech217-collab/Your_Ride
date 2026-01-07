@@ -122,24 +122,25 @@ select {
 }
 
 .timeline-track {
+  position: relative;
   display: flex;
   justify-content: space-between;
   margin-bottom: 12px;
+  padding: 0 6px;
 }
 
 .timeline-point {
   font-size: 12px;
-  opacity: 0.4;
-  transition: 0.3s;
+  opacity: 0.5;
+  transition: all 0.3s ease;
 }
 
 .timeline-point.active {
   color: #22c55e;
   opacity: 1;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 #timelineSlider {
   width: 100%;
-  accent-color: #22c55e;
 }
