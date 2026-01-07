@@ -33,7 +33,25 @@
     <option value="">Select model</option>
   </select>
 <!-- TIMELINE -->
-<div class="timeline-wrapper hidden" id="timelineWrapper">
+<!-- TIMELINE -->
+<div id="timelineWrapper" class="timeline hidden">
+
+  <div class="timeline-track">
+    <div class="timeline-point" data-era="classic">Classic</div>
+    <div class="timeline-point" data-era="modern">Modern</div>
+    <div class="timeline-point" data-era="bs6">BS6</div>
+    <div class="timeline-point" data-era="electric">EV</div>
+  </div>
+
+  <input
+    type="range"
+    id="timelineSlider"
+    min="0"
+    max="100"
+    value="50"
+  />
+
+</div>
 
   <!-- SLIDER -->
   <input
