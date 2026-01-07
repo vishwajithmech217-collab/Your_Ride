@@ -9,92 +9,58 @@
 
 <body>
 
-<div class="app-header">
-  <a href="../index.html" class="back-link">← Home</a>
-</div>
-
-<h1>Know Your Ride</h1>
-<p class="subtitle">Explore details of any vehicle</p>
-
-<div class="container">
-
-  <label>Brand</label>
-  <select id="brandSelect">
-    <option value="">Select brand</option>
-  </select>
-
-  <label>Type</label>
-  <select id="typeSelect" disabled>
-    <option value="">Select type</option>
-  </select>
-
-  <label>Model</label>
-  <select id="modelSelect" disabled>
-    <option value="">Select model</option>
-  </select>
-<!-- TIMELINE -->
-<!-- TIMELINE -->
-<div id="timelineWrapper" class="timeline hidden">
-
-  <div class="timeline-track">
-    <div class="timeline-point" data-era="classic">Classic</div>
-    <div class="timeline-point" data-era="modern">Modern</div>
-    <div class="timeline-point" data-era="bs6">BS6</div>
-    <div class="timeline-point" data-era="electric">EV</div>
+  <div class="app-header">
+    <a href="../index.html" class="back-link">← Home</a>
   </div>
 
-  <input
-    type="range"
-    id="timelineSlider"
-    min="0"
-    max="100"
-    value="50"
-  />
+  <h1>Know Your Ride</h1>
+  <p class="subtitle">Explore details of any vehicle</p>
 
-</div>
+  <div class="container">
 
-  <!-- DOTS -->
-  <div class="timeline">
-    <div class="timeline-point" data-era="classic"></div>
-    <div class="timeline-point" data-era="modern"></div>
-    <div class="timeline-point" data-era="bs6"></div>
-    <div class="timeline-point" data-era="electric"></div>
+    <label>Brand</label>
+    <select id="brandSelect">
+      <option value="">Select brand</option>
+    </select>
+
+    <label>Type</label>
+    <select id="typeSelect" disabled>
+      <option value="">Select type</option>
+    </select>
+
+    <label>Model</label>
+    <select id="modelSelect" disabled>
+      <option value="">Select model</option>
+    </select>
+
+    <!-- TIMELINE -->
+    <div id="timelineWrapper" class="timeline hidden">
+      <div class="timeline-track">
+        <span class="timeline-point" data-era="classic">Classic</span>
+        <span class="timeline-point" data-era="modern">Modern</span>
+        <span class="timeline-point" data-era="bs6">BS6</span>
+        <span class="timeline-point" data-era="electric">EV</span>
+      </div>
+      <input type="range" id="timelineSlider" min="0" max="100" value="50" disabled>
+    </div>
+
+    <!-- PREVIEW -->
+    <div class="preview-card hidden" id="previewCard">
+      <h3 class="model-name">Brand · Model</h3>
+      <ul>
+        <li><b>Category:</b> <span id="previewCategory">—</span></li>
+        <li><b>Engine:</b> <span id="previewEngine">—</span></li>
+        <li><b>Launched:</b> <span id="previewYear">—</span></li>
+      </ul>
+
+      <a class="primary-btn know-more-btn" href="#">Know more →</a>
+    </div>
+
   </div>
 
-</div>
-  <!-- PREVIEW CARD -->
-  <div class="preview-card hidden" id="previewCard">
-    <h3 class="model-name">Brand · Model</h3>
+  <!-- DATA FIRST -->
+  <script src="data/brands.data.js"></script>
+  <script src="know.js"></script>
 
-    <ul>
-      <li><b>Category:</b> <span id="previewCategory">—</span></li>
-      <li><b>Engine:</b> <span id="previewEngine">—</span></li>
-      <li><b>Launched:</b> <span id="previewYear">—</span></li>
-    </ul>
-
-    <a class="primary-btn know-more-btn" href="#">Know more →</a>
-  </div>
-
-</div>
-<div class="timeline-wrapper hidden" id="timelineWrapper">
-
-  <input
-    type="range"
-    id="timelineSlider"
-    min="0"
-    max="100"
-    value="50"
-  />
-
-  <div class="timeline">
-    <div class="timeline-point" data-era="classic"></div>
-    <div class="timeline-point" data-era="modern"></div>
-    <div class="timeline-point" data-era="bs6"></div>
-    <div class="timeline-point" data-era="electric"></div>
-  </div>
-
-</div>
-<script src="data/brands.data.js"></script>
-<script src="know.js"></script>
 </body>
 </html>
