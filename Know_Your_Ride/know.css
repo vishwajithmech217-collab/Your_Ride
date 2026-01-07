@@ -115,3 +115,31 @@ select {
   background: #22c55e;
   box-shadow: 0 0 10px #22c55e;
 }
+
+/* ===== TIMELINE ===== */
+.timeline {
+  margin-top: 30px;
+}
+
+.timeline-track {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.timeline-point {
+  font-size: 12px;
+  opacity: 0.4;
+  transition: 0.3s;
+}
+
+.timeline-point.active {
+  color: #22c55e;
+  opacity: 1;
+  font-weight: bold;
+}
+
+#timelineSlider {
+  width: 100%;
+  accent-color: #22c55e;
+}
