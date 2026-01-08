@@ -54,28 +54,29 @@ select {
 /* ===== TIMELINE ===== */
 
 .timeline {
-  margin-top: 30px;
+  margin-top: 24px;
 }
 
-.timeline-track {
+.timeline input[type="range"] {
+  width: 100%;
+}
+
+.timeline-points {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-top: 10px;
 }
 
 .timeline-point {
-  font-size: 12px;
-  opacity: 0.4;
+  width: 10px;
+  height: 10px;
+  background: #374151;
+  border-radius: 50%;
 }
 
 .timeline-point.active {
-  color: #22c55e;
-  opacity: 1;
-  font-weight: 600;
-}
-
-#timelineSlider {
-  width: 100%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
 }
 
 /* ===== PREVIEW ===== */
