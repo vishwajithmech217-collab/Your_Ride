@@ -38,3 +38,20 @@ h1 {
   border-radius: 10px;
   margin-bottom: 10px;
 }
+
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+}
+
+.spec-table td {
+  padding: 10px;
+  background: #020617;
+  border-bottom: 1px solid #1f2937;
+}
+
+.spec-table td:first-child {
+  color: #9ca3af;
+  width: 45%;
+}
