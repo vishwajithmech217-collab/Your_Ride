@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const brandSelect = document.getElementById("brandSelect");
-  const typeSelect = document.getElementById("typeSelect");
-  const modelSelect = document.getElementById("modelSelect");
-  const previewCard = document.getElementById("previewCard");
+  const brandSelect   = document.getElementById("brandSelect");
+  const typeSelect    = document.getElementById("typeSelect");
+  const modelSelect   = document.getElementById("modelSelect");
+  const previewCard   = document.getElementById("previewCard");
 
   const timelineWrapper = document.getElementById("timelineWrapper");
-  const timelineSlider = document.getElementById("timelineSlider");
-  const timelinePoints = document.querySelectorAll(".timeline-point");
+  const timelineSlider  = document.getElementById("timelineSlider");
+  const timelinePoints  = document.querySelectorAll(".timeline-point");
 
   const ERA_POSITION = {
     classic: 10,
@@ -16,7 +16,18 @@ document.addEventListener("DOMContentLoaded", () => {
     electric: 95
   };
 
-  /* ===== LOAD BRANDS ===== */
+  /* ======================
+     INITIAL STATE
+  ====================== */
+  timelineWrapper.classList.add("hidden");
+  typeSelect.disabled = true;
+  modelSelect.disabled = true;
+
+  /* ======================
+     LOAD BRANDS
+  ====================== */
+  brandSelect.innerHTML = `<option value="">Select brand</option>`;
+
   window.BRANDS.forEach(b => {
     const opt = document.createElement("option");
     opt.value = b.brand;
@@ -24,20 +35,30 @@ document.addEventListener("DOMContentLoaded", () => {
     brandSelect.appendChild(opt);
   });
 
-  /* ===== BRAND → TYPE ===== */
+  /* ======================
+     BRAND → TYPE
+  ====================== */
   brandSelect.addEventListener("change", () => {
+
     typeSelect.innerHTML = `<option value="">Select type</option>`;
     modelSelect.innerHTML = `<option value="">Select model</option>`;
     typeSelect.disabled = true;
     modelSelect.disabled = true;
     previewCard.classList.add("hidden");
 
+    if (!brandSelect.value) {
+      timelineWrapper.classList.add("hidden");
+      return;
+    }
+
     timelineWrapper.classList.remove("hidden");
     timelineSlider.disabled = false;
     timelineSlider.value = 50;
     timelinePoints.forEach(p => p.classList.remove("active"));
 
-    const brandObj = window.BRANDS.find(b => b.brand === brandSelect.value);
+    const brandObj = window.BRANDS.find(
+      b => b.brand === brandSelect.value
+    );
     if (!brandObj) return;
 
     [...new Set(brandObj.models.map(m => m.type))].forEach(type => {
@@ -50,13 +71,18 @@ document.addEventListener("DOMContentLoaded", () => {
     typeSelect.disabled = false;
   });
 
-  /* ===== TYPE → MODEL ===== */
+  /* ======================
+     TYPE → MODEL
+  ====================== */
   typeSelect.addEventListener("change", () => {
+
     modelSelect.innerHTML = `<option value="">Select model</option>`;
     modelSelect.disabled = true;
     previewCard.classList.add("hidden");
 
-    const brandObj = window.BRANDS.find(b => b.brand === brandSelect.value);
+    const brandObj = window.BRANDS.find(
+      b => b.brand === brandSelect.value
+    );
     if (!brandObj) return;
 
     brandObj.models
@@ -71,29 +97,44 @@ document.addEventListener("DOMContentLoaded", () => {
     modelSelect.disabled = false;
   });
 
-  /* ===== MODEL → PREVIEW + TIMELINE LOCK ===== */
+  /* ======================
+     MODEL → PREVIEW + TIMELINE LOCK
+  ====================== */
   modelSelect.addEventListener("change", () => {
 
-    const brandObj = window.BRANDS.find(b => b.brand === brandSelect.value);
+    const brandObj = window.BRANDS.find(
+      b => b.brand === brandSelect.value
+    );
     if (!brandObj) return;
 
-    const modelObj = brandObj.models.find(m => m.id === modelSelect.value);
+    const modelObj = brandObj.models.find(
+      m => m.id === modelSelect.value
+    );
     if (!modelObj) return;
 
-    const pos = ERA_POSITION[modelObj.era];
-    timelineSlider.value = pos;
-    timelineSlider.disabled = true;
+    if (modelObj.era && ERA_POSITION[modelObj.era] !== undefined) {
+      timelineSlider.value = ERA_POSITION[modelObj.era];
+      timelineSlider.disabled = true;
 
-    timelinePoints.forEach(p =>
-      p.classList.toggle("active", p.dataset.era === modelObj.era)
-    );
+      timelinePoints.forEach(p =>
+        p.classList.toggle(
+          "active",
+          p.dataset.era === modelObj.era
+        )
+      );
+    }
 
     document.querySelector(".model-name").textContent =
       `${brandObj.brand} · ${modelObj.name}`;
 
-    document.getElementById("previewCategory").textContent = modelObj.category;
-    document.getElementById("previewEngine").textContent = modelObj.engine;
-    document.getElementById("previewYear").textContent = modelObj.launchYear;
+    document.getElementById("previewCategory").textContent =
+      modelObj.category || "—";
+
+    document.getElementById("previewEngine").textContent =
+      modelObj.engine || "—";
+
+    document.getElementById("previewYear").textContent =
+      modelObj.launchYear || "—";
 
     document.querySelector(".know-more-btn").href =
       `model.html?id=${modelObj.id}`;
