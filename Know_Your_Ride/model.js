@@ -33,5 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("engine").textContent = foundModel.engine;
   document.getElementById("year").textContent = foundModel.launchYear;
   document.getElementById("type").textContent = foundModel.type;
+const specs = foundModel.specs || {};
 
+document.getElementById("specPower").textContent   = specs.power || "—";
+document.getElementById("specTorque").textContent  = specs.torque || "—";
+document.getElementById("specMileage").textContent = specs.mileage || "—";
+document.getElementById("specWeight").textContent  = specs.weight || "—";
+document.getElementById("specFuel").textContent    = specs.fuel || "—";
 });
