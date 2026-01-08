@@ -35,14 +35,24 @@
 
     <!-- TIMELINE -->
     <div id="timelineWrapper" class="timeline hidden">
-      <div class="timeline-track">
-        <span class="timeline-point" data-era="classic">Classic</span>
-        <span class="timeline-point" data-era="modern">Modern</span>
-        <span class="timeline-point" data-era="bs6">BS6</span>
-        <span class="timeline-point" data-era="electric">EV</span>
-      </div>
-      <input type="range" id="timelineSlider" min="0" max="100" value="50" disabled>
-    </div>
+
+  <input
+    type="range"
+    id="timelineSlider"
+    min="0"
+    max="100"
+    value="50"
+    disabled
+  />
+
+  <div class="timeline-points">
+    <span class="timeline-point" data-era="classic"></span>
+    <span class="timeline-point" data-era="modern"></span>
+    <span class="timeline-point" data-era="bs6"></span>
+    <span class="timeline-point" data-era="electric"></span>
+  </div>
+
+</div>
 
     <!-- PREVIEW -->
     <div class="preview-card hidden" id="previewCard">
