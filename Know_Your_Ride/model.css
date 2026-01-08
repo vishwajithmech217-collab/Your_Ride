@@ -1,53 +1,40 @@
 body {
   font-family: system-ui, sans-serif;
-  background: #0f172a;
+  background: linear-gradient(180deg, #020617, #0f172a);
   color: #e5e7eb;
   padding: 20px;
 }
 
-.header {
-  margin-bottom: 24px;
+.container {
+  max-width: 420px;
+  margin: auto;
 }
 
-.back {
-  color: #22c55e;
+.app-header {
+  margin-bottom: 16px;
+}
+
+.back-link {
+  color: #9ca3af;
   text-decoration: none;
-  font-size: 14px;
+}
+
+.back-link:hover {
+  color: #22c55e;
 }
 
 h1 {
-  margin: 10px 0 4px;
+  margin-bottom: 16px;
 }
 
-.subtitle {
-  font-size: 14px;
-  opacity: 0.7;
+.specs {
+  list-style: none;
+  padding: 0;
 }
 
-.card {
+.specs li {
   background: #020617;
-  padding: 18px;
-  border-radius: 14px;
-}
-
-.card h2 {
-  margin-top: 0;
-  font-size: 18px;
-}
-
-.info-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin-top: 12px;
-}
-
-.info-grid span {
-  font-size: 12px;
-  opacity: 0.7;
-}
-
-.info-grid p {
-  margin: 4px 0 0;
-  font-weight: 600;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
