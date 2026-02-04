@@ -1,257 +1,209 @@
 console.log("select.js loaded");
 
-/* ===== GLOBAL STATE ===== */
+/* ===== GLOBAL ===== */
 const vehicles = window.VEHICLES || [];
-
-/* ======================
-   ADVANCED OPTIONS TOGGLE  ✅ PUT HERE
-====================== */
-document.addEventListener("DOMContentLoaded", () => {
-  const advBtn = document.getElementById("advancedBtn");
-  const advBox = document.getElementById("advancedBox");
-
-  if (!advBtn || !advBox) {
-    console.warn("Advanced Options elements missing");
-    return;
-  }
-
-  advBtn.addEventListener("click", () => {
-    advBox.classList.toggle("hidden");
-  });
-});
-
-/* ======================
-   INIT VEHICLE TYPES
-====================== */
-function populateVehicleTypes() {
-  const typeSelect = document.getElementById("type");
-  if (!typeSelect) return;
-
-  const types = [...new Set(vehicles.map(v => v.type))];
-
-  typeSelect.innerHTML = "";
-
-  types.forEach(type => {
-    const option = document.createElement("option");
-    option.value = type;
-    option.textContent =
-      type.charAt(0).toUpperCase() + type.slice(1);
-    typeSelect.appendChild(option);
-  });
-}
-
-document.addEventListener("DOMContentLoaded", populateVehicleTypes);
-
 let compareList = [];
 let currentDetail = null;
 
-/* ===== INIT ===== */
-window.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("detailModal")?.classList.add("hidden");
-  document.getElementById("compareModal")?.classList.add("hidden");
+/* ===== CONFIG ===== */
+const SCORE_CONFIG = {
+  SEAT_MAX: 4,
+  USAGE_MAX: 3,
+  FREQ_MAX: 2,
+  WEIGHT_MAX: 1
+};
+
+/* ===== DOM READY ===== */
+document.addEventListener("DOMContentLoaded", () => {
+  populateVehicleTypes();
+  toggleSetup();
+  hideModals();
 });
 
-/* ===== HELPERS ===== */
-function calcLegHeight(userHeight, legInput) {
-  return legInput && legInput > 0
-    ? legInput
-    : Math.round(userHeight * 0.46);
+/* ===== UI HELPERS ===== */
+function toggleSetup() {
+  const btn = document.getElementById("advancedBtn");
+  const box = document.getElementById("advancedBox");
+  if (btn && box) btn.onclick = () => box.classList.toggle("hidden");
 }
 
-/* ===== SCORE (OUT OF 10) ===== */
+function hideModals() {
+  document.getElementById("detailModal")?.classList.add("hidden");
+  document.getElementById("compareModal")?.classList.add("hidden");
+}
+
+/* ===== VEHICLE TYPES ===== */
+function populateVehicleTypes() {
+  const select = document.getElementById("type");
+  if (!select) return;
+
+  [...new Set(vehicles.map(v => v.type))].forEach(t => {
+    select.add(new Option(t.toUpperCase(), t));
+  });
+}
+
+/* ===== CORE LOGIC ===== */
+function calcLegHeight(h, l) {
+  return l || Math.round(h * 0.46);
+}
+
 function calculateScore(vehicle, user) {
-  let total = 0;
-  let reasons = [];
+  const breakdown = {};
 
-  // Seat fit (0–4)
-  const leg = calcLegHeight(user.height, user.legHeight);
-  const seat = vehicle.ergonomics.seatHeight / 10;
-  const diff = Math.abs(seat - leg);
+  // Seat fit
+  const diff = Math.abs(
+    vehicle.ergonomics.seatHeight - calcLegHeight(user.height, user.legHeight)
+  );
 
-  const seatScore =
-    diff <= 5 ? 4 :
-    diff <= 15 ? 3 :
-    diff <= 30 ? 2 : 1;
+  breakdown.seat =
+    diff <= 50 ? 4 :
+    diff <= 150 ? 3 :
+    diff <= 300 ? 2 : 1;
 
-  total += seatScore;
-  reasons.push(`Seat fit: ${seatScore}/4`);
-
-  // Usage (0–3)
-  const usagePref =
+  // Usage
+  const usageVal =
     user.usage < 50 ? vehicle.usage.city : vehicle.usage.highway;
 
-  const usageScore =
-    usagePref >= 80 ? 3 :
-    usagePref >= 60 ? 2 : 1;
+  breakdown.usage = usageVal >= 80 ? 3 : usageVal >= 60 ? 2 : 1;
 
-  total += usageScore;
-  reasons.push(`Usage match: ${usageScore}/3`);
-
-  // Frequency (0–2)
-  const freqScore =
+  // Frequency
+  breakdown.frequency =
     user.frequency < 40 ? 2 :
     user.frequency < 70 ? 1 : 0;
 
-  total += freqScore;
-  reasons.push(`Frequency fit: ${freqScore}/2`);
-
-  // Weight (0–1)
-  let weightScore = 1;
-  if (
+  // Weight
+  breakdown.weight =
     (user.weight < 50 && vehicle.physical.kerbWeight > 180) ||
     (user.weight > 90 && vehicle.physical.kerbWeight < 120)
-  ) {
-    weightScore = 0;
-    reasons.push("Weight mismatch may affect stability");
-  } else {
-    reasons.push("Weight compatibility good");
-  }
+      ? 0
+      : 1;
 
-  total += weightScore;
+  const total =
+    breakdown.seat +
+    breakdown.usage +
+    breakdown.frequency +
+    breakdown.weight;
 
-  return { total, reasons };
+  return { total, breakdown };
 }
 
-/* ===== RECOMMEND ===== */
+/* ===== RECOMMENDATION ===== */
 function recommend() {
-  const heightVal = +document.getElementById("height").value;
-  const weightVal = +document.getElementById("weight").value;
-  const typeVal = document.getElementById("type").value;
-  const usageVal = +document.getElementById("usage").value;
-  const freqVal = +document.getElementById("frequency").value;
-  const legVal = +document.getElementById("legHeight").value || null;
+  const user = {
+    height: +height.value,
+    weight: +weight.value,
+    legHeight: +legHeight.value || null,
+    usage: +usage.value,
+    frequency: +frequency.value
+  };
 
-  if (!heightVal || !weightVal) {
-    alert("Enter height and weight");
+  if (!user.height || !user.weight) {
+    alert("Enter height & weight");
     return;
   }
 
-  const user = {
-    height: heightVal,
-    weight: weightVal,
-    usage: usageVal,
-    frequency: freqVal,
-    legHeight: legVal
-  };
+  const filtered = vehicles.filter(v => v.type === type.value);
 
-  const results = document.getElementById("results");
-  results.innerHTML = "";
+  const scored = filtered.map(v => ({
+    vehicle: v,
+    score: calculateScore(v, user)
+  }));
 
-  const list = vehicles
-    .filter(v => v.type === typeVal)
-    .map(v => ({ vehicle: v, score: calculateScore(v, user) }))
-    .sort((a, b) => b.score.total - a.score.total);
+  const grouped = {};
+  scored.forEach(item => {
+    const key = item.vehicle.bodyType;
+    if (!grouped[key] || grouped[key].score.total < item.score.total) {
+      grouped[key] = item;
+    }
+  });
 
-  list.forEach((item, i) => {
+  renderResults(Object.values(grouped));
+}
+
+/* ===== UI RENDER ===== */
+function renderResults(list) {
+  const box = document.getElementById("results");
+  box.innerHTML = "";
+
+  if (!list.length) {
+    box.innerHTML = "<p>No suitable vehicles found</p>";
+    return;
+  }
+
+  list.forEach(item => {
     const card = document.createElement("div");
-    card.className = "card" + (i === 0 ? " winner" : "");
+    card.className = "card winner";
 
     card.innerHTML = `
-      ${i === 0 ? "<div class='winner-badge'>Best Match</div>" : ""}
-      <h3>${item.vehicle.brand} ${item.vehicle.model}</h3>
-      <b>${item.score.total}/10</b>
-      <button onclick='showDetails(${JSON.stringify(item.vehicle)}, ${JSON.stringify(item.score)})'>
-        Details
-      </button>
+      <h4>${item.vehicle.bodyType}</h4>
+      <b>${item.vehicle.brand} ${item.vehicle.model}</b>
+      <div class="score">${item.score.total}/10</div>
+      <button>Details</button>
+      <span class="more">More Models →</span>
     `;
 
-    results.appendChild(card);
+    card.querySelector("button").onclick =
+      () => showDetails(item);
+
+    box.appendChild(card);
   });
 }
 
 /* ===== DETAILS ===== */
-function showDetails(vehicle, score) {
-  currentDetail = { vehicle, score };
+function showDetails(item) {
+  currentDetail = item;
 
-  document.getElementById("detailTitle").innerText =
-    `${vehicle.brand} ${vehicle.model}`;
+  detailTitle.innerText =
+    `${item.vehicle.brand} ${item.vehicle.model}`;
+  detailScore.innerText = item.score.total;
 
-  document.getElementById("detailScore").innerText = score.total;
+  detailReasons.innerHTML = `
+    <li>Seat Fit: ${item.score.breakdown.seat}/4</li>
+    <li>Usage Match: ${item.score.breakdown.usage}/3</li>
+    <li>Frequency: ${item.score.breakdown.frequency}/2</li>
+    <li>Weight Compatibility: ${item.score.breakdown.weight}/1</li>
+  `;
 
-  const ul = document.getElementById("detailReasons");
-  ul.innerHTML = score.reasons.map(r => `<li>${r}</li>`).join("");
-
-  document.getElementById("detailModal").classList.remove("hidden");
+  detailModal.classList.remove("hidden");
 }
 
 function closeDetails() {
-  document.getElementById("detailModal").classList.add("hidden");
+  detailModal.classList.add("hidden");
 }
 
 /* ===== COMPARE ===== */
 function addToCompare() {
   if (!currentDetail) return;
-
-  if (compareList.length >= 2) {
-    alert("Only 2 vehicles can be compared");
-    return;
-  }
+  if (compareList.length === 2) return alert("Max 2 vehicles");
 
   compareList.push(currentDetail);
-
   if (compareList.length === 2) showCompare();
-  closeDetails();
 }
 
 function showCompare() {
-  const grid = document.getElementById("compareGrid");
+  const grid = compareGrid;
   grid.innerHTML = "";
 
-  const winner =
-    compareList[0].score.total >= compareList[1].score.total
-      ? compareList[0]
-      : compareList[1];
-
   compareList.forEach(item => {
-    const s = item.score;
-
-    const card = document.createElement("div");
-    card.className = "compare-card" + (item === winner ? " winner" : "");
-
-    card.innerHTML = `
-      <h4>${item.vehicle.brand} ${item.vehicle.model}</h4>
-      <b>Total: ${s.total}/10</b>
-
-      <div class="chart">
-        <div class="chart-label">Seat Fit (${s.reasons[0]})</div>
-        <div class="chart-bar">
-          <div class="chart-fill" style="width:${(parseInt(s.reasons[0].match(/\d/)[0]) / 4) * 100}%"></div>
-        </div>
-      </div>
-
-      <div class="chart">
-        <div class="chart-label">Usage Match</div>
-        <div class="chart-bar">
-          <div class="chart-fill" style="width:${(parseInt(s.reasons[1].match(/\d/)[0]) / 3) * 100}%"></div>
-        </div>
-      </div>
-
-      <div class="chart">
-        <div class="chart-label">Frequency Fit</div>
-        <div class="chart-bar">
-          <div class="chart-fill" style="width:${(parseInt(s.reasons[2].match(/\d/)[0]) / 2) * 100}%"></div>
-        </div>
-      </div>
-
-      <p style="margin-top:10px; font-size:13px;">
-        ${s.reasons[3]}
-      </p>
+    const c = document.createElement("div");
+    c.className = "compare-card";
+    c.innerHTML = `
+      <h4>${item.vehicle.model}</h4>
+      <b>${item.score.total}/10</b>
     `;
-
-    grid.appendChild(card);
+    grid.appendChild(c);
   });
 
-  document.getElementById("compareModal").classList.remove("hidden");
+  compareModal.classList.remove("hidden");
 }
 
 function closeCompare() {
   compareList = [];
-  document.getElementById("compareModal").classList.add("hidden");
+  compareModal.classList.add("hidden");
 }
 
-/* ===== EXPOSE TO HTML ===== */
+/* ===== EXPOSE ===== */
 window.recommend = recommend;
-window.showDetails = showDetails;
-window.addToCompare = addToCompare;
 window.closeDetails = closeDetails;
+window.addToCompare = addToCompare;
 window.closeCompare = closeCompare;
