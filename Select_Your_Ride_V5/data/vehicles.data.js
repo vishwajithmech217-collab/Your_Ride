@@ -9,6 +9,7 @@ id: "yamaha_mt15",
 brand: "Yamaha",
 model: "MT-15",
 type: "bike",
+bodyType: "Street Bike",
 ergonomics: { seatHeight: 810 },
 usage: { city: 70, highway: 80 },
 physical: { kerbWeight: 141 }
@@ -19,6 +20,7 @@ id: "yamaha_r15_v4",
 brand: "Yamaha",
 model: "R15 V4",
 type: "bike",
+bodyType: "Sport Bike",
 ergonomics: { seatHeight: 815 },
 usage: { city: 55, highway: 85 },
 physical: { kerbWeight: 142 }
@@ -29,6 +31,7 @@ id: "yamaha_fzs_v4",
 brand: "Yamaha",
 model: "FZ-S V4",
 type: "bike",
+bodyType: "Commuter",
 ergonomics: { seatHeight: 790 },
 usage: { city: 80, highway: 65 },
 physical: { kerbWeight: 135 }
@@ -39,6 +42,7 @@ id: "yamaha_fzx",
 brand: "Yamaha",
 model: "FZ-X",
 type: "bike",
+bodyType: "Neo Retro",
 ergonomics: { seatHeight: 810 },
 usage: { city: 75, highway: 65 },
 physical: { kerbWeight: 139 }
@@ -53,19 +57,10 @@ id: "honda_sp125",
 brand: "Honda",
 model: "SP 125",
 type: "bike",
+bodyType: "Commuter",
 ergonomics: { seatHeight: 790 },
 usage: { city: 85, highway: 60 },
 physical: { kerbWeight: 117 }
-},
-
-{
-id: "honda_unicorn",
-brand: "Honda",
-model: "Unicorn",
-type: "bike",
-ergonomics: { seatHeight: 798 },
-usage: { city: 75, highway: 70 },
-physical: { kerbWeight: 140 }
 },
 
 {
@@ -73,6 +68,7 @@ id: "honda_cb200x",
 brand: "Honda",
 model: "CB 200X",
 type: "bike",
+bodyType: "Adventure",
 ergonomics: { seatHeight: 810 },
 usage: { city: 65, highway: 80 },
 physical: { kerbWeight: 147 }
@@ -83,6 +79,7 @@ id: "honda_cb350",
 brand: "Honda",
 model: "CB 350",
 type: "bike",
+bodyType: "Cruiser",
 ergonomics: { seatHeight: 800 },
 usage: { city: 65, highway: 85 },
 physical: { kerbWeight: 181 }
@@ -218,41 +215,13 @@ SCOOTERS
 id: "honda_activa_6g",
 brand: "Honda",
 model: "Activa 6G",
-type: "scooter",
+type: "bike",
+bodyType: "Scooter",
 ergonomics: { seatHeight: 765 },
 usage: { city: 90, highway: 40 },
 physical: { kerbWeight: 106 }
 },
 
-{
-id: "tvs_jupiter",
-brand: "TVS",
-model: "Jupiter",
-type: "scooter",
-ergonomics: { seatHeight: 765 },
-usage: { city: 90, highway: 40 },
-physical: { kerbWeight: 109 }
-},
-
-{
-id: "tvs_ntorq_125",
-brand: "TVS",
-model: "Ntorq 125",
-type: "scooter",
-ergonomics: { seatHeight: 770 },
-usage: { city: 85, highway: 45 },
-physical: { kerbWeight: 118 }
-},
-
-{
-id: "suzuki_access_125",
-brand: "Suzuki",
-model: "Access 125",
-type: "scooter",
-ergonomics: { seatHeight: 773 },
-usage: { city: 88, highway: 42 },
-physical: { kerbWeight: 104 }
-},
 
 /* ================= CARS ================= */
 
@@ -271,15 +240,24 @@ skillLevel: "beginner"
 /* ================= SUVs ================= */
 
 {
+id: "maruti_swift",
+brand: "Maruti Suzuki",
+model: "Swift",
+type: "car",
+bodyType: "Hatchback",
+ergonomics: { seatHeight: 1635 },
+usage: { city: 88, highway: 70 },
+physical: { kerbWeight: 875, groundClearance: 163 }
+},
+
+{
 id: "tata_nexon",
 brand: "Tata",
 model: "Nexon",
-type: "suv",
-ergonomics: { seatHeight: 1690, posture: "seated", wheelSize: 16 },
+type: "car",
+bodyType: "SUV",
+ergonomics: { seatHeight: 1690 },
 usage: { city: 72, highway: 83 },
-physical: { kerbWeight: 1200, groundClearance: 209 },
-segment: "compact_suv",
-skillLevel: "beginner"
+physical: { kerbWeight: 1200, groundClearance: 209 }
 }
-
 ];
