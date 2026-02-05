@@ -2,7 +2,7 @@ window.VEHICLES = window.VEHICLES || [];
 
 window.VEHICLES.push(
   {
-    "id": "aprilia_rs_457",
+    id: "aprilia_rs_457",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Aprilia",
@@ -35,7 +35,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "aprilia_rs_660",
+    id: "aprilia_rs_660",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Aprilia",
@@ -68,7 +68,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "aprilia_tuono_457",
+    id: "aprilia_tuono_457",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Aprilia",
@@ -101,7 +101,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_pulsar_rs_200",
+    id: "bajaj_pulsar_rs_200",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Bajaj",
@@ -134,7 +134,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bmw_g310_rr",
+    id: "bmw_g310_rr",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "BMW",
@@ -167,7 +167,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bmw_s1000_xr",
+    id: "bmw_s1000_xr",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "BMW",
@@ -200,7 +200,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bmw_s1000r",
+    id: "bmw_s1000r",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "BMW",
@@ -233,7 +233,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bmw_s1000rr",
+    id: "bmw_s1000rr",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "BMW",
@@ -266,7 +266,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ducati_hypermotard_698_mono",
+    id: "ducati_hypermotard_698_mono",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Ducati",
@@ -299,7 +299,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ducati_hypermotard_950",
+    id: "ducati_hypermotard_950",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Ducati",
@@ -332,7 +332,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ducati_monster",
+    id: "ducati_monster",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Ducati",
@@ -365,7 +365,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ducati_panigale_v2",
+    id: "ducati_panigale_v2",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Ducati",
@@ -398,7 +398,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ducati_panigale_v4_r",
+    id: "ducati_panigale_v4_r",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Ducati",
@@ -431,7 +431,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ferrato_disruptor",
+    id: "ferrato_disruptor",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Ferrato",
@@ -464,7 +464,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_karizma_xmr",
+    id: "hero_karizma_xmr",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Hero",
@@ -497,7 +497,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_cb650r",
+    id: "honda_cb650r",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Honda",
@@ -530,7 +530,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_cbr650r",
+    id: "honda_cbr650r",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Honda",
@@ -563,7 +563,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_ninja_1100sx",
+    id: "kawasaki_ninja_1100sx",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Kawasaki",
@@ -596,7 +596,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_ninja_300",
+    id: "kawasaki_ninja_300",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Kawasaki",
@@ -629,7 +629,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_ninja_500",
+    id: "kawasaki_ninja_500",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Kawasaki",
@@ -662,7 +662,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_ninja_650",
+    id: "kawasaki_ninja_650",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Kawasaki",
@@ -695,7 +695,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_ninja_zx10r",
+    id: "kawasaki_ninja_zx10r",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "kawasaki",
@@ -728,7 +728,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_ninja_zx4r",
+    id: "kawasaki_ninja_zx4r",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Kawasaki",
@@ -761,7 +761,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_ninja_zx6r",
+    id: "kawasaki_ninja_zx6r",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "kawasaki",
@@ -794,7 +794,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_z650",
+    id: "kawasaki_z650",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Kawasaki",
@@ -827,7 +827,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_z650rs",
+    id: "kawasaki_z650rs",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Kawasaki",
@@ -860,7 +860,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "keeway_rr300",
+    id: "keeway_rr300",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Keeway",
@@ -893,7 +893,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ktm_rc_160",
+    id: "ktm_rc_160",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "KTM",
@@ -926,7 +926,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ktm_rc_200",
+    id: "ktm_rc_200",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "KTM",
@@ -959,7 +959,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ktm_rc_390",
+    id: "ktm_rc_390",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "KTM",
@@ -992,7 +992,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "suzuki_gixxer_sf",
+    id: "suzuki_gixxer_sf",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Suzuki",
@@ -1025,7 +1025,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "suzuki_gixxer_sf_250",
+    id: "suzuki_gixxer_sf_250",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Suzuki",
@@ -1058,7 +1058,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "suzuki_gixxer_sf_250_flex_fuel",
+    id: "suzuki_gixxer_sf_250_flex_fuel",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Suzuki",
@@ -1091,7 +1091,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "suzuki_gsx8r",
+    id: "suzuki_gsx8r",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Suzuki",
@@ -1124,7 +1124,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "triumph_daytona_660",
+    id: "triumph_daytona_660",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Triumph",
@@ -1157,7 +1157,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "triumph_speed_triple_1200_rs",
+    id: "triumph_speed_triple_1200_rs",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Triumph",
@@ -1190,7 +1190,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_apche_rr_310",
+    id: "tvs_apche_rr_310",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "TVS",
@@ -1223,7 +1223,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ultraviolette_f77_mach_2",
+    id: "ultraviolette_f77_mach_2",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Ultraviolette",
@@ -1256,7 +1256,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ultraviolette_f77_superstreet",
+    id: "ultraviolette_f77_superstreet",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Ultraviolette",
@@ -1289,7 +1289,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "yamaha_r15_v4",
+    id: "yamaha_r15_v4",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Yamaha",
@@ -1322,7 +1322,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "yamaha_r15s",
+    id: "yamaha_r15s",
     "type": "bike",
     "bodyType": "Sport Bike",
     "brand": "Yamaha",
@@ -1355,7 +1355,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ampere_magnus_grand",
+    id: "ampere_magnus_grand",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Ampere",
@@ -1388,7 +1388,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ampere_nexus",
+    id: "ampere_nexus",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Ampere",
@@ -1421,7 +1421,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "apmere_magnus",
+    id: "apmere_magnus",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Apmere",
@@ -1454,7 +1454,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "aprilia_sr_125",
+    id: "aprilia_sr_125",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Aprilia",
@@ -1487,7 +1487,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "aprilia_sr_160",
+    id: "aprilia_sr_160",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Aprilia",
@@ -1520,7 +1520,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "aprilia_sr_175",
+    id: "aprilia_sr_175",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Aprilia",
@@ -1553,7 +1553,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "aprilia_strom_125",
+    id: "aprilia_strom_125",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Aprilia",
@@ -1586,7 +1586,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "aprilia_sxr_125",
+    id: "aprilia_sxr_125",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Aprilia",
@@ -1619,7 +1619,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "aprilia_sxr_160",
+    id: "aprilia_sxr_160",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Aprilia",
@@ -1652,7 +1652,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ather_450_apex",
+    id: "ather_450_apex",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Ather",
@@ -1685,7 +1685,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ather_450s",
+    id: "ather_450s",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Ather",
@@ -1718,7 +1718,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ather_450x",
+    id: "ather_450x",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Ather",
@@ -1751,7 +1751,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ather_rizta",
+    id: "ather_rizta",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Ather",
@@ -1784,7 +1784,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_chetak",
+    id: "bajaj_chetak",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Bajaj",
@@ -1817,7 +1817,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_chetak_c2501",
+    id: "bajaj_chetak_c2501",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Bajaj",
@@ -1850,7 +1850,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bgauss_bg_ruv_350",
+    id: "bgauss_bg_ruv_350",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Bgauss",
@@ -1883,7 +1883,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bgauss_c12",
+    id: "bgauss_c12",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Bgauss",
@@ -1916,7 +1916,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bgauss_oowah",
+    id: "bgauss_oowah",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Bgauss",
@@ -1949,7 +1949,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bmw_c_400_gt",
+    id: "bmw_c_400_gt",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "BMW",
@@ -1982,7 +1982,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bmw_ce_02",
+    id: "bmw_ce_02",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "BMW",
@@ -2015,7 +2015,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bmw_ce_04",
+    id: "bmw_ce_04",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "BMW",
@@ -2048,7 +2048,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bounce_infinity_e1",
+    id: "bounce_infinity_e1",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Bounce",
@@ -2081,7 +2081,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "evolet_derby",
+    id: "evolet_derby",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Evolet",
@@ -2114,7 +2114,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "evolet_pony",
+    id: "evolet_pony",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Evolet",
@@ -2147,7 +2147,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "gemopai_astrid_lite",
+    id: "gemopai_astrid_lite",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Gemopai",
@@ -2180,7 +2180,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "gemopai_ryder",
+    id: "gemopai_ryder",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Gemopai",
@@ -2213,7 +2213,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "gemopai_ryder_supermax",
+    id: "gemopai_ryder_supermax",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Gemopai",
@@ -2246,7 +2246,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_destini_110",
+    id: "hero_destini_110",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Hero",
@@ -2279,7 +2279,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_destini_125",
+    id: "hero_destini_125",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Hero",
@@ -2312,7 +2312,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_destini_prime",
+    id: "hero_destini_prime",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Hero",
@@ -2345,7 +2345,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_pleasure_plus",
+    id: "hero_pleasure_plus",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Hero",
@@ -2378,7 +2378,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_pleasure_plus_xtec",
+    id: "hero_pleasure_plus_xtec",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Hero",
@@ -2411,7 +2411,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_xoom_110",
+    id: "hero_xoom_110",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Hero",
@@ -2444,7 +2444,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_xoom_125",
+    id: "hero_xoom_125",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Hero",
@@ -2477,7 +2477,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_xoom_160",
+    id: "hero_xoom_160",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Hero",
@@ -2510,7 +2510,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_activa",
+    id: "honda_activa",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Honda",
@@ -2543,7 +2543,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_activa_125",
+    id: "honda_activa_125",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Honda",
@@ -2576,7 +2576,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_activa_e",
+    id: "honda_activa_e",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Honda",
@@ -2609,7 +2609,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_dio",
+    id: "honda_dio",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Honda",
@@ -2642,7 +2642,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_dio_125",
+    id: "honda_dio_125",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Honda",
@@ -2675,7 +2675,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_qc1",
+    id: "honda_qc1",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Honda",
@@ -2708,7 +2708,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_xadv",
+    id: "honda_xadv",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Honda",
@@ -2741,7 +2741,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "keeway_sixities_300i",
+    id: "keeway_sixities_300i",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Keeway",
@@ -2774,7 +2774,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "keeway_vieste_300",
+    id: "keeway_vieste_300",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Keeway",
@@ -2807,7 +2807,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_iqube",
+    id: "tvs_iqube",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "TVS",
@@ -2840,7 +2840,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_jupiter",
+    id: "tvs_jupiter",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "TVS",
@@ -2873,7 +2873,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_jupiter_125",
+    id: "tvs_jupiter_125",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "TVS",
@@ -2906,7 +2906,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_ntorq_125",
+    id: "tvs_ntorq_125",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "TVS",
@@ -2939,7 +2939,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_ntorq_150",
+    id: "tvs_ntorq_150",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "TVS",
@@ -2972,7 +2972,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_orbiter",
+    id: "tvs_orbiter",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "TVS",
@@ -3005,7 +3005,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_zest_110",
+    id: "tvs_zest_110",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "TVS",
@@ -3038,7 +3038,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ultraviolette_tesseract",
+    id: "ultraviolette_tesseract",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Ultraviolette",
@@ -3071,7 +3071,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "vespa_125",
+    id: "vespa_125",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Vespa",
@@ -3104,7 +3104,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "vespa_150",
+    id: "vespa_150",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Vespa",
@@ -3137,7 +3137,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "vespa_s_125",
+    id: "vespa_s_125",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Vespa",
@@ -3170,7 +3170,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "vespa_s_150",
+    id: "vespa_s_150",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Vespa",
@@ -3203,7 +3203,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "vespa_zx_125",
+    id: "vespa_zx_125",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Vespa",
@@ -3236,7 +3236,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "vida_v2",
+    id: "vida_v2",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "VIDA",
@@ -3269,7 +3269,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "vida_vx2",
+    id: "vida_vx2",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "VIDA",
@@ -3302,7 +3302,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "vlf_tennis_1500",
+    id: "vlf_tennis_1500",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "VLF",
@@ -3335,7 +3335,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "yamaha_aerox_155",
+    id: "yamaha_aerox_155",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Yamaha",
@@ -3368,7 +3368,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "yamaha_facino_125",
+    id: "yamaha_facino_125",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Yamaha",
@@ -3401,7 +3401,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "yamaha_ray_zr_125",
+    id: "yamaha_ray_zr_125",
     "type": "bike",
     "bodyType": "Scooter",
     "brand": "Yamaha",
@@ -3434,7 +3434,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_avenger_cruise_220",
+    id: "bajaj_avenger_cruise_220",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Bajaj",
@@ -3467,7 +3467,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_avenger_street_160",
+    id: "bajaj_avenger_street_160",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Bajaj",
@@ -3500,7 +3500,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "benelli_502c",
+    id: "benelli_502c",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Benelli",
@@ -3533,7 +3533,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bmw_r12",
+    id: "bmw_r12",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "BMW",
@@ -3566,7 +3566,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bmw_r18",
+    id: "bmw_r18",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "BMW",
@@ -3599,7 +3599,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "brixton_motorcycles_cromwell_1200",
+    id: "brixton_motorcycles_cromwell_1200",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Brixton",
@@ -3632,7 +3632,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "brixton_motorcycles_cromwell_1200_x",
+    id: "brixton_motorcycles_cromwell_1200_x",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Brixton",
@@ -3665,7 +3665,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bsa_gold_star_650",
+    id: "bsa_gold_star_650",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "BSA",
@@ -3698,7 +3698,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ducati_diavel_v4",
+    id: "ducati_diavel_v4",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Ducati",
@@ -3731,7 +3731,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ducati_xdiavel_v4",
+    id: "ducati_xdiavel_v4",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Ducati",
@@ -3764,7 +3764,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "harleydavidson_breakout",
+    id: "harleydavidson_breakout",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Harley-Davidson",
@@ -3797,7 +3797,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "harleydavidson_fatboy",
+    id: "harleydavidson_fatboy",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Harley-Davidson",
@@ -3830,7 +3830,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "harleydavidson_heritage_classic",
+    id: "harleydavidson_heritage_classic",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Harley-Davidson",
@@ -3863,7 +3863,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "harleydavidson_nightster",
+    id: "harleydavidson_nightster",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Harley-Davidson",
@@ -3896,7 +3896,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "harleydavidson_nightster_special",
+    id: "harleydavidson_nightster_special",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Harley-Davidson",
@@ -3929,7 +3929,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "harleydavidson_road_glide",
+    id: "harleydavidson_road_glide",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Harley-Davidson",
@@ -3962,7 +3962,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "harleydavidson_sportster_s",
+    id: "harleydavidson_sportster_s",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Harley-Davidson",
@@ -3995,7 +3995,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "harleydavidson_street_bob",
+    id: "harleydavidson_street_bob",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Harley-Davidson",
@@ -4028,7 +4028,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "harleydavidson_street_glide",
+    id: "harleydavidson_street_glide",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Harley-Davidson",
@@ -4061,7 +4061,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "harleydavidson_x440",
+    id: "harleydavidson_x440",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Harley-Davidson",
@@ -4094,7 +4094,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "harleydavidson_x440_t",
+    id: "harleydavidson_x440_t",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Harley-Davidson",
@@ -4127,7 +4127,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_cb350",
+    id: "honda_cb350",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Honda",
@@ -4160,7 +4160,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_cb350c",
+    id: "honda_cb350c",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Honda",
@@ -4193,7 +4193,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "indian_101_scout",
+    id: "indian_101_scout",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Indian",
@@ -4226,7 +4226,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "indian_chief_bobber_dark_horse",
+    id: "indian_chief_bobber_dark_horse",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Indian",
@@ -4259,7 +4259,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "indian_chief_dark_horse",
+    id: "indian_chief_dark_horse",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Indian",
@@ -4292,7 +4292,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "indian_scout_bobber",
+    id: "indian_scout_bobber",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Indian",
@@ -4325,7 +4325,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "indian_scout_classic",
+    id: "indian_scout_classic",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Indian",
@@ -4358,7 +4358,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "indian_scout_sixty_bobber",
+    id: "indian_scout_sixty_bobber",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Indian",
@@ -4391,7 +4391,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "indian_scout_sixty_classic",
+    id: "indian_scout_sixty_classic",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Indian",
@@ -4424,7 +4424,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "indian_sport_scout",
+    id: "indian_sport_scout",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Indian",
@@ -4457,7 +4457,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "indian_sport_scout_sixty",
+    id: "indian_sport_scout_sixty",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Indian",
@@ -4490,7 +4490,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "indian_super_scout",
+    id: "indian_super_scout",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Indian",
@@ -4523,7 +4523,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "indian_super_chief_limited",
+    id: "indian_super_chief_limited",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Indian",
@@ -4556,7 +4556,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "jawa_350",
+    id: "jawa_350",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Jawa",
@@ -4589,7 +4589,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "jawa_42",
+    id: "jawa_42",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Jawa",
@@ -4622,7 +4622,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "jawa_42_bobber",
+    id: "jawa_42_bobber",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Jawa",
@@ -4655,7 +4655,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "jawa_42_fj",
+    id: "jawa_42_fj",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Jawa",
@@ -4688,7 +4688,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "jawa_perak",
+    id: "jawa_perak",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Jawa",
@@ -4721,7 +4721,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_eliminator",
+    id: "kawasaki_eliminator",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Kawasaki",
@@ -4754,7 +4754,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_vulcan_s",
+    id: "kawasaki_vulcan_s",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Kawasaki",
@@ -4787,7 +4787,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_w175",
+    id: "kawasaki_w175",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Kawasaki",
@@ -4820,7 +4820,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "keeway_klight_250v",
+    id: "keeway_klight_250v",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Keeway",
@@ -4853,7 +4853,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "keeway_v302c",
+    id: "keeway_v302c",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Keeway",
@@ -4886,7 +4886,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "qj_motor_src_500",
+    id: "qj_motor_src_500",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "QJ Motor",
@@ -4919,7 +4919,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "qj_motor_src_250",
+    id: "qj_motor_src_250",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "QJ Motor",
@@ -4952,7 +4952,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "qj_motor_srv_300",
+    id: "qj_motor_srv_300",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "QJ Motor",
@@ -4985,7 +4985,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "royal_enfield_classic_350",
+    id: "royal_enfield_classic_350",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Royal Enfield",
@@ -5018,7 +5018,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "royal_enfield_classic_650",
+    id: "royal_enfield_classic_650",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Royal Enfield",
@@ -5051,7 +5051,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "royal_enfield_goan_classic_350",
+    id: "royal_enfield_goan_classic_350",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Royal Enfield",
@@ -5084,7 +5084,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "royal_enfield_guerrilla",
+    id: "royal_enfield_guerrilla",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Royal Enfield",
@@ -5117,7 +5117,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "royal_enfield_interceptor_650",
+    id: "royal_enfield_interceptor_650",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Royal Enfield",
@@ -5150,7 +5150,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "royal_enfield_meteor_350",
+    id: "royal_enfield_meteor_350",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Royal Enfield",
@@ -5183,7 +5183,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "royal_enfield_shot_gun_650",
+    id: "royal_enfield_shot_gun_650",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Royal Enfield",
@@ -5216,7 +5216,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "royal_enfield_super_meteor_650",
+    id: "royal_enfield_super_meteor_650",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Royal Enfield",
@@ -5249,7 +5249,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "triumph_bonneveille_speedmaster",
+    id: "triumph_bonneveille_speedmaster",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Triumph",
@@ -5282,7 +5282,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "triumph_bonneville_bobber",
+    id: "triumph_bonneville_bobber",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Triumph",
@@ -5315,7 +5315,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "triumph_bonneville_t100",
+    id: "triumph_bonneville_t100",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Triumph",
@@ -5348,7 +5348,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "triumph_bonneville_t120",
+    id: "triumph_bonneville_t120",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Triumph",
@@ -5381,7 +5381,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "triumph_rocket_3",
+    id: "triumph_rocket_3",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Triumph",
@@ -5414,7 +5414,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "triumph_speed_twin_900",
+    id: "triumph_speed_twin_900",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "Triumph",
@@ -5447,7 +5447,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_ronin",
+    id: "tvs_ronin",
     "type": "bike",
     "bodyType": "Cruiser",
     "brand": "TVS",
@@ -5480,7 +5480,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_ct_110",
+    id: "bajaj_ct_110",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Bajaj",
@@ -5513,7 +5513,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_platina_100",
+    id: "bajaj_platina_100",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Bajaj",
@@ -5546,7 +5546,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_platina_110",
+    id: "bajaj_platina_110",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Bajaj",
@@ -5579,7 +5579,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_pulsar_125",
+    id: "bajaj_pulsar_125",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Bajaj",
@@ -5612,7 +5612,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_pulsar_150",
+    id: "bajaj_pulsar_150",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Bajaj",
@@ -5645,7 +5645,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_pulsar_ns125",
+    id: "bajaj_pulsar_ns125",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Bajaj",
@@ -5678,7 +5678,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_pulsar_ns160",
+    id: "bajaj_pulsar_ns160",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Bajaj",
@@ -5711,7 +5711,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_glamour",
+    id: "hero_glamour",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Hero",
@@ -5744,7 +5744,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_glamour_xtec",
+    id: "hero_glamour_xtec",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Hero",
@@ -5777,7 +5777,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_hf_deluxe",
+    id: "hero_hf_deluxe",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Hero",
@@ -5810,7 +5810,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_passion_plus",
+    id: "hero_passion_plus",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Hero",
@@ -5843,7 +5843,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_splendor_plus",
+    id: "hero_splendor_plus",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Hero",
@@ -5876,7 +5876,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_splendor_plus_xtec",
+    id: "hero_splendor_plus_xtec",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Hero",
@@ -5909,7 +5909,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_super_splendor_xtec",
+    id: "hero_super_splendor_xtec",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Hero",
@@ -5942,7 +5942,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_xtreme_125r",
+    id: "hero_xtreme_125r",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Hero",
@@ -5975,7 +5975,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_hornet_20",
+    id: "honda_hornet_20",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Honda",
@@ -6008,7 +6008,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_livo",
+    id: "honda_livo",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Honda",
@@ -6041,7 +6041,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_shine",
+    id: "honda_shine",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Honda",
@@ -6074,7 +6074,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_shine_100",
+    id: "honda_shine_100",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Honda",
@@ -6107,7 +6107,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_sp_125",
+    id: "honda_sp_125",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Honda",
@@ -6140,7 +6140,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_sp160",
+    id: "honda_sp160",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Honda",
@@ -6173,7 +6173,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_unicorn",
+    id: "honda_unicorn",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Honda",
@@ -6206,7 +6206,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "keeway_sr125",
+    id: "keeway_sr125",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Keeway",
@@ -6239,7 +6239,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "keeway_sr250",
+    id: "keeway_sr250",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Keeway",
@@ -6272,7 +6272,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "odysse_evoqis",
+    id: "odysse_evoqis",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Odysse",
@@ -6305,7 +6305,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "revolt_rv400",
+    id: "revolt_rv400",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Revolt",
@@ -6338,7 +6338,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "suzuki_gixxer",
+    id: "suzuki_gixxer",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Suzuki",
@@ -6371,7 +6371,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "suzuki_gixxer_sf",
+    id: "suzuki_gixxer_sf",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Suzuki",
@@ -6404,7 +6404,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_apache_rtr_160",
+    id: "tvs_apache_rtr_160",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "TVS",
@@ -6437,7 +6437,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_apache_rtr_180",
+    id: "tvs_apache_rtr_180",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "TVS",
@@ -6470,7 +6470,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_apache_rtr_160_4v",
+    id: "tvs_apache_rtr_160_4v",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "TVS",
@@ -6503,7 +6503,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_radeon",
+    id: "tvs_radeon",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "TVS",
@@ -6536,7 +6536,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_raider_125",
+    id: "tvs_raider_125",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "TVS",
@@ -6569,7 +6569,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_sport",
+    id: "tvs_sport",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "TVS",
@@ -6602,7 +6602,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_star_city_plus",
+    id: "tvs_star_city_plus",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "TVS",
@@ -6635,7 +6635,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "yamaha_fz_fi",
+    id: "yamaha_fz_fi",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Yamaha",
@@ -6668,7 +6668,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "yamaha_fz_s_fi",
+    id: "yamaha_fz_s_fi",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Yamaha",
@@ -6701,7 +6701,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "yamaha_fz_x",
+    id: "yamaha_fz_x",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Yamaha",
@@ -6734,7 +6734,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "yamaha_mt_15_v2",
+    id: "yamaha_mt_15_v2",
     "type": "bike",
     "bodyType": "Commuter",
     "brand": "Yamaha",
@@ -6767,7 +6767,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "aprilia_tuono_660",
+    id: "aprilia_tuono_660",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Aprilia",
@@ -6800,7 +6800,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_dominar_250",
+    id: "bajaj_dominar_250",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Bajaj",
@@ -6833,7 +6833,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_dominar_400",
+    id: "bajaj_dominar_400",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Bajaj",
@@ -6866,7 +6866,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_freedom",
+    id: "bajaj_freedom",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Bajaj",
@@ -6899,7 +6899,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_pulsar_150",
+    id: "bajaj_pulsar_150",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Bajaj",
@@ -6932,7 +6932,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_pulsar_220f",
+    id: "bajaj_pulsar_220f",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Bajaj",
@@ -6965,7 +6965,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_pulsar_n125",
+    id: "bajaj_pulsar_n125",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Bajaj",
@@ -6998,7 +6998,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_pulsar_n160",
+    id: "bajaj_pulsar_n160",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Bajaj",
@@ -7031,7 +7031,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_pulsar_n250",
+    id: "bajaj_pulsar_n250",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Bajaj",
@@ -7064,7 +7064,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_pulsar_ns160",
+    id: "bajaj_pulsar_ns160",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Bajaj",
@@ -7097,7 +7097,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_pulsar_ns200",
+    id: "bajaj_pulsar_ns200",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Bajaj",
@@ -7130,7 +7130,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bajaj_pulsar_ns400z",
+    id: "bajaj_pulsar_ns400z",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Bajaj",
@@ -7163,7 +7163,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "brixton_motorcycles_crossfire_500_x",
+    id: "brixton_motorcycles_crossfire_500_x",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Brixton Motorcycles",
@@ -7196,7 +7196,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ducati_multistrada_v4",
+    id: "ducati_multistrada_v4",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Ducati",
@@ -7229,7 +7229,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_glamour_x125",
+    id: "hero_glamour_x125",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Hero",
@@ -7262,7 +7262,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_xpulse_200",
+    id: "hero_xpulse_200",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Hero",
@@ -7295,7 +7295,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_xtreme_160r",
+    id: "hero_xtreme_160r",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Hero",
@@ -7328,7 +7328,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_xtreme_160r_4v",
+    id: "hero_xtreme_160r_4v",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Hero",
@@ -7361,7 +7361,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_xtreme_250r",
+    id: "hero_xtreme_250r",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Hero",
@@ -7394,7 +7394,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_cb_125_hornet",
+    id: "honda_cb_125_hornet",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Honda",
@@ -7427,7 +7427,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_cb1000_hornet",
+    id: "honda_cb1000_hornet",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Honda",
@@ -7460,7 +7460,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_cb750_hornet",
+    id: "honda_cb750_hornet",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Honda",
@@ -7493,7 +7493,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_hness_cb350",
+    id: "honda_hness_cb350",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Honda",
@@ -7526,7 +7526,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_hornet_20",
+    id: "honda_hornet_20",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Honda",
@@ -7559,7 +7559,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_nx200",
+    id: "honda_nx200",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Honda",
@@ -7592,7 +7592,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_unicorn",
+    id: "honda_unicorn",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Honda",
@@ -7625,7 +7625,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hop_electric_oxo",
+    id: "hop_electric_oxo",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Hop",
@@ -7658,7 +7658,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "husqvarna_svartpilen_401",
+    id: "husqvarna_svartpilen_401",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Husqvarna",
@@ -7691,7 +7691,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_klx230",
+    id: "kawasaki_klx230",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Kawasaki",
@@ -7724,7 +7724,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_klx230_2024",
+    id: "kawasaki_klx230_2024",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Kawasaki",
@@ -7757,7 +7757,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_klx230r",
+    id: "kawasaki_klx230r",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Kawasaki",
@@ -7790,7 +7790,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_z650",
+    id: "kawasaki_z650",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Kawasaki",
@@ -7823,7 +7823,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "keeway_k300_sf",
+    id: "keeway_k300_sf",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Keeway",
@@ -7856,7 +7856,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ktm_160_duke",
+    id: "ktm_160_duke",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "KTM",
@@ -7889,7 +7889,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ktm_200_duke",
+    id: "ktm_200_duke",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "KTM",
@@ -7922,7 +7922,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ktm_250_duke",
+    id: "ktm_250_duke",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "KTM",
@@ -7955,7 +7955,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ktm_390_adventure_r",
+    id: "ktm_390_adventure_r",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "KTM",
@@ -7988,7 +7988,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ktm_390_adventure_x",
+    id: "ktm_390_adventure_x",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "KTM",
@@ -8021,7 +8021,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ktm_390_duke",
+    id: "ktm_390_duke",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "KTM",
@@ -8054,7 +8054,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ktm_390_enduro_r",
+    id: "ktm_390_enduro_r",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "KTM",
@@ -8087,7 +8087,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "matter_aera",
+    id: "matter_aera",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Matter",
@@ -8120,7 +8120,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "moto_guzzi_v85_tt",
+    id: "moto_guzzi_v85_tt",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Moto",
@@ -8153,7 +8153,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "moto_morini_seiemmezzo",
+    id: "moto_morini_seiemmezzo",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Moto",
@@ -8186,7 +8186,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "oden_rorr",
+    id: "oden_rorr",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Oden",
@@ -8219,7 +8219,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "oden_rorr_ez",
+    id: "oden_rorr_ez",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Oden",
@@ -8252,7 +8252,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "oden_rorr_ez_sigma",
+    id: "oden_rorr_ez_sigma",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Oden",
@@ -8285,7 +8285,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "odysse_vader",
+    id: "odysse_vader",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Odysse",
@@ -8318,7 +8318,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ola_roadster",
+    id: "ola_roadster",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Ola",
@@ -8351,7 +8351,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ola_roadster_pro",
+    id: "ola_roadster_pro",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Ola",
@@ -8384,7 +8384,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ola_roadster_x",
+    id: "ola_roadster_x",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Ola",
@@ -8417,7 +8417,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ola_roadster_x_plus",
+    id: "ola_roadster_x_plus",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Ola",
@@ -8450,7 +8450,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "pure_ec_etryst_350",
+    id: "pure_ec_etryst_350",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "PURE ",
@@ -8483,7 +8483,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "pure_ev_ecodrift",
+    id: "pure_ev_ecodrift",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "PURE",
@@ -8516,7 +8516,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "qj_motor_srk_400",
+    id: "qj_motor_srk_400",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "QJ Motor",
@@ -8549,7 +8549,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "revolt_rv_blazex",
+    id: "revolt_rv_blazex",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Revolt",
@@ -8582,7 +8582,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "revolt_rv1",
+    id: "revolt_rv1",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Revolt",
@@ -8615,7 +8615,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "revolt_rv400",
+    id: "revolt_rv400",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Revolt",
@@ -8648,7 +8648,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "royal_enfield_bullet_350",
+    id: "royal_enfield_bullet_350",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Royal",
@@ -8681,7 +8681,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "royal_enfield_hunter_350",
+    id: "royal_enfield_hunter_350",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Royal",
@@ -8714,7 +8714,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "suzuki_gixxer",
+    id: "suzuki_gixxer",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Suzuki",
@@ -8747,7 +8747,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "suzuki_gixxer_250",
+    id: "suzuki_gixxer_250",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Suzuki",
@@ -8780,7 +8780,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "triumph_speed_400",
+    id: "triumph_speed_400",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Triumph",
@@ -8813,7 +8813,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "triumph_speed_t4",
+    id: "triumph_speed_t4",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Triumph",
@@ -8846,7 +8846,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "triumph_speed_twin_1200",
+    id: "triumph_speed_twin_1200",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Triumph",
@@ -8879,7 +8879,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "triumph_street_triple_r",
+    id: "triumph_street_triple_r",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Triumph",
@@ -8912,7 +8912,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "triumph_street_triple_rs",
+    id: "triumph_street_triple_rs",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Triumph",
@@ -8945,7 +8945,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "triumph_trident_660",
+    id: "triumph_trident_660",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Triumph",
@@ -8978,7 +8978,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_apache_rtr_160",
+    id: "tvs_apache_rtr_160",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "TVS",
@@ -9011,7 +9011,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_apache_rtr_160_4v",
+    id: "tvs_apache_rtr_160_4v",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "TVS",
@@ -9044,7 +9044,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_apache_rtr_180",
+    id: "tvs_apache_rtr_180",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "TVS",
@@ -9077,7 +9077,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_apache_rtr_200_4v",
+    id: "tvs_apache_rtr_200_4v",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "TVS",
@@ -9110,7 +9110,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_apache_rtr_310",
+    id: "tvs_apache_rtr_310",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "TVS",
@@ -9143,7 +9143,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ultraviolette_f77_crossover",
+    id: "ultraviolette_f77_crossover",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Ultraviolette",
@@ -9176,7 +9176,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ultraviolette_shockwave",
+    id: "ultraviolette_shockwave",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Ultraviolette",
@@ -9209,7 +9209,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "yamaha_fz_fi",
+    id: "yamaha_fz_fi",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Yamaha",
@@ -9242,7 +9242,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "yamaha_fz_rave",
+    id: "yamaha_fz_rave",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Yamaha",
@@ -9275,7 +9275,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "yamaha_fz_s_fi",
+    id: "yamaha_fz_s_fi",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Yamaha",
@@ -9308,7 +9308,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "yamaha_fz_s_hybrid",
+    id: "yamaha_fz_s_hybrid",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Yamaha",
@@ -9341,7 +9341,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "yamaha_mt_15_v2",
+    id: "yamaha_mt_15_v2",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Yamaha",
@@ -9374,7 +9374,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "yamaha_xsr_155",
+    id: "yamaha_xsr_155",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Yamaha",
@@ -9407,7 +9407,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "yezdi_roadster",
+    id: "yezdi_roadster",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Yezdi",
@@ -9440,7 +9440,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "zontes_gk350",
+    id: "zontes_gk350",
     "type": "bike",
     "bodyType": "Street Bike",
     "brand": "Zontes",
@@ -9473,7 +9473,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_z900",
+    id: "kawasaki_z900",
     "type": "bike",
     "bodyType": "Super Bike",
     "brand": "Kawasaki",
@@ -9506,7 +9506,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "suzuki_hayabusa",
+    id: "suzuki_hayabusa",
     "type": "bike",
     "bodyType": "Super Bike",
     "brand": "Suzuki",
@@ -9539,7 +9539,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ducati_panigale_v4",
+    id: "ducati_panigale_v4",
     "type": "bike",
     "bodyType": "Super Bike",
     "brand": "Ducati",
@@ -9572,7 +9572,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_goldwing_tour",
+    id: "honda_goldwing_tour",
     "type": "bike",
     "bodyType": "Super Bike",
     "brand": "Honda",
@@ -9605,7 +9605,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_h2_sx",
+    id: "kawasaki_h2_sx",
     "type": "bike",
     "bodyType": "Super Bike",
     "brand": "Kawasaki",
@@ -9638,7 +9638,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_z900_2025",
+    id: "kawasaki_z900_2025",
     "type": "bike",
     "bodyType": "Super Bike",
     "brand": "Kawasaki",
@@ -9671,7 +9671,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bmw_m_1000_xr",
+    id: "bmw_m_1000_xr",
     "type": "bike",
     "bodyType": "Super Bike",
     "brand": "BMW",
@@ -9704,7 +9704,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ducati_supersport",
+    id: "ducati_supersport",
     "type": "bike",
     "bodyType": "Super Bike",
     "brand": "Ducati",
@@ -9737,7 +9737,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_z_h2",
+    id: "kawasaki_z_h2",
     "type": "bike",
     "bodyType": "Super Bike",
     "brand": "Kawasaki",
@@ -9770,7 +9770,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ducati_streetfighter_v4",
+    id: "ducati_streetfighter_v4",
     "type": "bike",
     "bodyType": "Super Bike",
     "brand": "Ducati",
@@ -9803,7 +9803,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "aprilia_rsv4_1100_factory",
+    id: "aprilia_rsv4_1100_factory",
     "type": "bike",
     "bodyType": "Super Bike",
     "brand": "Aprilia",
@@ -9836,7 +9836,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_ninija_zx10r",
+    id: "kawasaki_ninija_zx10r",
     "type": "bike",
     "bodyType": "Super Bike",
     "brand": "Kawasaki",
@@ -9869,7 +9869,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_ninija_sx_se",
+    id: "kawasaki_ninija_sx_se",
     "type": "bike",
     "bodyType": "Super Bike",
     "brand": "Kawasaki",
@@ -9902,7 +9902,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ducati_streetfighter_v2",
+    id: "ducati_streetfighter_v2",
     "type": "bike",
     "bodyType": "Super Bike",
     "brand": "Ducati",
@@ -9935,7 +9935,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "royal_enfield_continental_gt_650",
+    id: "royal_enfield_continental_gt_650",
     "type": "bike",
     "bodyType": "Caf\ufffd Ride",
     "brand": "Royal Enfield",
@@ -9968,7 +9968,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "triumph_thruxton_400",
+    id: "triumph_thruxton_400",
     "type": "bike",
     "bodyType": "Caf\ufffd Ride",
     "brand": "Triumph",
@@ -10001,7 +10001,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "husqvarna_vitpilen_250",
+    id: "husqvarna_vitpilen_250",
     "type": "bike",
     "bodyType": "Caf\ufffd Ride",
     "brand": "Husqvarna",
@@ -10034,7 +10034,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bmw_r12_nine_t",
+    id: "bmw_r12_nine_t",
     "type": "bike",
     "bodyType": "Caf\ufffd Ride",
     "brand": "BMW",
@@ -10067,7 +10067,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_cb350rs",
+    id: "honda_cb350rs",
     "type": "bike",
     "bodyType": "Scrambler",
     "brand": "Honda",
@@ -10100,7 +10100,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "triumph_scrambler_400_x",
+    id: "triumph_scrambler_400_x",
     "type": "bike",
     "bodyType": "Scrambler",
     "brand": "Triumph",
@@ -10133,7 +10133,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "triumph_scrambler_400_xc",
+    id: "triumph_scrambler_400_xc",
     "type": "bike",
     "bodyType": "Scrambler",
     "brand": "Triumph",
@@ -10166,7 +10166,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "yezdi_scrambler",
+    id: "yezdi_scrambler",
     "type": "bike",
     "bodyType": "Scrambler",
     "brand": "Yezdi",
@@ -10199,7 +10199,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "royal_enfield_scram_440",
+    id: "royal_enfield_scram_440",
     "type": "bike",
     "bodyType": "Scrambler",
     "brand": "Royal Enfield",
@@ -10232,7 +10232,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "royal_enfield_bear_650",
+    id: "royal_enfield_bear_650",
     "type": "bike",
     "bodyType": "Scrambler",
     "brand": "Royal Enfield",
@@ -10265,7 +10265,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "moto_morini_seiemmezzo",
+    id: "moto_morini_seiemmezzo",
     "type": "bike",
     "bodyType": "Scrambler",
     "brand": "Moto",
@@ -10298,7 +10298,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ducati_scrambler_icon",
+    id: "ducati_scrambler_icon",
     "type": "bike",
     "bodyType": "Scrambler",
     "brand": "Ducati",
@@ -10331,7 +10331,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "benelli_leoncine_500",
+    id: "benelli_leoncine_500",
     "type": "bike",
     "bodyType": "Scrambler",
     "brand": "Benelli",
@@ -10364,7 +10364,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "triumph_scrambler_900",
+    id: "triumph_scrambler_900",
     "type": "bike",
     "bodyType": "Scrambler",
     "brand": "Triumph",
@@ -10397,7 +10397,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "brixton_motorcycles_crossfire_500_xc",
+    id: "brixton_motorcycles_crossfire_500_xc",
     "type": "bike",
     "bodyType": "Scrambler",
     "brand": "Brixton Motorcycles",
@@ -10430,7 +10430,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "triumph_scrambler_1200",
+    id: "triumph_scrambler_1200",
     "type": "bike",
     "bodyType": "Scrambler",
     "brand": "Triumph",
@@ -10463,7 +10463,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ducati_scrambler_1100",
+    id: "ducati_scrambler_1100",
     "type": "bike",
     "bodyType": "Scrambler",
     "brand": "Ducati",
@@ -10496,7 +10496,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ducati_scrambler_nightshift",
+    id: "ducati_scrambler_nightshift",
     "type": "bike",
     "bodyType": "Scrambler",
     "brand": "Ducati",
@@ -10529,7 +10529,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ducati_scrambler_full_throttle",
+    id: "ducati_scrambler_full_throttle",
     "type": "bike",
     "bodyType": "Scrambler",
     "brand": "Ducati",
@@ -10562,7 +10562,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "benelli_trk_520",
+    id: "benelli_trk_520",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "Benelli",
@@ -10595,7 +10595,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "benelli_trk_520x",
+    id: "benelli_trk_520x",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "Benelli",
@@ -10628,7 +10628,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bmw_f_900_gs",
+    id: "bmw_f_900_gs",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "BMW",
@@ -10661,7 +10661,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bmw_f_900_gs_adventer",
+    id: "bmw_f_900_gs_adventer",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "BMW",
@@ -10694,7 +10694,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bmw_r1300_gs",
+    id: "bmw_r1300_gs",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "BMW",
@@ -10727,7 +10727,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bmw_r1300_gs_adventure",
+    id: "bmw_r1300_gs_adventure",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "BMW",
@@ -10760,7 +10760,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ducati_desert_x",
+    id: "ducati_desert_x",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "Ducati",
@@ -10793,7 +10793,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ducati_multistrada_v4_rs",
+    id: "ducati_multistrada_v4_rs",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "Ducati",
@@ -10826,7 +10826,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "harleydavidson_pan_america_1250_special",
+    id: "harleydavidson_pan_america_1250_special",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "Harley-Davidson",
@@ -10859,7 +10859,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_xpulse_200_4v",
+    id: "hero_xpulse_200_4v",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "Hero",
@@ -10892,7 +10892,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_xpulse_210",
+    id: "hero_xpulse_210",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "Hero",
@@ -10925,7 +10925,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_nx500",
+    id: "honda_nx500",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "Honda",
@@ -10958,7 +10958,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_transalp_xl750",
+    id: "honda_transalp_xl750",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "Honda",
@@ -10991,7 +10991,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_xadv",
+    id: "honda_xadv",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "Honda",
@@ -11024,7 +11024,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_versysx_300",
+    id: "kawasaki_versysx_300",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "Kawasaki",
@@ -11057,7 +11057,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ktm_1290_super_adventure_s",
+    id: "ktm_1290_super_adventure_s",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "KTM",
@@ -11090,7 +11090,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ktm_250_adventure",
+    id: "ktm_250_adventure",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "KTM",
@@ -11123,7 +11123,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ktm_390_adventure",
+    id: "ktm_390_adventure",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "KTM",
@@ -11156,7 +11156,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ktm_890_adventure_r",
+    id: "ktm_890_adventure_r",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "KTM",
@@ -11189,7 +11189,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "moto_morini_xcape",
+    id: "moto_morini_xcape",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "Moto Morini",
@@ -11222,7 +11222,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "royal_enfield_himalayan_450",
+    id: "royal_enfield_himalayan_450",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "Royal Enfield",
@@ -11255,7 +11255,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "suzuki_vstrom_800_de",
+    id: "suzuki_vstrom_800_de",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "Suzuki",
@@ -11288,7 +11288,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "suzuki_vstrom_sx",
+    id: "suzuki_vstrom_sx",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "Suzuki",
@@ -11321,7 +11321,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "triumph_tiger_1200",
+    id: "triumph_tiger_1200",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "Triumph",
@@ -11354,7 +11354,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "triumph_tiger_900",
+    id: "triumph_tiger_900",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "Triumph",
@@ -11387,7 +11387,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_apache_rtx",
+    id: "tvs_apache_rtx",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "TVS",
@@ -11420,7 +11420,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "yedi_adventure",
+    id: "yedi_adventure",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "Yedi",
@@ -11453,7 +11453,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "zontes_350t",
+    id: "zontes_350t",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "Zontes",
@@ -11486,7 +11486,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "aprilia_tuareg_660",
+    id: "aprilia_tuareg_660",
     "type": "bike",
     "bodyType": "Adventure",
     "brand": "Aprilia",
@@ -11519,7 +11519,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "suzuki_burgman_street_125",
+    id: "suzuki_burgman_street_125",
     "type": "bike",
     "bodyType": "Maxi Scooter",
     "brand": "Suzuki",
@@ -11552,7 +11552,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "yamaha_aerox_155",
+    id: "yamaha_aerox_155",
     "type": "bike",
     "bodyType": "Maxi Scooter",
     "brand": "Yamaha",
@@ -11585,7 +11585,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "hero_xoom_160",
+    id: "hero_xoom_160",
     "type": "bike",
     "bodyType": "Maxi Scooter",
     "brand": "Hero",
@@ -11618,7 +11618,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "aprilia_sxr_160",
+    id: "aprilia_sxr_160",
     "type": "bike",
     "bodyType": "Tourer",
     "brand": "Aprilia",
@@ -11651,7 +11651,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "keeway_vieste_300",
+    id: "keeway_vieste_300",
     "type": "bike",
     "bodyType": "Tourer",
     "brand": "Keeway",
@@ -11684,7 +11684,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "aprilia_sxr_125",
+    id: "aprilia_sxr_125",
     "type": "bike",
     "bodyType": "Tourer",
     "brand": "Aprilia",
@@ -11717,7 +11717,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "honda_goldwing_tour",
+    id: "honda_goldwing_tour",
     "type": "bike",
     "bodyType": "Tourer",
     "brand": "Honda",
@@ -11750,7 +11750,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "zontes_350x",
+    id: "zontes_350x",
     "type": "bike",
     "bodyType": "Tourer",
     "brand": "Zontes",
@@ -11783,7 +11783,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "triumph_tiger_sport_660",
+    id: "triumph_tiger_sport_660",
     "type": "bike",
     "bodyType": "Tourer",
     "brand": "Triumph",
@@ -11816,7 +11816,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_versys_650",
+    id: "kawasaki_versys_650",
     "type": "bike",
     "bodyType": "Tourer",
     "brand": "Kawasaki",
@@ -11849,7 +11849,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bmw_k_1600",
+    id: "bmw_k_1600",
     "type": "bike",
     "bodyType": "Tourer",
     "brand": "BMW",
@@ -11882,7 +11882,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kawasaki_versys_1100",
+    id: "kawasaki_versys_1100",
     "type": "bike",
     "bodyType": "Tourer",
     "brand": "Kawasaki",
@@ -11915,7 +11915,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "bmw_k_1250_rt",
+    id: "bmw_k_1250_rt",
     "type": "bike",
     "bodyType": "Tourer",
     "brand": "BMW",
@@ -11948,7 +11948,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "ducati_multistrada_v2",
+    id: "ducati_multistrada_v2",
     "type": "bike",
     "bodyType": "Tourer",
     "brand": "Ducati",
@@ -11981,7 +11981,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_xl_100_heavy_duty",
+    id: "tvs_xl_100_heavy_duty",
     "type": "bike",
     "bodyType": "Moped",
     "brand": "TVS",
@@ -12014,7 +12014,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "tvs_xl_100_comfort",
+    id: "tvs_xl_100_comfort",
     "type": "bike",
     "bodyType": "Moped",
     "brand": "TVS",
@@ -12047,7 +12047,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "kinetic_green_e_luna",
+    id: "kinetic_green_e_luna",
     "type": "bike",
     "bodyType": "Moped",
     "brand": "Kinetic",
@@ -12080,7 +12080,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12113,7 +12113,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12146,7 +12146,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12179,7 +12179,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12212,7 +12212,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12245,7 +12245,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12278,7 +12278,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12311,7 +12311,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12344,7 +12344,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12377,7 +12377,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12410,7 +12410,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12443,7 +12443,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12476,7 +12476,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12509,7 +12509,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12542,7 +12542,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12575,7 +12575,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12608,7 +12608,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12641,7 +12641,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12674,7 +12674,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12707,7 +12707,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12740,7 +12740,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12773,7 +12773,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12806,7 +12806,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12839,7 +12839,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12872,7 +12872,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12905,7 +12905,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12938,7 +12938,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -12971,7 +12971,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13004,7 +13004,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13037,7 +13037,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13070,7 +13070,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13103,7 +13103,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13136,7 +13136,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13169,7 +13169,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13202,7 +13202,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13235,7 +13235,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13268,7 +13268,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13301,7 +13301,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13334,7 +13334,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13367,7 +13367,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13400,7 +13400,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13433,7 +13433,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13466,7 +13466,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13499,7 +13499,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13532,7 +13532,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13565,7 +13565,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13598,7 +13598,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13631,7 +13631,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13664,7 +13664,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13697,7 +13697,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13730,7 +13730,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13763,7 +13763,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13796,7 +13796,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13829,7 +13829,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13862,7 +13862,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13895,7 +13895,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13928,7 +13928,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13961,7 +13961,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -13994,7 +13994,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14027,7 +14027,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14060,7 +14060,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14093,7 +14093,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14126,7 +14126,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14159,7 +14159,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14192,7 +14192,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14225,7 +14225,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14258,7 +14258,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14291,7 +14291,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14324,7 +14324,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14357,7 +14357,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14390,7 +14390,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14423,7 +14423,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14456,7 +14456,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14489,7 +14489,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14522,7 +14522,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14555,7 +14555,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14588,7 +14588,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14621,7 +14621,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14654,7 +14654,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14687,7 +14687,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14720,7 +14720,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14753,7 +14753,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14786,7 +14786,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14819,7 +14819,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14852,7 +14852,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14885,7 +14885,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14918,7 +14918,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14951,7 +14951,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -14984,7 +14984,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15017,7 +15017,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15050,7 +15050,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15083,7 +15083,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15116,7 +15116,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15149,7 +15149,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15182,7 +15182,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15215,7 +15215,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15248,7 +15248,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15281,7 +15281,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15314,7 +15314,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15347,7 +15347,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15380,7 +15380,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15413,7 +15413,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15446,7 +15446,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15479,7 +15479,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15512,7 +15512,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15545,7 +15545,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15578,7 +15578,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15611,7 +15611,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15644,7 +15644,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15677,7 +15677,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15710,7 +15710,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15743,7 +15743,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15776,7 +15776,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15809,7 +15809,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15842,7 +15842,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15875,7 +15875,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15908,7 +15908,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15941,7 +15941,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -15974,7 +15974,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16007,7 +16007,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16040,7 +16040,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16073,7 +16073,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16106,7 +16106,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16139,7 +16139,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16172,7 +16172,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16205,7 +16205,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16238,7 +16238,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16271,7 +16271,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16304,7 +16304,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16337,7 +16337,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16370,7 +16370,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16403,7 +16403,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16436,7 +16436,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16469,7 +16469,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16502,7 +16502,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16535,7 +16535,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16568,7 +16568,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16601,7 +16601,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16634,7 +16634,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16667,7 +16667,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16700,7 +16700,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16733,7 +16733,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16766,7 +16766,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16799,7 +16799,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
@@ -16832,7 +16832,7 @@ window.VEHICLES.push(
     }
   },
   {
-    "id": "",
+    id: "",
     "type": "",
     "bodyType": "",
     "brand": "",
