@@ -52,7 +52,9 @@ function populateVehicleTypes() {
   const select = document.getElementById("type");
   if (!select) return;
 
-  const types = [...new Set(   window.VEHICLES.map(v => v.type.toLowerCase()) )];
+  const types = [
+    ...new Set(window.VEHICLES.map(v => String(v.type).toLowerCase()))
+  ];
 
   select.innerHTML = `<option value="">Select vehicle type</option>`;
   types.forEach(t => select.add(new Option(t.toUpperCase(), t)));
@@ -68,33 +70,50 @@ function calcLegHeight(h, l) {
 function calculateScore(vehicle, user) {
   const breakdown = {};
 
-  const diff = Math.abs(
-    vehicle.ergonomics.seatHeight_mm - calcLegHeight(user.height, user.legHeight)
-  );
+  /* ---------- SEAT FIT ---------- */
+  if (vehicle.ergonomics?.seatHeight_mm) {
+    const diff = Math.abs(
+      vehicle.ergonomics.seatHeight_mm -
+      calcLegHeight(user.height, user.legHeight)
+    );
 
-  breakdown.seat =
-    diff <= 50 ? 4 :
-    diff <= 150 ? 3 :
-    diff <= 300 ? 2 : 1;
+    breakdown.seat =
+      diff <= 50 ? 4 :
+      diff <= 150 ? 3 :
+      diff <= 300 ? 2 : 1;
+  } else {
+    // Cars or unknown → neutral score
+    breakdown.seat = 3;
+  }
 
+  /* ---------- USAGE ---------- */
   const usageVal =
     user.usage < 50
       ? (user.frequency < 50
-          ? vehicle.usage.city_daily
-          : vehicle.usage.city_occasional)
+          ? vehicle.usage?.city_daily
+          : vehicle.usage?.city_occasional)
       : (user.frequency < 50
-          ? vehicle.usage.highway_daily
-          : vehicle.usage.highway_occasional);
+          ? vehicle.usage?.highway_daily
+          : vehicle.usage?.highway_occasional);
 
-  breakdown.usage = usageVal >= 80 ? 3 : usageVal >= 60 ? 2 : 1;
+  breakdown.usage =
+    usageVal >= 80 ? 3 :
+    usageVal >= 60 ? 2 : 1;
 
+  /* ---------- FREQUENCY ---------- */
   breakdown.frequency =
     user.frequency < 40 ? 2 :
     user.frequency < 70 ? 1 : 0;
 
+  /* ---------- WEIGHT ---------- */
+  const kerb =
+    vehicle.physical?.kerbWeight ??
+    vehicle.kerbWeight ??
+    0;
+
   breakdown.weight =
-    (user.weight < 50 && vehicle.physical.kerbWeight > 180) ||
-    (user.weight > 90 && vehicle.physical.kerbWeight < 120)
+    (user.weight < 50 && kerb > 180) ||
+    (user.weight > 90 && kerb < 120)
       ? 0
       : 1;
 
@@ -134,7 +153,9 @@ function recommend() {
     return;
   }
 
-  const filtered = window.VEHICLES.filter(v => v.type.toLowerCase() === type.value);
+  const filtered = window.VEHICLES.filter(
+    v => String(v.type).toLowerCase() === type.value
+  );
 
   const scored = filtered.map(v => ({
     vehicle: v,
@@ -143,9 +164,9 @@ function recommend() {
 
   const best = {};
   scored.forEach(item => {
-    const k = item.vehicle.bodyType;
-    if (!best[k] || best[k].score.total < item.score.total) {
-      best[k] = item;
+    const key = item.vehicle.bodyType || "Other";
+    if (!best[key] || best[key].score.total < item.score.total) {
+      best[key] = item;
     }
   });
 
@@ -183,7 +204,9 @@ function renderResults(list) {
 ======================= */
 function showDetails(item) {
   currentDetail = item;
-  detailTitle.innerText = `${item.vehicle.brand} ${item.vehicle.model}`;
+
+  detailTitle.innerText =
+    `${item.vehicle.brand} ${item.vehicle.model}`;
   detailScore.innerText = item.score.total;
 
   detailReasons.innerHTML = `
