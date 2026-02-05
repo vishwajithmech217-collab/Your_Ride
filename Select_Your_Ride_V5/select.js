@@ -236,20 +236,50 @@ function addToCompare() {
   if (compareList.length === 2) showCompare();
 }
 
+function makeBar(label, value, max) {
+  const percent = Math.round((value / max) * 100);
+
+  return `
+    <div class="chart">
+      <div class="chart-label">${label}: ${value}/${max}</div>
+      <div class="chart-bar">
+        <div class="chart-fill" data-width="${percent}%"></div>
+      </div>
+    </div>
+  `;
+}
+
+
 function showCompare() {
   compareGrid.innerHTML = "";
 
   compareList.forEach(item => {
-    const c = document.createElement("div");
-    c.className = "compare-card";
-    c.innerHTML = `
-      <h4>${item.vehicle.model}</h4>
-      <b>${item.score.total}/10</b>
+    const { vehicle, score } = item;
+
+    const card = document.createElement("div");
+    card.className = "compare-card";
+
+    card.innerHTML = `
+      <h4>${vehicle.brand} ${vehicle.model}</h4>
+      <b>${score.total}/10</b>
+
+      ${makeBar("Seat Fit", score.breakdown.seat, 4)}
+      ${makeBar("Usage", score.breakdown.usage, 3)}
+      ${makeBar("Frequency", score.breakdown.frequency, 2)}
+      ${makeBar("Weight", score.breakdown.weight, 1)}
     `;
-    compareGrid.appendChild(c);
+
+    compareGrid.appendChild(card);
   });
 
   compareModal.classList.remove("hidden");
+
+  // animate bars
+  setTimeout(() => {
+    document.querySelectorAll(".chart-fill").forEach(bar => {
+      bar.style.width = bar.dataset.width;
+    });
+  }, 100);
 }
 
 function closeCompare() {
