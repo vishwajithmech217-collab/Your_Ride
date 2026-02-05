@@ -52,7 +52,7 @@ function populateVehicleTypes() {
   const select = document.getElementById("type");
   if (!select) return;
 
-  const types = [...new Set(window.VEHICLES.map(v => v.type))];
+  const types = [...new Set(   window.VEHICLES.map(v => v.type.toLowerCase()) )];
 
   select.innerHTML = `<option value="">Select vehicle type</option>`;
   types.forEach(t => select.add(new Option(t.toUpperCase(), t)));
@@ -134,7 +134,7 @@ function recommend() {
     return;
   }
 
-  const filtered = window.VEHICLES.filter(v => v.type === type.value);
+  const filtered = window.VEHICLES.filter(v => v.type.toLowerCase() === type.value);
 
   const scored = filtered.map(v => ({
     vehicle: v,
