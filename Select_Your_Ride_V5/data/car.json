@@ -1,5 +1,6 @@
-window.VEHICLES = [
- [
+window.VEHICLES = window.VEHICLES || [];
+
+window.VEHICLES.push(
  {
    "id": "Maruti Suzuki Dzire",
    "type": "Car",
@@ -5649,5 +5650,4 @@ window.VEHICLES = [
    "Wheel Drive": "RWD",
    "Engine series": "K-Series"
  }
-]
-]
+)
