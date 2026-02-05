@@ -69,7 +69,7 @@ function calculateScore(vehicle, user) {
   const breakdown = {};
 
   const diff = Math.abs(
-    vehicle.seatHeight - calcLegHeight(user.height, user.legHeight)
+    vehicle.ergonomics.seatHeight_mm - calcLegHeight(user.height, user.legHeight)
   );
 
   breakdown.seat =
@@ -93,8 +93,8 @@ function calculateScore(vehicle, user) {
     user.frequency < 70 ? 1 : 0;
 
   breakdown.weight =
-    (user.weight < 50 && vehicle.kerbWeight > 180) ||
-    (user.weight > 90 && vehicle.kerbWeight < 120)
+    (user.weight < 50 && vehicle.physical.kerbWeight > 180) ||
+    (user.weight > 90 && vehicle.physical.kerbWeight < 120)
       ? 0
       : 1;
 
