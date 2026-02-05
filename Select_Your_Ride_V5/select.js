@@ -1,26 +1,30 @@
 console.log("select.js loaded");
 
-/* ===== GLOBAL ===== */
-const vehicles = window.VEHICLES || [];
+/* =======================
+   GLOBAL STATE
+======================= */
 let compareList = [];
 let currentDetail = null;
 
-/* ===== CONFIG ===== */
-const SCORE_CONFIG = {
-  SEAT_MAX: 4,
-  USAGE_MAX: 3,
-  FREQ_MAX: 2,
-  WEIGHT_MAX: 1
-};
+/* =======================
+   SAFE DATA ACCESS
+======================= */
+function getVehicles() {
+  return window.VEHICLES || [];
+}
 
-/* ===== DOM READY ===== */
+/* =======================
+   DOM READY
+======================= */
 document.addEventListener("DOMContentLoaded", () => {
   populateVehicleTypes();
   toggleSetup();
   hideModals();
 });
 
-/* ===== UI HELPERS ===== */
+/* =======================
+   UI HELPERS
+======================= */
 function toggleSetup() {
   const btn = document.getElementById("advancedBtn");
   const box = document.getElementById("advancedBox");
@@ -32,27 +36,33 @@ function hideModals() {
   document.getElementById("compareModal")?.classList.add("hidden");
 }
 
-/* ===== VEHICLE TYPES ===== */
+/* =======================
+   VEHICLE TYPE DROPDOWN
+======================= */
 function populateVehicleTypes() {
   const select = document.getElementById("type");
   if (!select) return;
 
-  [...new Set(vehicles.map(v => v.type))].forEach(t => {
-    select.add(new Option(t.toUpperCase(), t));
-  });
+  const vehicles = getVehicles();
+  const types = [...new Set(vehicles.map(v => v.type))];
+
+  select.innerHTML = `<option value="">Select vehicle type</option>`;
+  types.forEach(t => select.add(new Option(t.toUpperCase(), t)));
 }
 
-/* ===== CORE LOGIC ===== */
-function calcLegHeight(h, l) {
-  return l || Math.round(h * 0.46);
+/* =======================
+   CORE CALCULATIONS
+======================= */
+function calcLegHeight(height, leg) {
+  return leg || Math.round(height * 0.46);
 }
 
 function calculateScore(vehicle, user) {
   const breakdown = {};
 
-  // Seat fit
+  /* Seat fit */
   const diff = Math.abs(
-    vehicle.ergonomics.seatHeight - calcLegHeight(user.height, user.legHeight)
+    vehicle.seatHeight - calcLegHeight(user.height, user.legHeight)
   );
 
   breakdown.seat =
@@ -60,21 +70,27 @@ function calculateScore(vehicle, user) {
     diff <= 150 ? 3 :
     diff <= 300 ? 2 : 1;
 
-  // Usage
+  /* Usage match */
   const usageVal =
-    user.usage < 50 ? vehicle.usage.city : vehicle.usage.highway;
+    user.usage < 50
+      ? (user.frequency < 50
+          ? vehicle.usage.city_daily
+          : vehicle.usage.city_occasional)
+      : (user.frequency < 50
+          ? vehicle.usage.highway_daily
+          : vehicle.usage.highway_occasional);
 
   breakdown.usage = usageVal >= 80 ? 3 : usageVal >= 60 ? 2 : 1;
 
-  // Frequency
+  /* Frequency */
   breakdown.frequency =
     user.frequency < 40 ? 2 :
     user.frequency < 70 ? 1 : 0;
 
-  // Weight
+  /* Weight compatibility */
   breakdown.weight =
-    (user.weight < 50 && vehicle.physical.kerbWeight > 180) ||
-    (user.weight > 90 && vehicle.physical.kerbWeight < 120)
+    (user.weight < 50 && vehicle.kerbWeight > 180) ||
+    (user.weight > 90 && vehicle.kerbWeight < 120)
       ? 0
       : 1;
 
@@ -87,7 +103,9 @@ function calculateScore(vehicle, user) {
   return { total, breakdown };
 }
 
-/* ===== RECOMMENDATION ===== */
+/* =======================
+   RECOMMENDATION ENGINE
+======================= */
 function recommend() {
   const user = {
     height: +height.value,
@@ -98,17 +116,29 @@ function recommend() {
   };
 
   if (!user.height || !user.weight) {
-    alert("Enter height & weight");
+    alert("Please enter height and weight");
     return;
   }
 
+  if (!type.value) {
+    alert("Please select vehicle type");
+    return;
+  }
+
+  const vehicles = getVehicles();
   const filtered = vehicles.filter(v => v.type === type.value);
+
+  if (!filtered.length) {
+    renderResults([]);
+    return;
+  }
 
   const scored = filtered.map(v => ({
     vehicle: v,
     score: calculateScore(v, user)
   }));
 
+  /* Best per body type */
   const grouped = {};
   scored.forEach(item => {
     const key = item.vehicle.bodyType;
@@ -120,7 +150,9 @@ function recommend() {
   renderResults(Object.values(grouped));
 }
 
-/* ===== UI RENDER ===== */
+/* =======================
+   RESULTS RENDER
+======================= */
 function renderResults(list) {
   const box = document.getElementById("results");
   box.innerHTML = "";
@@ -142,14 +174,14 @@ function renderResults(list) {
       <span class="more">More Models →</span>
     `;
 
-    card.querySelector("button").onclick =
-      () => showDetails(item);
-
+    card.querySelector("button").onclick = () => showDetails(item);
     box.appendChild(card);
   });
 }
 
-/* ===== DETAILS ===== */
+/* =======================
+   DETAILS MODAL
+======================= */
 function showDetails(item) {
   currentDetail = item;
 
@@ -171,18 +203,22 @@ function closeDetails() {
   detailModal.classList.add("hidden");
 }
 
-/* ===== COMPARE ===== */
+/* =======================
+   COMPARE
+======================= */
 function addToCompare() {
   if (!currentDetail) return;
-  if (compareList.length === 2) return alert("Max 2 vehicles");
+  if (compareList.length === 2) {
+    alert("You can compare only 2 vehicles");
+    return;
+  }
 
   compareList.push(currentDetail);
   if (compareList.length === 2) showCompare();
 }
 
 function showCompare() {
-  const grid = compareGrid;
-  grid.innerHTML = "";
+  compareGrid.innerHTML = "";
 
   compareList.forEach(item => {
     const c = document.createElement("div");
@@ -191,7 +227,7 @@ function showCompare() {
       <h4>${item.vehicle.model}</h4>
       <b>${item.score.total}/10</b>
     `;
-    grid.appendChild(c);
+    compareGrid.appendChild(c);
   });
 
   compareModal.classList.remove("hidden");
@@ -202,7 +238,9 @@ function closeCompare() {
   compareModal.classList.add("hidden");
 }
 
-/* ===== EXPOSE ===== */
+/* =======================
+   EXPOSE TO HTML
+======================= */
 window.recommend = recommend;
 window.closeDetails = closeDetails;
 window.addToCompare = addToCompare;
