@@ -1,0 +1,24 @@
+[
+  {
+    "id": "tata_nexon",
+    "bodyType": "SUV",
+    "brand": "Tata",
+    "model": "Nexon",
+
+    "usage": {
+      "city_daily": 60,
+      "city_occasional": 80,
+      "highway_daily": 70,
+      "highway_occasional": 90
+    },
+
+    "carSpecs": {
+      "seatingCapacity": 5,
+      "engine_cc": 1498,
+      "cylinders": 4,
+      "fuelType": "petrol",
+      "driveType": "FWD",
+      "ncap": 5
+    }
+  }
+]
