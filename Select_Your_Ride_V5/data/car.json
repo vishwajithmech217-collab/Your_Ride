@@ -1,4 +1,5 @@
-[
+window.VEHICLES = [
+ [
  {
    "id": "Maruti Suzuki Dzire",
    "type": "Car",
@@ -5648,4 +5649,5 @@
    "Wheel Drive": "RWD",
    "Engine series": "K-Series"
  }
+]
 ]
