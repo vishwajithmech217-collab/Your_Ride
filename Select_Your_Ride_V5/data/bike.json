@@ -1,5 +1,6 @@
-window.VEHICLES = [
-[
+window.VEHICLES = window.VEHICLES || [];
+
+window.VEHICLES.push(
   {
     "id": "aprilia_rs_457",
     "type": "bike",
@@ -16863,4 +16864,4 @@ window.VEHICLES = [
       "unit": null
     }
   }
-]
+)
