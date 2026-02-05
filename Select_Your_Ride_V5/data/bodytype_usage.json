@@ -1,0 +1,5 @@
+{
+  "Sport Bike": { "city_daily": 10, "city_occasional": 60, "highway_daily": 60, "highway_occasional": 100 },
+  "Scooter": { "city_daily": 100, "city_occasional": 100, "highway_daily": 10, "highway_occasional": 10 },
+  "SUV": { "city_daily": 60, "city_occasional": 80, "highway_daily": 70, "highway_occasional": 90 }
+}
