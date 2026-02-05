@@ -70,7 +70,7 @@ function calcLegHeight(h, l) {
 function calculateScore(vehicle, user) {
   const breakdown = {};
 
-  /* ---------- SEAT FIT ---------- */
+  // Seat fit (bike) or neutral (car)
   if (vehicle.ergonomics?.seatHeight_mm) {
     const diff = Math.abs(
       vehicle.ergonomics.seatHeight_mm -
@@ -82,11 +82,10 @@ function calculateScore(vehicle, user) {
       diff <= 150 ? 3 :
       diff <= 300 ? 2 : 1;
   } else {
-    // Cars or unknown → neutral score
     breakdown.seat = 3;
   }
 
-  /* ---------- USAGE ---------- */
+  // Usage
   const usageVal =
     user.usage < 50
       ? (user.frequency < 50
@@ -100,12 +99,12 @@ function calculateScore(vehicle, user) {
     usageVal >= 80 ? 3 :
     usageVal >= 60 ? 2 : 1;
 
-  /* ---------- FREQUENCY ---------- */
+  // Frequency
   breakdown.frequency =
     user.frequency < 40 ? 2 :
     user.frequency < 70 ? 1 : 0;
 
-  /* ---------- WEIGHT ---------- */
+  // Weight compatibility
   const kerb =
     vehicle.physical?.kerbWeight ??
     vehicle.kerbWeight ??
@@ -174,7 +173,7 @@ function recommend() {
 }
 
 /* =======================
-   RENDER
+   RENDER RESULTS
 ======================= */
 function renderResults(list) {
   const box = document.getElementById("results");
@@ -224,7 +223,44 @@ function closeDetails() {
 }
 
 /* =======================
-   EXPOSE
+   COMPARE
+======================= */
+function addToCompare() {
+  if (!currentDetail) return;
+  if (compareList.length === 2) {
+    alert("You can compare only 2 vehicles");
+    return;
+  }
+
+  compareList.push(currentDetail);
+  if (compareList.length === 2) showCompare();
+}
+
+function showCompare() {
+  compareGrid.innerHTML = "";
+
+  compareList.forEach(item => {
+    const c = document.createElement("div");
+    c.className = "compare-card";
+    c.innerHTML = `
+      <h4>${item.vehicle.model}</h4>
+      <b>${item.score.total}/10</b>
+    `;
+    compareGrid.appendChild(c);
+  });
+
+  compareModal.classList.remove("hidden");
+}
+
+function closeCompare() {
+  compareList = [];
+  compareModal.classList.add("hidden");
+}
+
+/* =======================
+   EXPOSE TO HTML
 ======================= */
 window.recommend = recommend;
 window.closeDetails = closeDetails;
+window.addToCompare = addToCompare;
+window.closeCompare = closeCompare;
