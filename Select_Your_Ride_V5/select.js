@@ -7,19 +7,28 @@ let compareList = [];
 let currentDetail = null;
 
 /* =======================
-   SAFE DATA ACCESS
+   WAIT FOR DATA
 ======================= */
-function getVehicles() {
-  return window.VEHICLES || [];
+function waitForVehicles(cb) {
+  const interval = setInterval(() => {
+    if (Array.isArray(window.VEHICLES) && window.VEHICLES.length) {
+      clearInterval(interval);
+      cb();
+    }
+  }, 50);
 }
 
 /* =======================
    DOM READY
 ======================= */
 document.addEventListener("DOMContentLoaded", () => {
-  populateVehicleTypes();
   toggleSetup();
   hideModals();
+
+  waitForVehicles(() => {
+    populateVehicleTypes();
+    console.log("Vehicles loaded:", window.VEHICLES.length);
+  });
 });
 
 /* =======================
@@ -37,30 +46,28 @@ function hideModals() {
 }
 
 /* =======================
-   VEHICLE TYPE DROPDOWN
+   VEHICLE TYPES
 ======================= */
 function populateVehicleTypes() {
   const select = document.getElementById("type");
   if (!select) return;
 
-  const vehicles = getVehicles();
-  const types = [...new Set(vehicles.map(v => v.type))];
+  const types = [...new Set(window.VEHICLES.map(v => v.type))];
 
   select.innerHTML = `<option value="">Select vehicle type</option>`;
   types.forEach(t => select.add(new Option(t.toUpperCase(), t)));
 }
 
 /* =======================
-   CORE CALCULATIONS
+   CORE CALCS
 ======================= */
-function calcLegHeight(height, leg) {
-  return leg || Math.round(height * 0.46);
+function calcLegHeight(h, l) {
+  return l || Math.round(h * 0.46);
 }
 
 function calculateScore(vehicle, user) {
   const breakdown = {};
 
-  /* Seat fit */
   const diff = Math.abs(
     vehicle.seatHeight - calcLegHeight(user.height, user.legHeight)
   );
@@ -70,7 +77,6 @@ function calculateScore(vehicle, user) {
     diff <= 150 ? 3 :
     diff <= 300 ? 2 : 1;
 
-  /* Usage match */
   const usageVal =
     user.usage < 50
       ? (user.frequency < 50
@@ -82,12 +88,10 @@ function calculateScore(vehicle, user) {
 
   breakdown.usage = usageVal >= 80 ? 3 : usageVal >= 60 ? 2 : 1;
 
-  /* Frequency */
   breakdown.frequency =
     user.frequency < 40 ? 2 :
     user.frequency < 70 ? 1 : 0;
 
-  /* Weight compatibility */
   breakdown.weight =
     (user.weight < 50 && vehicle.kerbWeight > 180) ||
     (user.weight > 90 && vehicle.kerbWeight < 120)
@@ -104,9 +108,19 @@ function calculateScore(vehicle, user) {
 }
 
 /* =======================
-   RECOMMENDATION ENGINE
+   RECOMMEND
 ======================= */
 function recommend() {
+  if (!window.VEHICLES?.length) {
+    alert("Vehicle data not loaded yet");
+    return;
+  }
+
+  if (!type.value) {
+    alert("Please select vehicle type");
+    return;
+  }
+
   const user = {
     height: +height.value,
     weight: +weight.value,
@@ -116,42 +130,30 @@ function recommend() {
   };
 
   if (!user.height || !user.weight) {
-    alert("Please enter height and weight");
+    alert("Enter height & weight");
     return;
   }
 
-  if (!type.value) {
-    alert("Please select vehicle type");
-    return;
-  }
-
-  const vehicles = getVehicles();
-  const filtered = vehicles.filter(v => v.type === type.value);
-
-  if (!filtered.length) {
-    renderResults([]);
-    return;
-  }
+  const filtered = window.VEHICLES.filter(v => v.type === type.value);
 
   const scored = filtered.map(v => ({
     vehicle: v,
     score: calculateScore(v, user)
   }));
 
-  /* Best per body type */
-  const grouped = {};
+  const best = {};
   scored.forEach(item => {
-    const key = item.vehicle.bodyType;
-    if (!grouped[key] || grouped[key].score.total < item.score.total) {
-      grouped[key] = item;
+    const k = item.vehicle.bodyType;
+    if (!best[k] || best[k].score.total < item.score.total) {
+      best[k] = item;
     }
   });
 
-  renderResults(Object.values(grouped));
+  renderResults(Object.values(best));
 }
 
 /* =======================
-   RESULTS RENDER
+   RENDER
 ======================= */
 function renderResults(list) {
   const box = document.getElementById("results");
@@ -165,28 +167,23 @@ function renderResults(list) {
   list.forEach(item => {
     const card = document.createElement("div");
     card.className = "card winner";
-
     card.innerHTML = `
       <h4>${item.vehicle.bodyType}</h4>
       <b>${item.vehicle.brand} ${item.vehicle.model}</b>
       <div class="score">${item.score.total}/10</div>
       <button>Details</button>
-      <span class="more">More Models →</span>
     `;
-
     card.querySelector("button").onclick = () => showDetails(item);
     box.appendChild(card);
   });
 }
 
 /* =======================
-   DETAILS MODAL
+   DETAILS
 ======================= */
 function showDetails(item) {
   currentDetail = item;
-
-  detailTitle.innerText =
-    `${item.vehicle.brand} ${item.vehicle.model}`;
+  detailTitle.innerText = `${item.vehicle.brand} ${item.vehicle.model}`;
   detailScore.innerText = item.score.total;
 
   detailReasons.innerHTML = `
@@ -204,44 +201,7 @@ function closeDetails() {
 }
 
 /* =======================
-   COMPARE
-======================= */
-function addToCompare() {
-  if (!currentDetail) return;
-  if (compareList.length === 2) {
-    alert("You can compare only 2 vehicles");
-    return;
-  }
-
-  compareList.push(currentDetail);
-  if (compareList.length === 2) showCompare();
-}
-
-function showCompare() {
-  compareGrid.innerHTML = "";
-
-  compareList.forEach(item => {
-    const c = document.createElement("div");
-    c.className = "compare-card";
-    c.innerHTML = `
-      <h4>${item.vehicle.model}</h4>
-      <b>${item.score.total}/10</b>
-    `;
-    compareGrid.appendChild(c);
-  });
-
-  compareModal.classList.remove("hidden");
-}
-
-function closeCompare() {
-  compareList = [];
-  compareModal.classList.add("hidden");
-}
-
-/* =======================
-   EXPOSE TO HTML
+   EXPOSE
 ======================= */
 window.recommend = recommend;
 window.closeDetails = closeDetails;
-window.addToCompare = addToCompare;
-window.closeCompare = closeCompare;
