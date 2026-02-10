@@ -1,59 +1,52 @@
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
 
   const params = new URLSearchParams(window.location.search);
   const modelId = params.get("id");
 
   if (!modelId) {
-    document.body.innerHTML = "<h2>Invalid vehicle</h2>";
+    document.getElementById("modelTitle").textContent = "Invalid vehicle";
     return;
   }
 
-  /* LOAD DATA FROM SELECT YOUR RIDE */
-  const [bikeRes, carRes] = await Promise.all([
-    fetch("../Select_Your_Ride_V5/data/bike.json"),
-    fetch("../Select_Your_Ride_V5/data/car.json")
-  ]);
-
-  const bikes = await bikeRes.json();
-  const cars = await carRes.json();
-
-  const ALL_VEHICLES = [...bikes, ...cars];
-
-  /* FIND VEHICLE */
-  const vehicle = ALL_VEHICLES.find(v => v.id === modelId);
-
-  if (!vehicle) {
-    document.body.innerHTML = "<h2>Vehicle not found</h2>";
+  if (!window.BRANDS || window.BRANDS.length === 0) {
+    document.getElementById("modelTitle").textContent = "Data not loaded";
     return;
   }
 
-  /* BASIC INFO */
+  let foundBrand = null;
+  let foundModel = null;
+
+  window.BRANDS.forEach(brand => {
+    brand.models.forEach(model => {
+      if (model.id === modelId) {
+        foundBrand = brand;
+        foundModel = model;
+      }
+    });
+  });
+
+  if (!foundModel) {
+    document.getElementById("modelTitle").textContent = "Vehicle not found";
+    return;
+  }
+
+  // HEADER
   document.getElementById("modelTitle").textContent =
-    `${vehicle.brand} · ${vehicle.model}`;
+    `${foundBrand.brand} · ${foundModel.name}`;
 
-  document.getElementById("brand").textContent = vehicle.brand;
-  document.getElementById("category").textContent =
-    vehicle.bodyType || vehicle.category || "—";
-  document.getElementById("engine").textContent =
-    vehicle.engine_cc ? `${vehicle.engine_cc} cc` : "—";
-  document.getElementById("year").textContent =
-    vehicle.launchYear || "—";
-  document.getElementById("type").textContent =
-    vehicle.type || "—";
+  // BASIC INFO
+  document.getElementById("brand").textContent = foundBrand.brand;
+  document.getElementById("category").textContent = foundModel.category;
+  document.getElementById("engine").textContent = foundModel.engine;
+  document.getElementById("year").textContent = foundModel.launchYear;
+  document.getElementById("type").textContent = foundModel.type;
 
-  /* SPECS (SAFE FALLBACKS) */
-  document.getElementById("specPower").textContent =
-    vehicle.power_ps || vehicle.power || "—";
+  // SPECS
+  const specs = foundModel.specs || {};
 
-  document.getElementById("specTorque").textContent =
-    vehicle.torque_nm || vehicle.torque || "—";
-
-  document.getElementById("specMileage").textContent =
-    vehicle.mileage || "—";
-
-  document.getElementById("specWeight").textContent =
-    vehicle.weight || "—";
-
-  document.getElementById("specFuel").textContent =
-    vehicle.fuelType || vehicle.fuel || "—";
+  document.getElementById("specPower").textContent   = specs.power || "—";
+  document.getElementById("specTorque").textContent  = specs.torque || "—";
+  document.getElementById("specMileage").textContent = specs.mileage || "—";
+  document.getElementById("specWeight").textContent  = specs.weight || "—";
+  document.getElementById("specFuel").textContent    = specs.fuel || "—";
 });
