@@ -1,6 +1,6 @@
-import { BIKES } from "../../data/selectYourRide/bikes";
+let BRANDS = [];
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
 
   const brandSelect = document.getElementById("brandSelect");
   const typeSelect = document.getElementById("typeSelect");
@@ -18,8 +18,40 @@ document.addEventListener("DOMContentLoaded", () => {
     electric: 95
   };
 
+  /* LOAD DATA FROM SELECT YOUR RIDE */
+  const [bikeRes, carRes] = await Promise.all([
+    fetch("../Select_Your_Ride_V5/data/bike.json"),
+    fetch("../Select_Your_Ride_V5/data/car.json")
+  ]);
+
+  const bikes = await bikeRes.json();
+  const cars = await carRes.json();
+
+  const ALL_VEHICLES = [...bikes, ...cars];
+
+  /* TRANSFORM INTO BRAND STRUCTURE */
+  BRANDS = Object.values(
+    ALL_VEHICLES.reduce((acc, v) => {
+      if (!acc[v.brand]) {
+        acc[v.brand] = { brand: v.brand, models: [] };
+      }
+
+      acc[v.brand].models.push({
+        id: v.id,
+        name: v.model,
+        type: v.type || "Unknown",
+        category: v.bodyType || v.category || "—",
+        engine: v.engine_cc ? `${v.engine_cc} cc` : "—",
+        launchYear: v.launchYear || "—",
+        era: v.era || "modern"
+      });
+
+      return acc;
+    }, {})
+  );
+
   /* LOAD BRANDS */
-  window.BRANDS.forEach(b => {
+  BRANDS.forEach(b => {
     const o = document.createElement("option");
     o.value = b.brand;
     o.textContent = b.brand;
@@ -74,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
     modelSelect.disabled = false;
   });
 
-  /* MODEL → PREVIEW + TIMELINE LOCK */
+  /* MODEL → PREVIEW */
   modelSelect.addEventListener("change", () => {
     const brand = BRANDS.find(b => b.brand === brandSelect.value);
     if (!brand) return;
@@ -82,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const model = brand.models.find(m => m.id === modelSelect.value);
     if (!model) return;
 
-    timelineSlider.value = ERA_POSITION[model.era];
+    timelineSlider.value = ERA_POSITION[model.era] ?? 50;
     timelineSlider.disabled = true;
 
     document.querySelector(".model-name").textContent =
