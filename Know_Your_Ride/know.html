@@ -31,17 +31,6 @@
     <option value="">Select model</option>
   </select>
 
-  <!-- TIMELINE -->
-  <div id="timelineWrapper" class="timeline hidden">
-    <div class="labels">
-      <span>Classic</span>
-      <span>Modern</span>
-      <span>BS6</span>
-      <span>Electric</span>
-    </div>
-    <input type="range" id="timelineSlider" min="0" max="100" value="50" disabled />
-  </div>
-
   <!-- PREVIEW -->
   <div id="previewCard" class="preview hidden">
     <h3 class="model-name">Brand · Model</h3>
@@ -50,11 +39,14 @@
       <li><b>Engine:</b> <span id="previewEngine"></span></li>
       <li><b>Launched:</b> <span id="previewYear"></span></li>
     </ul>
-    <a class="btn" id="knowMoreBtn" href="#">Know more →</a>
+    <a class="btn" id="knowMoreBtn">Know more →</a>
   </div>
 
 </div>
+
+<!-- IMPORTANT: data FIRST -->
 <script src="data/brands.data.js"></script>
 <script src="know.js"></script>
+
 </body>
 </html>
