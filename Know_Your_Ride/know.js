@@ -1,3 +1,5 @@
+import { BIKES } from "../../data/selectYourRide/bikes";
+
 document.addEventListener("DOMContentLoaded", () => {
 
   const brandSelect = document.getElementById("brandSelect");
