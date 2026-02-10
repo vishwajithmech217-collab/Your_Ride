@@ -1,43 +1,59 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
 
   const params = new URLSearchParams(window.location.search);
   const modelId = params.get("id");
 
-  if (!modelId || !window.BRANDS) {
+  if (!modelId) {
     document.body.innerHTML = "<h2>Invalid vehicle</h2>";
     return;
   }
 
-  let foundBrand = null;
-  let foundModel = null;
+  /* LOAD DATA FROM SELECT YOUR RIDE */
+  const [bikeRes, carRes] = await Promise.all([
+    fetch("../Select_Your_Ride_V5/data/bike.json"),
+    fetch("../Select_Your_Ride_V5/data/car.json")
+  ]);
 
-  window.BRANDS.forEach(brand => {
-    brand.models.forEach(model => {
-      if (model.id === modelId) {
-        foundBrand = brand;
-        foundModel = model;
-      }
-    });
-  });
+  const bikes = await bikeRes.json();
+  const cars = await carRes.json();
 
-  if (!foundModel) {
+  const ALL_VEHICLES = [...bikes, ...cars];
+
+  /* FIND VEHICLE */
+  const vehicle = ALL_VEHICLES.find(v => v.id === modelId);
+
+  if (!vehicle) {
     document.body.innerHTML = "<h2>Vehicle not found</h2>";
     return;
   }
 
+  /* BASIC INFO */
   document.getElementById("modelTitle").textContent =
-    `${foundBrand.brand} · ${foundModel.name}`;
+    `${vehicle.brand} · ${vehicle.model}`;
 
-  document.getElementById("brand").textContent = foundBrand.brand;
-  document.getElementById("category").textContent = foundModel.category;
-  document.getElementById("engine").textContent = foundModel.engine;
-  document.getElementById("year").textContent = foundModel.launchYear;
-  document.getElementById("type").textContent = foundModel.type;
-const specs = foundModel.specs || {};
+  document.getElementById("brand").textContent = vehicle.brand;
+  document.getElementById("category").textContent =
+    vehicle.bodyType || vehicle.category || "—";
+  document.getElementById("engine").textContent =
+    vehicle.engine_cc ? `${vehicle.engine_cc} cc` : "—";
+  document.getElementById("year").textContent =
+    vehicle.launchYear || "—";
+  document.getElementById("type").textContent =
+    vehicle.type || "—";
 
-document.getElementById("specPower").textContent   = specs.power || "—";
-document.getElementById("specTorque").textContent  = specs.torque || "—";
-document.getElementById("specMileage").textContent = specs.mileage || "—";
-document.getElementById("specWeight").textContent  = specs.weight || "—";
-document.getElementById("specFuel").textContent    = specs.fuel || "—";
+  /* SPECS (SAFE FALLBACKS) */
+  document.getElementById("specPower").textContent =
+    vehicle.power_ps || vehicle.power || "—";
+
+  document.getElementById("specTorque").textContent =
+    vehicle.torque_nm || vehicle.torque || "—";
+
+  document.getElementById("specMileage").textContent =
+    vehicle.mileage || "—";
+
+  document.getElementById("specWeight").textContent =
+    vehicle.weight || "—";
+
+  document.getElementById("specFuel").textContent =
+    vehicle.fuelType || vehicle.fuel || "—";
 });
