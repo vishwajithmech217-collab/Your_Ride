@@ -9,7 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const typeSelect = document.getElementById("typeSelect");
   const modelSelect = document.getElementById("modelSelect");
 
-  // LOAD BRANDS
+  const previewCard = document.getElementById("previewCard");
+  const modelName = document.querySelector(".model-name");
+
+  /* ==========================
+     LOAD BRANDS
+  ========================== */
   window.BRANDS.forEach(b => {
     const opt = document.createElement("option");
     opt.value = b.brand;
@@ -17,17 +22,21 @@ document.addEventListener("DOMContentLoaded", () => {
     brandSelect.appendChild(opt);
   });
 
-  // BRAND → TYPE
+  /* ==========================
+     BRAND → TYPE
+  ========================== */
   brandSelect.addEventListener("change", () => {
     typeSelect.innerHTML = `<option value="">Select type</option>`;
     modelSelect.innerHTML = `<option value="">Select model</option>`;
     typeSelect.disabled = true;
     modelSelect.disabled = true;
+    previewCard.classList.add("hidden");
 
     const brand = window.BRANDS.find(b => b.brand === brandSelect.value);
     if (!brand) return;
 
-    [...new Set(brand.models.map(m => m.type))].forEach(type => {
+    const types = [...new Set(brand.models.map(m => m.type))];
+    types.forEach(type => {
       const opt = document.createElement("option");
       opt.value = type;
       opt.textContent = type;
@@ -37,10 +46,13 @@ document.addEventListener("DOMContentLoaded", () => {
     typeSelect.disabled = false;
   });
 
-  // TYPE → MODEL
+  /* ==========================
+     TYPE → MODEL
+  ========================== */
   typeSelect.addEventListener("change", () => {
     modelSelect.innerHTML = `<option value="">Select model</option>`;
     modelSelect.disabled = true;
+    previewCard.classList.add("hidden");
 
     const brand = window.BRANDS.find(b => b.brand === brandSelect.value);
     if (!brand) return;
@@ -55,6 +67,29 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
     modelSelect.disabled = false;
+  });
+
+  /* ==========================
+     MODEL → PREVIEW
+  ========================== */
+  modelSelect.addEventListener("change", () => {
+
+    const brand = window.BRANDS.find(b => b.brand === brandSelect.value);
+    if (!brand) return;
+
+    const model = brand.models.find(m => m.id === modelSelect.value);
+    if (!model) return;
+
+    modelName.textContent = `${brand.brand} · ${model.name}`;
+
+    document.getElementById("previewCategory").textContent = model.category;
+    document.getElementById("previewEngine").textContent = model.engine;
+    document.getElementById("previewYear").textContent = model.launchYear;
+
+    document.getElementById("knowMoreBtn").href =
+      `model.html?id=${model.id}`;
+
+    previewCard.classList.remove("hidden");
   });
 
 });
