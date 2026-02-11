@@ -68,23 +68,23 @@ function calcLegHeight(h, l) {
 }
 
 /* =======================
-   DYNAMIC SCORING ENGINE
+   INTELLIGENT SCORING ENGINE
 ======================= */
 function calculateScore(vehicle, user) {
   const breakdown = {};
 
-  /* ---------- SEAT FIT (0–4 smooth) ---------- */
+  /* ---------- SEAT FIT (Height Dominant) ---------- */
   if (vehicle.ergonomics?.seatHeight_mm) {
     const ideal = calcLegHeight(user.height, user.legHeight);
     const seat = vehicle.ergonomics.seatHeight_mm;
     const diff = Math.abs(seat - ideal);
 
-    breakdown.seat = Math.max(0, 4 - (diff / 40));
+    breakdown.seat = Math.max(0, 4 - (diff / 18));
   } else {
-    breakdown.seat = 3; // neutral for cars
+    breakdown.seat = 3;
   }
 
-  /* ---------- USAGE (0–3 smooth) ---------- */
+  /* ---------- USAGE ---------- */
   const usageVal =
     user.usage < 50
       ? (user.frequency < 50
@@ -96,18 +96,18 @@ function calculateScore(vehicle, user) {
 
   breakdown.usage = Math.min(3, (usageVal || 0) / 35);
 
-  /* ---------- FREQUENCY (0–2 smooth) ---------- */
+  /* ---------- FREQUENCY ---------- */
   breakdown.frequency = 2 - Math.abs(user.frequency - 50) / 25;
   breakdown.frequency = Math.max(0, breakdown.frequency);
 
-  /* ---------- WEIGHT (0–1 smooth) ---------- */
+  /* ---------- WEIGHT ---------- */
   const kerb = vehicle.physical?.kerbWeight ?? vehicle.kerbWeight ?? 150;
   const weightDiff = Math.abs(user.weight - kerb / 2);
-  breakdown.weight = Math.max(0, 1 - (weightDiff / 80));
+  breakdown.weight = Math.max(0, 1 - (weightDiff / 70));
 
-  /* ---------- TOTAL ---------- */
+  /* ---------- TOTAL (Seat weighted higher) ---------- */
   const total =
-    breakdown.seat +
+    breakdown.seat * 1.4 +
     breakdown.usage +
     breakdown.frequency +
     breakdown.weight;
@@ -151,8 +151,14 @@ function recommend() {
     score: calculateScore(v, user)
   }));
 
-  /* Sort highest first */
-  scored.sort((a, b) => b.score.total - a.score.total);
+  /* Sort with controlled variation */
+  scored.sort((a, b) => {
+    const diff = b.score.total - a.score.total;
+    if (Math.abs(diff) < 0.15) {
+      return Math.random() - 0.5;
+    }
+    return diff;
+  });
 
   /* One winner per body type */
   const best = {};
@@ -219,7 +225,7 @@ function closeDetails() {
 }
 
 /* =======================
-   COMPARE
+   COMPARE GRAPH
 ======================= */
 function addToCompare() {
   if (!currentDetail) return;
