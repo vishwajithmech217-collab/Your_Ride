@@ -70,20 +70,18 @@ function calcLegHeight(h, l) {
 function calculateScore(vehicle, user) {
   const breakdown = {};
 
-  // Seat fit (bike) or neutral (car)
-  if (vehicle.ergonomics?.seatHeight_mm) {
-    const diff = Math.abs(
-      vehicle.ergonomics.seatHeight_mm -
-      calcLegHeight(user.height, user.legHeight)
-    );
+// Dynamic Seat Fit (0–4)
+if (vehicle.ergonomics?.seatHeight_mm) {
+  const ideal = calcLegHeight(user.height, user.legHeight);
+  const seat = vehicle.ergonomics.seatHeight_mm;
 
-    breakdown.seat =
-      diff <= 50 ? 4 :
-      diff <= 150 ? 3 :
-      diff <= 300 ? 2 : 1;
-  } else {
-    breakdown.seat = 3;
-  }
+  const diff = Math.abs(seat - ideal);
+
+  // Smooth scoring
+  breakdown.seat = Math.max(0, 4 - (diff / 40));
+} else {
+  breakdown.seat = 3;
+}
 
   // Usage
   const usageVal =
