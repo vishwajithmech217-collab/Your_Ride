@@ -67,23 +67,24 @@ function calcLegHeight(h, l) {
   return l || Math.round(h * 0.46);
 }
 
+/* =======================
+   DYNAMIC SCORING ENGINE
+======================= */
 function calculateScore(vehicle, user) {
   const breakdown = {};
 
-// Dynamic Seat Fit (0–4)
-if (vehicle.ergonomics?.seatHeight_mm) {
-  const ideal = calcLegHeight(user.height, user.legHeight);
-  const seat = vehicle.ergonomics.seatHeight_mm;
+  /* ---------- SEAT FIT (0–4 smooth) ---------- */
+  if (vehicle.ergonomics?.seatHeight_mm) {
+    const ideal = calcLegHeight(user.height, user.legHeight);
+    const seat = vehicle.ergonomics.seatHeight_mm;
+    const diff = Math.abs(seat - ideal);
 
-  const diff = Math.abs(seat - ideal);
+    breakdown.seat = Math.max(0, 4 - (diff / 40));
+  } else {
+    breakdown.seat = 3; // neutral for cars
+  }
 
-  // Smooth scoring
-  breakdown.seat = Math.max(0, 4 - (diff / 40));
-} else {
-  breakdown.seat = 3;
-}
-
-  // Usage
+  /* ---------- USAGE (0–3 smooth) ---------- */
   const usageVal =
     user.usage < 50
       ? (user.frequency < 50
@@ -93,27 +94,18 @@ if (vehicle.ergonomics?.seatHeight_mm) {
           ? vehicle.usage?.highway_daily
           : vehicle.usage?.highway_occasional);
 
-  breakdown.usage =
-    usageVal >= 80 ? 3 :
-    usageVal >= 60 ? 2 : 1;
+  breakdown.usage = Math.min(3, (usageVal || 0) / 35);
 
-  // Frequency
-  breakdown.frequency =
-    user.frequency < 40 ? 2 :
-    user.frequency < 70 ? 1 : 0;
+  /* ---------- FREQUENCY (0–2 smooth) ---------- */
+  breakdown.frequency = 2 - Math.abs(user.frequency - 50) / 25;
+  breakdown.frequency = Math.max(0, breakdown.frequency);
 
-  // Weight compatibility
-  const kerb =
-    vehicle.physical?.kerbWeight ??
-    vehicle.kerbWeight ??
-    0;
+  /* ---------- WEIGHT (0–1 smooth) ---------- */
+  const kerb = vehicle.physical?.kerbWeight ?? vehicle.kerbWeight ?? 150;
+  const weightDiff = Math.abs(user.weight - kerb / 2);
+  breakdown.weight = Math.max(0, 1 - (weightDiff / 80));
 
-  breakdown.weight =
-    (user.weight < 50 && kerb > 180) ||
-    (user.weight > 90 && kerb < 120)
-      ? 0
-      : 1;
-
+  /* ---------- TOTAL ---------- */
   const total =
     breakdown.seat +
     breakdown.usage +
@@ -159,6 +151,10 @@ function recommend() {
     score: calculateScore(v, user)
   }));
 
+  /* Sort highest first */
+  scored.sort((a, b) => b.score.total - a.score.total);
+
+  /* One winner per body type */
   const best = {};
   scored.forEach(item => {
     const key = item.vehicle.bodyType || "Other";
@@ -185,12 +181,14 @@ function renderResults(list) {
   list.forEach(item => {
     const card = document.createElement("div");
     card.className = "card winner";
+
     card.innerHTML = `
       <h4>${item.vehicle.bodyType}</h4>
       <b>${item.vehicle.brand} ${item.vehicle.model}</b>
-      <div class="score">${item.score.total}/10</div>
+      <div class="score">${item.score.total.toFixed(1)}/10</div>
       <button>Details</button>
     `;
+
     card.querySelector("button").onclick = () => showDetails(item);
     box.appendChild(card);
   });
@@ -204,13 +202,13 @@ function showDetails(item) {
 
   detailTitle.innerText =
     `${item.vehicle.brand} ${item.vehicle.model}`;
-  detailScore.innerText = item.score.total;
+  detailScore.innerText = item.score.total.toFixed(1);
 
   detailReasons.innerHTML = `
-    <li>Seat Fit: ${item.score.breakdown.seat}/4</li>
-    <li>Usage Match: ${item.score.breakdown.usage}/3</li>
-    <li>Frequency: ${item.score.breakdown.frequency}/2</li>
-    <li>Weight Compatibility: ${item.score.breakdown.weight}/1</li>
+    <li>Seat Fit: ${item.score.breakdown.seat.toFixed(2)}/4</li>
+    <li>Usage Match: ${item.score.breakdown.usage.toFixed(2)}/3</li>
+    <li>Frequency: ${item.score.breakdown.frequency.toFixed(2)}/2</li>
+    <li>Weight Compatibility: ${item.score.breakdown.weight.toFixed(2)}/1</li>
   `;
 
   detailModal.classList.remove("hidden");
@@ -239,14 +237,13 @@ function makeBar(label, value, max) {
 
   return `
     <div class="chart">
-      <div class="chart-label">${label}: ${value}/${max}</div>
+      <div class="chart-label">${label}: ${value.toFixed(2)}/${max}</div>
       <div class="chart-bar">
         <div class="chart-fill" data-width="${percent}%"></div>
       </div>
     </div>
   `;
 }
-
 
 function showCompare() {
   compareGrid.innerHTML = "";
@@ -259,7 +256,7 @@ function showCompare() {
 
     card.innerHTML = `
       <h4>${vehicle.brand} ${vehicle.model}</h4>
-      <b>${score.total}/10</b>
+      <b>${score.total.toFixed(1)}/10</b>
 
       ${makeBar("Seat Fit", score.breakdown.seat, 4)}
       ${makeBar("Usage", score.breakdown.usage, 3)}
@@ -272,7 +269,6 @@ function showCompare() {
 
   compareModal.classList.remove("hidden");
 
-  // animate bars
   setTimeout(() => {
     document.querySelectorAll(".chart-fill").forEach(bar => {
       bar.style.width = bar.dataset.width;
@@ -286,7 +282,7 @@ function closeCompare() {
 }
 
 /* =======================
-   EXPOSE TO HTML
+   EXPOSE
 ======================= */
 window.recommend = recommend;
 window.closeDetails = closeDetails;
